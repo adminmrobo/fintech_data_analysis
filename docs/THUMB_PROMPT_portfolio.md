@@ -4,7 +4,7 @@
 - 쓰는 곳: ahnboat_lab_cover_status 포트폴리오 「저서·이러닝 › 이러닝 › 핀테크 데이터분석 기초」 카드 (800×450으로 줄여 씀)
 - 참고 이미지: 네 캐릭터 기본 그림 4장 + 이 시리즈 표지 cover_00 (그림체 맞추기)
 - 회차 표지와 겹치지 않게: 건물 **밖**에서 본 장면 — 쌍둥이 타워와 스카이브리지가 배경, 네 식구가 앞 광장에 섬
-- 받은 뒤: `cover_status/thumbs/cats/E-fintech-lab.webp` 로 바꿔 넣기 (800×450, nearest 축소)
+- 완료: 2026-11-20 받은 그림을 넣음 (원본 docs/portfolio_fintech_1920.png, 카드용 assets/thumb_portfolio.webp · cover_status thumbs/cats/E-fintech-lab.webp)
 
 ## 한국어 요약
 

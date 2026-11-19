@@ -97,7 +97,7 @@ KG_00_registry.json               시리즈 지식 그래프 등록부
 data/                             fintech-data 복사본 (data/README.md)
 notebooks/                        회차별 Colab 실습 노트북 13개 (실행 결과 포함)
 assets/og_series.jpg, og/         공유 미리보기 (픽셀아트 표지에서 자동 생성)
-assets/thumb_portfolio.webp       포트폴리오 카드용 픽셀아트 썸네일 (src/build/make_thumb.py)
+assets/thumb_portfolio.webp       포트폴리오 카드 그림 (Genspark 픽셀아트, 원본 docs/portfolio_fintech_1920.png)
 docs/COVER_PROMPTS_series.md      표지 16장 그림 지시문 (Genspark용, 작업 순서 포함)
 docs/IMG_00_index.md              이미지 제작 명세서
 docs/INSTRUCTOR_GUIDE.md          강사용 진행 가이드
