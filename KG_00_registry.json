@@ -1,0 +1,1638 @@
+{
+ "version": "1.0",
+ "date": "2026-11-19",
+ "ids": {
+  "lab:concept/fintech": {
+   "ko": "핀테크",
+   "en": "fintech",
+   "page": "08_midterm_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/payment-value-chain": {
+   "ko": "결제 가치사슬",
+   "en": "payment value chain",
+   "page": "08_midterm_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/behavioral-data": {
+   "ko": "행동 데이터",
+   "en": "behavioral data",
+   "page": "08_midterm_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/01-duel-fly": {
+   "ko": "행동 1칸: 연간 거래 횟수",
+   "en": "duel choice A 01",
+   "page": "01_fintech_industry",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/01-duel-robo": {
+   "ko": "인구통계 5칸 (가변수 16칸)",
+   "en": "duel choice B 01",
+   "page": "01_fintech_industry",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/business-model-canvas": {
+   "ko": "9-캔버스",
+   "en": "business model canvas",
+   "page": "01_fintech_industry",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/internet-only-bank": {
+   "ko": "인터넷전문은행",
+   "en": "internet-only bank",
+   "page": "01_fintech_industry",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/financial-investment-company": {
+   "ko": "금융투자회사",
+   "en": "financial investment company",
+   "page": "01_fintech_industry",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/van": {
+   "ko": "VAN",
+   "en": "value added network",
+   "page": "01_fintech_industry",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/pg": {
+   "ko": "PG",
+   "en": "payment gateway",
+   "page": "01_fintech_industry",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/simple-payment": {
+   "ko": "간편결제",
+   "en": "simple payment",
+   "page": "01_fintech_industry",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/platform": {
+   "ko": "플랫폼",
+   "en": "platform",
+   "page": "01_fintech_industry",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/robo-advisor": {
+   "ko": "로보어드바이저",
+   "en": "robo-advisor",
+   "page": "01_fintech_industry",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/churn": {
+   "ko": "이탈",
+   "en": "customer churn",
+   "page": "01_fintech_industry",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/demographic-data": {
+   "ko": "인구통계",
+   "en": "demographic data",
+   "page": "01_fintech_industry",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:metric/auc": {
+   "ko": "AUC",
+   "en": "area under the curve",
+   "page": "07_model_evaluation",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/fintech-data-types": {
+   "ko": "핀테크 데이터 유형",
+   "en": "fintech data types",
+   "page": "08_midterm_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/data-collection": {
+   "ko": "데이터 수집 방법",
+   "en": "data collection methods",
+   "page": "08_midterm_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/pseudonymization": {
+   "ko": "가명처리와 재식별 위험",
+   "en": "pseudonymization and re-identification risk",
+   "page": "08_midterm_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/02-duel-fly": {
+   "ko": "점검한 600건",
+   "en": "duel choice A 02",
+   "page": "02_data_collection",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/02-duel-robo": {
+   "ko": "점검 없이 모은 947건",
+   "en": "duel choice B 02",
+   "page": "02_data_collection",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/structured-data": {
+   "ko": "정형 데이터",
+   "en": "structured data",
+   "page": "02_data_collection",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/unstructured-data": {
+   "ko": "비정형 데이터",
+   "en": "unstructured data",
+   "page": "02_data_collection",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/investor-profile": {
+   "ko": "투자자 정보 확인서",
+   "en": "investor profile questionnaire",
+   "page": "02_data_collection",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/open-api": {
+   "ko": "Open API",
+   "en": "open API",
+   "page": "02_data_collection",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/open-data": {
+   "ko": "공공데이터",
+   "en": "open government data",
+   "page": "02_data_collection",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/web-scraping": {
+   "ko": "웹 스크래핑",
+   "en": "web scraping",
+   "page": "02_data_collection",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/web-crawling": {
+   "ko": "웹 크롤링",
+   "en": "web crawling",
+   "page": "02_data_collection",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/weighted-mean": {
+   "ko": "가중평균",
+   "en": "weighted mean",
+   "page": "02_data_collection",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/data-three-acts": {
+   "ko": "데이터 3법",
+   "en": "Korea data three acts",
+   "page": "02_data_collection",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/pseudonymized-data": {
+   "ko": "가명정보",
+   "en": "pseudonymized data",
+   "page": "02_data_collection",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/anonymous-data": {
+   "ko": "익명정보",
+   "en": "anonymous data",
+   "page": "02_data_collection",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/quasi-identifier": {
+   "ko": "준식별자",
+   "en": "quasi-identifier",
+   "page": "02_data_collection",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:metric/recall": {
+   "ko": "재현율",
+   "en": "recall",
+   "page": "07_model_evaluation",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/data-collection-plan": {
+   "ko": "데이터 수집 계획",
+   "en": "data collection plan",
+   "page": "08_midterm_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/fintech-platform": {
+   "ko": "핀테크 플랫폼",
+   "en": "fintech platform",
+   "page": "08_midterm_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/data-dictionary": {
+   "ko": "데이터 사전",
+   "en": "data dictionary",
+   "page": "08_midterm_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/03-duel-fly": {
+   "ko": "한 달에 한 번 수집",
+   "en": "duel choice A 03",
+   "page": "03_collection_plan",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/03-duel-robo": {
+   "ko": "매일 수집",
+   "en": "duel choice B 03",
+   "page": "03_collection_plan",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/data-cleansing": {
+   "ko": "클렌징",
+   "en": "data cleansing",
+   "page": "03_collection_plan",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/metadata": {
+   "ko": "메타데이터",
+   "en": "metadata",
+   "page": "03_collection_plan",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/etl": {
+   "ko": "ETL",
+   "en": "extract-transform-load",
+   "page": "03_collection_plan",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/network-effect": {
+   "ko": "네트워크 효과",
+   "en": "network effect",
+   "page": "03_collection_plan",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/data-warehouse": {
+   "ko": "데이터 웨어하우스",
+   "en": "data warehouse",
+   "page": "03_collection_plan",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/dbms": {
+   "ko": "DBMS",
+   "en": "database management system",
+   "page": "03_collection_plan",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/data-leakage": {
+   "ko": "정보 누수",
+   "en": "data leakage",
+   "page": "03_collection_plan",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/benchmarking": {
+   "ko": "벤치마킹",
+   "en": "benchmarking",
+   "page": "03_collection_plan",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/timeliness": {
+   "ko": "적시성",
+   "en": "timeliness",
+   "page": "03_collection_plan",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/analysis-tools": {
+   "ko": "데이터 분석 도구",
+   "en": "data analysis tools",
+   "page": "08_midterm_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/ml-taxonomy": {
+   "ko": "머신러닝 학습 방법 분류",
+   "en": "machine learning taxonomy",
+   "page": "08_midterm_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/generalization": {
+   "ko": "일반화와 과대적합",
+   "en": "generalization and overfitting",
+   "page": "08_midterm_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/04-duel-fly": {
+   "ko": "시험 점수로 고른 k=15",
+   "en": "duel choice A 04",
+   "page": "04_analysis_concepts",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/04-duel-robo": {
+   "ko": "학습 점수 99.8%로 고른 k=1",
+   "en": "duel choice B 04",
+   "page": "04_analysis_concepts",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/spreadsheet": {
+   "ko": "스프레드시트",
+   "en": "spreadsheet",
+   "page": "04_analysis_concepts",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/open-source": {
+   "ko": "오픈소스",
+   "en": "open source",
+   "page": "04_analysis_concepts",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/bi-tool": {
+   "ko": "BI",
+   "en": "business intelligence tool",
+   "page": "04_analysis_concepts",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/supervised-learning": {
+   "ko": "지도학습",
+   "en": "supervised learning",
+   "page": "04_analysis_concepts",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/unsupervised-learning": {
+   "ko": "비지도학습",
+   "en": "unsupervised learning",
+   "page": "04_analysis_concepts",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/reinforcement-learning": {
+   "ko": "강화학습",
+   "en": "reinforcement learning",
+   "page": "04_analysis_concepts",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/classification": {
+   "ko": "분류",
+   "en": "classification",
+   "page": "04_analysis_concepts",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/regression": {
+   "ko": "회귀",
+   "en": "regression",
+   "page": "09_regression",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/eda": {
+   "ko": "EDA",
+   "en": "exploratory data analysis",
+   "page": "04_analysis_concepts",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/overfitting": {
+   "ko": "과대적합",
+   "en": "overfitting",
+   "page": "04_analysis_concepts",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/underfitting": {
+   "ko": "과소적합",
+   "en": "underfitting",
+   "page": "04_analysis_concepts",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/test-set": {
+   "ko": "시험 세트",
+   "en": "test set",
+   "page": "04_analysis_concepts",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/python-data-structures": {
+   "ko": "파이썬 자료 구조",
+   "en": "Python data structures",
+   "page": "08_midterm_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/missing-and-outliers": {
+   "ko": "결측값과 이상치",
+   "en": "missing values and outliers",
+   "page": "08_midterm_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/labeling": {
+   "ko": "라벨링과 데이터 세팅",
+   "en": "labeling and data setup",
+   "page": "08_midterm_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/05-duel-fly": {
+   "ko": "Unknown을 범주로 남김",
+   "en": "duel choice A 05",
+   "page": "05_preprocessing",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/05-duel-robo": {
+   "ko": "Unknown 행 삭제",
+   "en": "duel choice B 05",
+   "page": "05_preprocessing",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/colab": {
+   "ko": "Colab",
+   "en": "Google Colaboratory",
+   "page": "05_preprocessing",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/list": {
+   "ko": "List",
+   "en": "list",
+   "page": "05_preprocessing",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/tuple": {
+   "ko": "Tuple",
+   "en": "tuple",
+   "page": "05_preprocessing",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/dictionary": {
+   "ko": "Dictionary",
+   "en": "dictionary",
+   "page": "05_preprocessing",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/dataframe": {
+   "ko": "DataFrame",
+   "en": "DataFrame",
+   "page": "05_preprocessing",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/missing-value": {
+   "ko": "결측값",
+   "en": "missing value",
+   "page": "05_preprocessing",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/outlier": {
+   "ko": "이상치",
+   "en": "outlier",
+   "page": "05_preprocessing",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/quartile": {
+   "ko": "사분위수",
+   "en": "quartile",
+   "page": "05_preprocessing",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/iqr": {
+   "ko": "IQR",
+   "en": "interquartile range",
+   "page": "05_preprocessing",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/box-plot": {
+   "ko": "상자그림",
+   "en": "box plot",
+   "page": "05_preprocessing",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/label": {
+   "ko": "라벨",
+   "en": "label",
+   "page": "05_preprocessing",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/class-imbalance": {
+   "ko": "불균형",
+   "en": "class imbalance",
+   "page": "05_preprocessing",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/zip": {
+   "ko": "zip",
+   "en": "zip function",
+   "page": "05_preprocessing",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/knn": {
+   "ko": "K-최근접 이웃(KNN)",
+   "en": "k-nearest neighbors",
+   "page": "08_midterm_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/svm": {
+   "ko": "서포트 벡터 머신(SVM)",
+   "en": "support vector machine",
+   "page": "08_midterm_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/standardization": {
+   "ko": "표준화와 층화 분할",
+   "en": "standardization and stratified split",
+   "page": "08_midterm_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/06-duel-fly": {
+   "ko": "표준화 후 SVM",
+   "en": "duel choice A 06",
+   "page": "06_knn_svm",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/06-duel-robo": {
+   "ko": "그대로 넣은 SVM",
+   "en": "duel choice B 06",
+   "page": "06_knn_svm",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/euclidean-distance": {
+   "ko": "유클리드 거리",
+   "en": "Euclidean distance",
+   "page": "06_knn_svm",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/majority-vote": {
+   "ko": "다수결",
+   "en": "majority vote",
+   "page": "06_knn_svm",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/margin": {
+   "ko": "마진",
+   "en": "margin",
+   "page": "06_knn_svm",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/support-vector": {
+   "ko": "서포트 벡터",
+   "en": "support vector",
+   "page": "06_knn_svm",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/kernel": {
+   "ko": "커널",
+   "en": "kernel",
+   "page": "06_knn_svm",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/class-weight": {
+   "ko": "class_weight",
+   "en": "class weight",
+   "page": "06_knn_svm",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/train-test-split": {
+   "ko": "train_test_split",
+   "en": "train_test_split",
+   "page": "06_knn_svm",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/stratified-split": {
+   "ko": "층화",
+   "en": "stratified split",
+   "page": "06_knn_svm",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/random-state": {
+   "ko": "random_state",
+   "en": "random seed",
+   "page": "06_knn_svm",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/confusion-matrix": {
+   "ko": "혼동행렬과 분류 지표",
+   "en": "confusion matrix and classification metrics",
+   "page": "08_midterm_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/model-optimization": {
+   "ko": "모델 최적화와 교차검증",
+   "en": "model optimization and cross-validation",
+   "page": "08_midterm_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/07-duel-fly": {
+   "ko": "로지스틱 회귀 (기준 2%)",
+   "en": "duel choice A 07",
+   "page": "07_model_evaluation",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/07-duel-robo": {
+   "ko": "모두 \"청구 없음\"",
+   "en": "duel choice B 07",
+   "page": "07_model_evaluation",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:metric/accuracy": {
+   "ko": "정확도",
+   "en": "accuracy",
+   "page": "07_model_evaluation",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:metric/precision": {
+   "ko": "정밀도",
+   "en": "precision",
+   "page": "07_model_evaluation",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:metric/f1": {
+   "ko": "F1",
+   "en": "F1 score",
+   "page": "07_model_evaluation",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/threshold": {
+   "ko": "임계값",
+   "en": "threshold",
+   "page": "07_model_evaluation",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:metric/fpr": {
+   "ko": "FPR",
+   "en": "false positive rate",
+   "page": "07_model_evaluation",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/cross-validation": {
+   "ko": "교차검증",
+   "en": "cross-validation",
+   "page": "07_model_evaluation",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/ensemble": {
+   "ko": "앙상블",
+   "en": "ensemble",
+   "page": "07_model_evaluation",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/hyperparameter": {
+   "ko": "하이퍼파라미터",
+   "en": "hyperparameter",
+   "page": "07_model_evaluation",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/regularization": {
+   "ko": "정규화",
+   "en": "regularization",
+   "page": "07_model_evaluation",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/knn-regression": {
+   "ko": "KNN 회귀",
+   "en": "k-nearest neighbors regression",
+   "page": "15_final_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/polynomial-regression": {
+   "ko": "선형·다항 회귀",
+   "en": "linear and polynomial regression",
+   "page": "15_final_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/09-duel-fly": {
+   "ko": "선형 회귀(직선)",
+   "en": "duel choice A 09",
+   "page": "09_regression",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/09-duel-robo": {
+   "ko": "KNN 회귀(이웃 평균)",
+   "en": "duel choice B 09",
+   "page": "09_regression",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/extrapolation": {
+   "ko": "외삽",
+   "en": "extrapolation",
+   "page": "09_regression",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/reshape": {
+   "ko": "reshape",
+   "en": "reshape",
+   "page": "09_regression",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/linear-regression": {
+   "ko": "선형 회귀",
+   "en": "linear regression",
+   "page": "09_regression",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/least-squares": {
+   "ko": "최소제곱",
+   "en": "least squares",
+   "page": "09_regression",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/residual": {
+   "ko": "잔차",
+   "en": "residual",
+   "page": "09_regression",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:metric/mse": {
+   "ko": "MSE",
+   "en": "mean squared error",
+   "page": "09_regression",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:metric/rmse": {
+   "ko": "RMSE",
+   "en": "root mean squared error",
+   "page": "09_regression",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:metric/mae": {
+   "ko": "MAE",
+   "en": "mean absolute error",
+   "page": "09_regression",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:metric/r2": {
+   "ko": "결정계수",
+   "en": "coefficient of determination",
+   "page": "09_regression",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:metric/adjusted-r2": {
+   "ko": "수정 R²",
+   "en": "adjusted R-squared",
+   "page": "09_regression",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/logistic-regression": {
+   "ko": "로지스틱 회귀",
+   "en": "logistic regression",
+   "page": "15_final_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/decision-tree": {
+   "ko": "결정나무",
+   "en": "decision tree",
+   "page": "15_final_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/feature-engineering": {
+   "ko": "특성공학",
+   "en": "feature engineering",
+   "page": "15_final_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/10-duel-fly": {
+   "ko": "기본 특성 3개",
+   "en": "duel choice A 10",
+   "page": "10_logistic_tree",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/10-duel-robo": {
+   "ko": "만든 특성까지 6개",
+   "en": "duel choice B 10",
+   "page": "10_logistic_tree",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/sigmoid": {
+   "ko": "시그모이드",
+   "en": "sigmoid",
+   "page": "10_logistic_tree",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/log-odds": {
+   "ko": "로그오즈",
+   "en": "log-odds",
+   "page": "10_logistic_tree",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/gradient-descent": {
+   "ko": "경사하강법",
+   "en": "gradient descent",
+   "page": "10_logistic_tree",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:metric/gini-impurity": {
+   "ko": "지니 불순도",
+   "en": "Gini impurity",
+   "page": "10_logistic_tree",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/leaf-node": {
+   "ko": "잎",
+   "en": "leaf node",
+   "page": "10_logistic_tree",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/pruning": {
+   "ko": "가지치기",
+   "en": "pruning",
+   "page": "10_logistic_tree",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/interaction": {
+   "ko": "교호작용",
+   "en": "interaction effect",
+   "page": "10_logistic_tree",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/polynomial-features": {
+   "ko": "PolynomialFeatures",
+   "en": "PolynomialFeatures",
+   "page": "10_logistic_tree",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/artificial-neuron": {
+   "ko": "인공 뉴런과 신경망",
+   "en": "artificial neuron and neural network",
+   "page": "15_final_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/stationarity": {
+   "ko": "정상성과 차분",
+   "en": "stationarity and differencing",
+   "page": "15_final_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/ar-model": {
+   "ko": "AR·ARIMA 모델",
+   "en": "autoregressive and ARIMA models",
+   "page": "15_final_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/11-duel-fly": {
+   "ko": "내일 = 오늘 (단순 기준)",
+   "en": "duel choice A 11",
+   "page": "11_deep_learning_timeseries",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/11-duel-robo": {
+   "ko": "AR(10) 모델",
+   "en": "duel choice B 11",
+   "page": "11_deep_learning_timeseries",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/activation-function": {
+   "ko": "활성화 함수",
+   "en": "activation function",
+   "page": "11_deep_learning_timeseries",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/relu": {
+   "ko": "ReLU",
+   "en": "rectified linear unit",
+   "page": "11_deep_learning_timeseries",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/deep-learning": {
+   "ko": "딥러닝",
+   "en": "deep learning",
+   "page": "11_deep_learning_timeseries",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/rnn": {
+   "ko": "RNN",
+   "en": "recurrent neural network",
+   "page": "11_deep_learning_timeseries",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/lstm": {
+   "ko": "LSTM",
+   "en": "long short-term memory",
+   "page": "11_deep_learning_timeseries",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/time-series": {
+   "ko": "시계열",
+   "en": "time series",
+   "page": "11_deep_learning_timeseries",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/differencing": {
+   "ko": "차분",
+   "en": "differencing",
+   "page": "11_deep_learning_timeseries",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/return": {
+   "ko": "수익률",
+   "en": "return",
+   "page": "11_deep_learning_timeseries",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/arima": {
+   "ko": "ARIMA",
+   "en": "ARIMA",
+   "page": "11_deep_learning_timeseries",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:metric/mape": {
+   "ko": "MAPE",
+   "en": "mean absolute percentage error",
+   "page": "11_deep_learning_timeseries",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/random-walk": {
+   "ko": "임의보행",
+   "en": "random walk",
+   "page": "11_deep_learning_timeseries",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/central-tendency-skewness": {
+   "ko": "대표값과 왜도",
+   "en": "central tendency and skewness",
+   "page": "15_final_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/correlation": {
+   "ko": "상관과 인과",
+   "en": "correlation and causation",
+   "page": "15_final_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/chart-selection": {
+   "ko": "목적별 차트 선택",
+   "en": "chart selection by purpose",
+   "page": "15_final_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/12-duel-fly": {
+   "ko": "중앙값 $9,413",
+   "en": "duel choice A 12",
+   "page": "12_visualization",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/12-duel-robo": {
+   "ko": "평균 $13,165",
+   "en": "duel choice B 12",
+   "page": "12_visualization",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/mean": {
+   "ko": "평균",
+   "en": "mean",
+   "page": "12_visualization",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/median": {
+   "ko": "중앙값",
+   "en": "median",
+   "page": "12_visualization",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/mode": {
+   "ko": "최빈값",
+   "en": "mode",
+   "page": "12_visualization",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/skewness": {
+   "ko": "왜도",
+   "en": "skewness",
+   "page": "12_visualization",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/standard-deviation": {
+   "ko": "표준편차",
+   "en": "standard deviation",
+   "page": "12_visualization",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/coefficient-of-variation": {
+   "ko": "변동계수",
+   "en": "coefficient of variation",
+   "page": "12_visualization",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/covariance": {
+   "ko": "공분산",
+   "en": "covariance",
+   "page": "12_visualization",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/causation": {
+   "ko": "인과관계",
+   "en": "causation",
+   "page": "12_visualization",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/confounder": {
+   "ko": "교란 변수",
+   "en": "confounder",
+   "page": "12_visualization",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/heatmap": {
+   "ko": "히트맵",
+   "en": "heatmap",
+   "page": "12_visualization",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/candlestick": {
+   "ko": "캔들스틱",
+   "en": "candlestick chart",
+   "page": "12_visualization",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/scatter-plot": {
+   "ko": "산점도",
+   "en": "scatter plot",
+   "page": "12_visualization",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/subplots": {
+   "ko": "subplots",
+   "en": "subplots",
+   "page": "12_visualization",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/data-driven-fintech-service": {
+   "ko": "데이터 기반 핀테크 서비스",
+   "en": "data-driven fintech services",
+   "page": "15_final_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/robo-advisor-allocation": {
+   "ko": "로보어드바이저 자산 배분",
+   "en": "robo-advisor asset allocation",
+   "page": "15_final_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/moving-average-crossover": {
+   "ko": "이동평균 교차 전략과 성과 평가",
+   "en": "moving-average crossover and performance evaluation",
+   "page": "15_final_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/13-duel-fly": {
+   "ko": "사서 보유",
+   "en": "duel choice A 13",
+   "page": "13_robo_advisor",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/13-duel-robo": {
+   "ko": "이동평균 교차(20/60일)",
+   "en": "duel choice B 13",
+   "page": "13_robo_advisor",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/thin-filer": {
+   "ko": "씬파일러",
+   "en": "thin filer",
+   "page": "13_robo_advisor",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/alternative-data": {
+   "ko": "대안 데이터",
+   "en": "alternative data",
+   "page": "13_robo_advisor",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/insurtech": {
+   "ko": "인슈어테크",
+   "en": "insurtech",
+   "page": "13_robo_advisor",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/suitability": {
+   "ko": "적합성 원칙",
+   "en": "suitability rule",
+   "page": "13_robo_advisor",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/robo-testbed": {
+   "ko": "테스트베드",
+   "en": "robo-advisor testbed",
+   "page": "13_robo_advisor",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/asset-allocation": {
+   "ko": "자산 배분",
+   "en": "asset allocation",
+   "page": "13_robo_advisor",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/rebalancing": {
+   "ko": "리밸런싱",
+   "en": "rebalancing",
+   "page": "13_robo_advisor",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/technical-analysis": {
+   "ko": "기술적 분석",
+   "en": "technical analysis",
+   "page": "13_robo_advisor",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/moving-average": {
+   "ko": "이동평균",
+   "en": "moving average",
+   "page": "13_robo_advisor",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:metric/mdd": {
+   "ko": "최대 낙폭",
+   "en": "maximum drawdown",
+   "page": "13_robo_advisor",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/backtest": {
+   "ko": "백테스트",
+   "en": "backtest",
+   "page": "13_robo_advisor",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/backtest-overfitting": {
+   "ko": "과최적화",
+   "en": "overfitting (backtest)",
+   "page": "13_robo_advisor",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/cia-triad": {
+   "ko": "보안 3요소와 데이터 거버넌스",
+   "en": "CIA triad and data governance",
+   "page": "15_final_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/k-anonymity": {
+   "ko": "k-익명성과 비식별 조치",
+   "en": "k-anonymity and de-identification",
+   "page": "15_final_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/data-quality": {
+   "ko": "데이터 품질 차원과 표준화",
+   "en": "data quality dimensions and standardization",
+   "page": "15_final_review",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/14-duel-fly": {
+   "ko": "나이 5살 단위 + 성별·자녀 공개",
+   "en": "duel choice A 14",
+   "page": "14_security_quality",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/14-duel-robo": {
+   "ko": "나이 20살 단위 + 성별만",
+   "en": "duel choice B 14",
+   "page": "14_security_quality",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/confidentiality": {
+   "ko": "기밀성",
+   "en": "confidentiality",
+   "page": "14_security_quality",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/integrity": {
+   "ko": "무결성",
+   "en": "integrity",
+   "page": "14_security_quality",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/availability": {
+   "ko": "가용성",
+   "en": "availability",
+   "page": "14_security_quality",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/data-governance": {
+   "ko": "데이터 거버넌스",
+   "en": "data governance",
+   "page": "14_security_quality",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/de-identification": {
+   "ko": "비식별",
+   "en": "de-identification",
+   "page": "14_security_quality",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:method/generalization": {
+   "ko": "범주화",
+   "en": "generalization",
+   "page": "14_security_quality",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/l-diversity": {
+   "ko": "l-다양성",
+   "en": "l-diversity",
+   "page": "14_security_quality",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/completeness": {
+   "ko": "완전성",
+   "en": "completeness",
+   "page": "14_security_quality",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/validity": {
+   "ko": "유효성",
+   "en": "validity",
+   "page": "14_security_quality",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:term/data-catalog": {
+   "ko": "데이터 카탈로그",
+   "en": "data catalog",
+   "page": "14_security_quality",
+   "domain": [
+    "fintech"
+   ]
+  },
+  "lab:concept/data-lifecycle": {
+   "ko": "생명주기",
+   "en": "data lifecycle",
+   "page": "14_security_quality",
+   "domain": [
+    "fintech"
+   ]
+  }
+ }
+}
