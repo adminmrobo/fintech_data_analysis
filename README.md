@@ -65,10 +65,16 @@
 
 화면은 모두 흰 배경이며, 각 페이지는 외부 파일 없이 열립니다(글꼴·3D만 CDN).
 
+## 실습 노트북과 강사용 가이드
+
+- **회차별 Colab 노트북** `notebooks/` — 13개(01~07, 09~14). 페이지의 실험·대결 숫자를 같은 데이터·같은 시드(42)로 다시 계산하며, 실행 결과까지 저장돼 있습니다. 각 페이지의 3줄 요약 상자와 코드 상자에 「Colab에서 열기」 링크가 있어요.
+  예: [01 노트북 Colab에서 열기](https://colab.research.google.com/github/adminmrobo/fintech_data_analysis/blob/main/notebooks/01_fintech_industry.ipynb)
+- **강사용 진행 가이드** [`docs/INSTRUCTOR_GUIDE.md`](docs/INSTRUCTOR_GUIDE.md) — 100분 기준 진행 순서, 회차별 3줄 요약·칸별 핵심·대결 설정·칠판 문장·원자료와 다른 곳.
+
 ## 검토 반영
 
 - **수포자 스킬(supoja-content) 검토:** AI 판단 문항 13개, 기호 읽는 법(Σ·e·φ·σ·R² 등), 손계산 예시 보강 — `src/pages/_supoja.py`
-- **페르소나 감사(persona-review):** 코드 예시 오류 수정, 대시보드 라벨 겹침 수정 등
+- **페르소나 감사(persona-review):** 코드 예시 오류 수정, 대시보드 라벨 겹침 수정, 실행 가능한 Colab 노트북·강사용 가이드 추가, 휴대폰(폭 700px 이하)·데이터 절약 모드에서는 3D 타워를 버튼을 눌렀을 때만 불러오도록 변경
 
 ## 원자료와 다르게 쓴 곳 (주요 항목)
 
@@ -89,9 +95,11 @@
 index.html, 01_…html ~ 15_…html   목차와 15회차 (08·15는 요약정리 및 퀴즈)
 KG_00_registry.json               시리즈 지식 그래프 등록부
 data/                             fintech-data 복사본 (data/README.md)
+notebooks/                        회차별 Colab 실습 노트북 13개 (실행 결과 포함)
 assets/og_series.jpg, og/         공유 미리보기 (임시: 대체 표지 화면)
-docs/COVER_PROMPTS_series.md      표지 16장 그림 지시문 (Genspark용)
+docs/COVER_PROMPTS_series.md      표지 16장 그림 지시문 (Genspark용, 작업 순서 포함)
 docs/IMG_00_index.md              이미지 제작 명세서
+docs/INSTRUCTOR_GUIDE.md          강사용 진행 가이드
 src/analysis/compute.py           실제 데이터 계산 (시드 42) → results.json
 src/pages/*.py                    페이지 데이터 (_supoja.py: 수포자 스킬 검토 반영)
 src/build/                        빌드 도구 (build.py, sims.js, dash.js, tower.*)
@@ -107,6 +115,18 @@ python3 analysis/compute.py          # data/ → analysis/results.json
 python3 build/build.py ..            # 저장소 루트에 16쪽 생성
 mkdir -p out/docs && python3 build/make_docs.py   # 그림 지시문 (out/docs → docs/)
 node build/check.js ../*.html        # 390·1280px 가로 넘침·콘솔 오류 점검 (Playwright)
+python3 build/make_notebooks.py      # Colab 노트북 생성·실행 (nbformat, nbclient, ipykernel 필요)
+python3 build/make_guide.py          # docs/INSTRUCTOR_GUIDE.md
+```
+
+### 표지 그림 넣기
+
+Genspark에서 받은 그림을 저장소 루트 `incoming/` 폴더에 `cover_00.png` ~ `cover_15.png` 이름으로 넣고:
+
+```bash
+cd src
+python3 build/add_covers.py          # → build/covers/cover_NN.webp (1600×900, 220KB 이하) + assets/og/ 공유 그림
+python3 build/build.py ..            # 표지·목차 썸네일 자동 반영
 ```
 
 ## 출처

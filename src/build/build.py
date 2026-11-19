@@ -74,6 +74,12 @@ def sprites(M):
     return (f'<script>/* 캐릭터 팩 https://github.com/adminmrobo/fruitfly-lab-expressions @ 86d04ac (ahnboat_lab_explainer 캐릭터 팩), 96px, {len(imgs)}장, 약 {kb} KB */\n'
             f'var SPRITE={json.dumps(imgs)};\nvar SPRITE_ALIAS={json.dumps(alias, ensure_ascii=False)};\nvar SPRITE_FACING={json.dumps(facing)};</script>')
 
+def colab_url(P):
+    stem = P.get('file', '').replace('.html', '')
+    if stem and os.path.exists(os.path.join(os.path.dirname(B), '..', 'notebooks', stem + '.ipynb')):
+        return f'https://colab.research.google.com/github/adminmrobo/fintech_data_analysis/blob/main/notebooks/{stem}.ipynb'
+    return ''
+
 def cover(P, M, key):
     chip = f'{SERIES_SHORT} · {P["num"]}'
     f = os.path.join(B, 'covers', ('cover_00' if key == 'cover_index' else key) + '.webp')
@@ -282,7 +288,9 @@ def level_html(l, i, M, P):
     if l.get('code'):
         rows = ''.join(f'<tr><td><code>{e(c)}</code></td><td>{t}</td></tr>' for c, t in l['code'])
         ct = {'orig': '교안의 파이썬 코드로 보면 (몰라도 됩니다)', 'example': '같은 방법을 보여 주는 예시 코드 — 교안 코드 아님 (몰라도 됩니다)', 'mixed': '교안의 파이썬 코드와 예시 코드 (몰라도 됩니다)'}[l.get('code_src', 'orig')]
-        o.append(f'<details class="code"><summary>{ct}</summary><table>{rows}</table></details>')
+        nbk = colab_url(P)
+        nbl = f'<p class="colab">이 회차 실습 노트북 → <a href="{nbk}" target="_blank" rel="noopener">Colab에서 열기</a> (페이지의 실험·대결 숫자를 같은 데이터로 다시 계산합니다)</p>' if nbk else ''
+        o.append(f'<details class="code"><summary>{ct}</summary><table>{rows}</table>{nbl}</details>')
     if l.get('say'):
         o.append(say(*l['say'], M))
     o.append(f'<div class="quiz" data-quiz="{l["id"]}"></div>\n</div></section>')
@@ -353,7 +361,7 @@ def page(P):
     hero_talk = ''.join(say(*t, M) for t in P['hero_talk'])
     o.append(f'''<header class="hero" id="hero"><div class="wrap hero-grid"><div class="hero-text"><span class="eyebrow">{e(P["eyebrow"])}</span><h1>{P["title"]}</h1><p class="q">{P["question"]}</p><p>{P["intro"]}</p><section class="kpis k4">{kp}</section></div><div class="dialog">{hero_talk}</div></div></header>''')
     T = P['three']; ab = ''.join(f'<dt>{e(a)}</dt><dd>{b}</dd>' for a, b in P.get('abbr', []))
-    o.append(f'''<section class="level" id="three"><div class="wrap"><div class="three"><h2>처음 오신 분께 — 이 페이지를 3줄로</h2><ol><li><b>무엇을</b><span>{T["what"]}</span></li><li><b>왜 중요한가</b><span>{T["why"]}</span></li><li><b>업무에서는</b><span>{T["work"]}</span></li></ol><div class="route"><p><b>처음이라면 이렇게 읽으세요.</b> 칸마다 ① <b>가져갈 한 가지</b> → ② <b>일상으로 치면</b> → ③ <b>실험</b>만 봐도 충분해요. 수식, 자세한 풀이, 업무 팁, 코드는 접어 두었어요(몰라도 됩니다).</p><button class="bt" type="button" id="openAll" aria-pressed="false">접어 둔 내용 모두 펼치기</button></div>{"<details class='abbr'><summary>영어 약어 풀이</summary><dl>"+ab+"</dl></details>" if ab else ""}</div></div></section>''')
+    o.append(f'''<section class="level" id="three"><div class="wrap"><div class="three"><h2>처음 오신 분께 — 이 페이지를 3줄로</h2><ol><li><b>무엇을</b><span>{T["what"]}</span></li><li><b>왜 중요한가</b><span>{T["why"]}</span></li><li><b>업무에서는</b><span>{T["work"]}</span></li></ol><div class="route"><p><b>처음이라면 이렇게 읽으세요.</b> 칸마다 ① <b>가져갈 한 가지</b> → ② <b>일상으로 치면</b> → ③ <b>실험</b>만 봐도 충분해요. 수식, 자세한 풀이, 업무 팁, 코드는 접어 두었어요(몰라도 됩니다).{(' 직접 돌려 보고 싶다면 <a href="' + colab_url(P) + '" target="_blank" rel="noopener">이 회차 Colab 실습 노트북</a>을 여세요.') if colab_url(P) else ''}</p><button class="bt" type="button" id="openAll" aria-pressed="false">접어 둔 내용 모두 펼치기</button></div>{"<details class='abbr'><summary>영어 약어 풀이</summary><dl>"+ab+"</dl></details>" if ab else ""}</div></div></section>''')
     cast = crew_html(M)
     prevtxt = f'앞 회차: <a href="{P["prev"][0]}">{e(P["prev"][1])}</a>' if P.get('prev') else '시리즈의 첫 회차입니다.'
     o.append(f'''<section class="level" id="cast"><div class="wrap stack"><div class="lvhead"><h2>연구실 식구와 이 페이지 사용법</h2></div>{cast}<p class="muted">노란 점선 밑줄을 누르거나 손가락으로 대면 뜻이 나옵니다. 오른쪽 아래 도우미에서 밑줄을 핵심 → 전체 → 끄기로 바꿀 수 있어요. 모든 실험은 시드를 고정한 설명용 모형입니다. {prevtxt}</p></div></section>''')

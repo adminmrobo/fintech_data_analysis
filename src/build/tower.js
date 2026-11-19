@@ -17,8 +17,23 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;',
 const goSec = id => { const el = document.getElementById(id); if (el) { el.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth', block: 'start' }); history.replaceState(null, '', '#' + id); } };
 
 let api = null;
-try { api = await build(); } catch (err) { console.error(err); $t('.tw-err').hidden = false; }
-$t('.tw-load').hidden = true;
+// 휴대폰·데이터 절약 모드에서는 3D를 바로 불러오지 않고 버튼을 눌렀을 때만 불러온다 (첫 화면을 가볍게)
+const LIGHT = matchMedia('(max-width: 700px)').matches || !!(navigator.connection && navigator.connection.saveData);
+async function start() {
+  try { api = await build(); } catch (err) { console.error(err); $t('.tw-err').hidden = false; }
+  $t('.tw-load').hidden = true;
+}
+if (LIGHT) {
+  $t('.tw-load').hidden = true;
+  const bt = document.createElement('button');
+  bt.type = 'button'; bt.className = 'tw-go3d';
+  bt.textContent = '3D 타워 보기';
+  TW.classList.add('tw-light');
+  bt.addEventListener('click', () => { bt.remove(); TW.classList.remove('tw-light'); $t('.tw-load').hidden = false; start(); });
+  cvBox.appendChild(bt);
+} else {
+  await start();
+}
 
 async function build() {
   const THREE = await import('three');
