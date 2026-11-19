@@ -25,7 +25,7 @@ def thumbs_css(B):
         src = os.path.join(cdir, f'cover_{k}.webp'); dst = os.path.join(tdir, f'thumb_{k}.webp')
         if not os.path.exists(src): continue
         if not os.path.exists(dst) or os.path.getmtime(dst) < os.path.getmtime(src):
-            Image.open(src).convert('RGB').resize((384, 216), Image.NEAREST).save(dst, 'WEBP', quality=72, method=6)
+            Image.open(src).convert('RGB').resize((480, 270), Image.NEAREST).save(dst, "WEBP", quality=80, method=6)
         css.append(f'.th-{k}{{background-image:url(data:image/webp;base64,{base64.b64encode(open(dst, "rb").read()).decode()})}}')
     return '<style>' + ''.join(css) + '</style>'
 

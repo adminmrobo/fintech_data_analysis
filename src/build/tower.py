@@ -61,8 +61,8 @@ FLOORS = [
  F('07', '7F', '07_model_evaluation.html', '모델 검증실', 'Model Validation', '협업 지사 프랑크푸르트', '데이터 분석 모델의 평가', '07회차',
    '모델이 정말 쓸 만한지 혼동행렬·ROC·교차검증으로 따지고, 출시 전에 통과 도장을 찍는 부서예요.',
    LES('혼동행렬 심사실', 'ROC 전망실', '교차검증 실험실', '혼동행렬과 지표', 'ROC와 AUC', '최적화')),
- F('08', '8F', '08_midterm_review.html', '중간 점검 라운지', 'Mid-term Review Lounge', '모든 지사 공용 공간', '중간 요약정리 및 퀴즈 — 1~7회차', '1~7회차 점검',
-   '1~7층을 돌아본 직원들이 쉬어 가며 요약을 보고, 교안 문제와 업무 계산으로 점검하는 라운지예요.', REV),
+ F('08', '8F', '08_midterm_review.html', '중간 점검 라운지', 'Sky Bridge Lounge', '서관·동관을 잇는 스카이브리지', '중간 요약정리 및 퀴즈 — 1~7회차', '1~7회차 점검',
+   '서관 1~7층을 돌아본 직원들이 동관으로 건너가기 전에 쉬어 가며 요약을 보고, 교안 문제와 업무 계산으로 점검하는 스카이브리지 라운지예요.', REV),
  F('09', '9F', '09_regression.html', '보험 가격 산정팀', 'Insurance Pricing', '협업 지사 취리히', '데이터 분석 모형: 회귀모형(1)', '09회차',
    '보험료·소비 금액처럼 "얼마"를 맞히는 회귀 모델을 만들고, 오차를 MSE·RMSE·R²로 재는 부서예요.',
    LES('KNN 회귀실', '곡선 맞춤 공방', '오차 계측실', '회귀와 KNN 회귀', '선형·비선형', '성능 지표')),
@@ -135,7 +135,7 @@ def _panel_index(f):
     return f'''<aside class="tw-panel" aria-label="층별 안내판">
 <p class="tw-co"><b>{e(COMPANY["ko"])}</b> {e(COMPANY["hq"])} · <span>{e(COMPANY["en"])}</span></p>
 <h2>층별 안내판</h2>
-<p class="tw-biz">{e(COMPANY["motto"])}. 열세 부서가 한 층씩 쓰고, 8층 라운지와 15층 전망대에서 요약정리와 퀴즈를 봅니다. 건물의 층을 누르거나 아래 안내판에서 골라 올라가세요.</p>
+<p class="tw-biz">{e(COMPANY["motto"])}. 쌍둥이 타워 중 서관에 1~7층, 동관 고층부에 9~14층 부서가 있고, 두 동을 잇는 8층 스카이브리지 라운지와 동관 15층 전망대에서 요약정리와 퀴즈를 봅니다. 건물의 층을 누르거나 아래 안내판에서 골라 올라가세요.</p>
 <div class="tw-clock" aria-label="세계 지사 시각">{clocks}</div>
 <ol class="tw-dir">{"".join(rows)}</ol>
 <p class="tw-note">{e(COMPANY["note"])}</p>

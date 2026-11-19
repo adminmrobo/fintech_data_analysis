@@ -38,11 +38,25 @@ if (LIGHT) {
 async function build() {
   const THREE = await import('three');
   const { OrbitControls } = await import('three/addons/controls/OrbitControls.js');
-  const W = 8, DP = 5, PULL = DP + 2.6;
+  const W = 7, DP = 5, PULL = DP + 2.6;
   const FL = TD.floors;
   const FH = k => k === '00' ? 1.7 : k === '08' ? 0.8 : k === '15' ? 0.55 : 1.15;
-  let y = 0; FL.forEach(f => { f.y = y; f.h = FH(f.key); y += f.h; });
-  const TOP = y;
+  // 쌍둥이 타워: 서관(1~7층) · 8층 스카이브리지 · 동관 고층부(9~14층, 15층 전망대)
+  const GAP = 5, XO = (W + GAP) / 2, SPAN = 2 * XO + W;
+  let yW = 0, YB = 0;
+  FL.forEach(f => {
+    const n = +f.key;
+    if (n === 0) { f.y = 0; f.h = FH('00'); f.tx = 0; f.w = SPAN; yW = f.h; }
+    else if (n <= 7) { f.tx = -XO; f.w = W; f.y = yW; f.h = FH(f.key); yW += f.h; }
+  });
+  YB = yW;
+  let yE = YB + FH('08');
+  FL.forEach(f => {
+    const n = +f.key;
+    if (n === 8) { f.tx = 0; f.w = GAP; f.y = YB; f.h = FH('08'); }
+    else if (n >= 9) { f.tx = XO; f.w = W; f.y = yE; f.h = FH(f.key); yE += f.h; }
+  });
+  const TOP = yE;
   const cur = FL.find(f => f.key === TD.cur);
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -68,16 +82,16 @@ async function build() {
   // 땅 · 광장 · 나무
   const ground = new THREE.Mesh(new THREE.CircleGeometry(48, 64), M(0xe9edf4, { roughness: 1 }));
   ground.rotation.x = -Math.PI / 2; ground.position.y = -0.02; scene.add(ground);
-  const plaza = box(W + 7, 0.04, DP + PULL + 5, M(0xf5f6f9, { roughness: 1 })); plaza.position.set(0, 0, (PULL) / 2); scene.add(plaza);
+  const plaza = box(SPAN + 5, 0.04, DP + PULL + 5, M(0xf5f6f9, { roughness: 1 })); plaza.position.set(0, 0, (PULL) / 2); scene.add(plaza);
   const road = box(60, 0.03, 3, M(0xd5dbe6, { roughness: 1 })); road.position.set(0, 0, DP / 2 + PULL + 4.5); scene.add(road);
   const treeG = new THREE.ConeGeometry(0.55, 1.6, 10), trunkG = new THREE.CylinderGeometry(0.08, 0.08, 0.5, 6);
   const treeM = M(0x6fae84), trunkM = M(0x9b7b5c);
-  [[-6.5, 2], [-6.5, 5], [-6.5, 8], [6.5, 2], [6.5, 5], [6.5, 8], [-7.5, -3], [7.5, -3]].forEach(([x, z]) => {
+  [[-12, 2], [-12, 5], [-12, 8], [12, 2], [12, 5], [12, 8], [-3, 7.5], [3, 7.5], [0, 7.5]].forEach(([x, z]) => {
     const t = new THREE.Mesh(treeG, treeM); t.position.set(x, 1.05, z); scene.add(t);
     const k = new THREE.Mesh(trunkG, trunkM); k.position.set(x, 0.25, z); scene.add(k);
   });
-  // 낮은 별관 두 동(다국적 기업 캠퍼스 느낌)
-  [[-13, -4, 5, 3.2, 4], [13, -2, 4, 2.4, 5]].forEach(([x, z, w, h, d]) => {
+  // 뒤편 낮은 건물(여의도 거리 느낌)
+  [[-17, -6, 5, 3.2, 4], [17, -5, 4, 2.4, 5]].forEach(([x, z, w, h, d]) => {
     const a = box(w, h, d, M(0xdfe5ef)); a.position.set(x, h / 2, z); scene.add(a);
     const g = box(w + 0.02, h * 0.55, d + 0.02, M(0xa9bfdc, { transparent: true, opacity: 0.55, roughness: 0.2 })); g.position.set(x, h * 0.55, z); scene.add(g);
   });
@@ -92,16 +106,26 @@ async function build() {
   }
 
   // 코어(엘리베이터 샤프트)
-  const core = box(1.6, TOP + 0.9, 1.0, M(0xcfd6e3)); core.position.set(0, (TOP + 0.9) / 2, -DP / 2 - 0.45); scene.add(core);
+  [[-XO, YB + 0.9], [XO, TOP + 0.9]].forEach(([x, h]) => { const c = box(1.4, h, 1.0, M(0xcfd6e3)); c.position.set(x, h / 2, -DP / 2 - 0.45); scene.add(c); });
+  { // 동관 아랫부분: 강의 층이 아닌 공용 층(회의실·식당) — 누를 수 없음
+    const y0 = FH('00'), h = YB + FH('08') - y0;
+    const lowM = M(0xb9c6d6, { transparent: true, opacity: 0.5, roughness: 0.2, metalness: 0.2, depthWrite: false });
+    const low = box(W, h, DP, lowM); low.position.set(XO, y0 + h / 2, 0); scene.add(low);
+    const lp = [];
+    for (let yy = y0; yy <= y0 + h + 0.01; yy += h / 7) lp.push(XO - W / 2, yy, DP / 2 + 0.002, XO + W / 2, yy, DP / 2 + 0.002, XO + W / 2, yy, DP / 2 + 0.002, XO + W / 2, yy, -DP / 2);
+    const lg = new THREE.BufferGeometry(); lg.setAttribute('position', new THREE.Float32BufferAttribute(lp, 3));
+    scene.add(new THREE.LineSegments(lg, new THREE.LineBasicMaterial({ color: 0x8796ae, transparent: true, opacity: 0.45 })));
+  }
 
   const tower = new THREE.Group(); scene.add(tower);
   const hits = [], floorObj = {};
-  const glassM = M(0x9cb7da, { transparent: true, opacity: 0.38, roughness: 0.15, metalness: 0.2, depthWrite: false });
+  const glassM = M(0x8cc3c4, { transparent: true, opacity: 0.4, roughness: 0.15, metalness: 0.2, depthWrite: false });
   const glassG = M(0xa7d4bb, { transparent: true, opacity: 0.42, roughness: 0.2, depthWrite: false });
   const slabM = M(0xe3e7ef), mullM = new THREE.LineBasicMaterial({ color: 0x8796ae, transparent: true, opacity: 0.55 });
 
   FL.forEach(f => {
-    const g = new THREE.Group(); g.position.y = f.y; tower.add(g);
+    const g = new THREE.Group(); g.position.set(f.tx, f.y, 0); tower.add(g);
+    const W = f.w, DP0 = DP; // 이 층의 폭
     const col = new THREE.Color(f.color);
     const bandM = M(col, { emissive: col.clone(), emissiveIntensity: 0.0 });
     const band = box(W + 0.3, 0.1, DP + 0.3, bandM); band.position.y = 0.06; g.add(band);
@@ -114,25 +138,25 @@ async function build() {
         .forEach(([w, h, d, x, z]) => { const p = box(w, h, d, pm); p.position.set(x, 0.3, z); g.add(p); });
       const deck = box(W - 0.4, 0.02, DP - 0.4, M(0xcfe7d8)); deck.position.y = 0.11; g.add(deck);
       const globe = new THREE.Mesh(new THREE.IcosahedronGeometry(0.9, 2), new THREE.MeshBasicMaterial({ color: 0x3f5fa8, wireframe: true, transparent: true, opacity: 0.7 }));
-      globe.position.set(2.4, 1.35, -0.6); g.add(globe); o.globe = globe; o.deco = [globe];
-      const stand = box(0.12, 0.6, 0.12, pm); stand.position.set(2.4, 0.4, -0.6); g.add(stand); o.deco.push(stand);
-      const sign = new THREE.Mesh(new THREE.PlaneGeometry(4.2, 1.05), new THREE.MeshBasicMaterial({ map: signTex(['FINDATA GROUP', 'Data · Finance']), side: THREE.DoubleSide }));
+      globe.position.set(1.9, 1.35, -0.6); g.add(globe); o.globe = globe; o.deco = [globe];
+      const stand = box(0.12, 0.6, 0.12, pm); stand.position.set(1.9, 0.4, -0.6); g.add(stand); o.deco.push(stand);
+      const sign = new THREE.Mesh(new THREE.PlaneGeometry(3.6, 0.9), new THREE.MeshBasicMaterial({ map: signTex(['FINDATA GROUP', 'Data · Finance']), side: THREE.DoubleSide }));
       sign.position.set(-1.4, 1.25, -DP / 2 + 0.25); g.add(sign); o.deco.push(sign);
       const sl = box(0.08, 0.7, 0.08, pm); sl.position.set(-2.8, 0.45, -DP / 2 + 0.25); g.add(sl);
       const sr = sl.clone(); sr.position.x = 0; g.add(sr); o.deco.push(sl, sr);
     } else {
-      const inset = f.key === '08' ? 0.7 : 0;
+      const inset = 0;
       const gh = f.h - 0.12;
-      const glass = box(W - inset, gh, DP - inset, f.key === '08' ? glassG.clone() : glassM.clone());
+      const glass = box(W - inset + (f.key === '08' ? 0.4 : 0), gh, DP - (f.key === '08' ? 1.2 : 0), f.key === '08' ? glassG.clone() : glassM.clone());
       glass.position.y = 0.12 + gh / 2; g.add(glass); o.glass = glass;
       const edges = new THREE.LineSegments(new THREE.EdgesGeometry(glass.geometry), mullM); edges.position.copy(glass.position); g.add(edges);
       // 세로 창살
-      const pts = []; const hw = (W - inset) / 2, hd = (DP - inset) / 2;
+      const pts = []; const hw = (W - inset) / 2, hd = (DP - (f.key === '08' ? 1.2 : 0)) / 2;
       for (let x = -hw + 1; x < hw - 0.01; x += 1) { pts.push(x, 0.12, hd + 0.001, x, 0.12 + gh, hd + 0.001, x, 0.12, -hd - 0.001, x, 0.12 + gh, -hd - 0.001); }
       for (let z = -hd + 1; z < hd - 0.01; z += 1) { pts.push(hw + 0.001, 0.12, z, hw + 0.001, 0.12 + gh, z, -hw - 0.001, 0.12, z, -hw - 0.001, 0.12 + gh, z); }
       const mg = new THREE.BufferGeometry(); mg.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3));
       g.add(new THREE.LineSegments(mg, mullM));
-      if (f.key === '08') { [[-3.6, 2.2], [3.6, 2.2], [-3.6, -2.2], [3.6, -2.2]].forEach(([x, z]) => { const t = new THREE.Mesh(new THREE.SphereGeometry(0.28, 10, 8), treeM); t.position.set(x, 0.42, z); g.add(t); }); }
+      if (f.key === '08') { [[-1.8, 1.4], [1.8, 1.4], [-1.8, -1.4], [1.8, -1.4]].forEach(([x, z]) => { const t = new THREE.Mesh(new THREE.SphereGeometry(0.28, 10, 8), treeM); t.position.set(x, 0.42, z); g.add(t); (o.deco = o.deco || []).push(t); }); }
       if (f.key === '00') {
         const can = box(3.6, 0.1, 1.6, M(0xdfe5ee)); can.position.set(0, 1.25, DP / 2 + 0.8); g.add(can);
         [-1.6, 1.6].forEach(x => { const p = box(0.1, 1.2, 0.1, M(0xb8c2d3)); p.position.set(x, 0.62, DP / 2 + 1.5); g.add(p); });
@@ -147,8 +171,10 @@ async function build() {
 
   // ── 층 평면(회차 쪽) ──────────────────────────────────
   let plan = null, rooms = [], route = null, walker = null, routeLen = 0, desk = null;
+  const PW = Math.max(cur.w, 7);
   if (!IDX) {
     plan = new THREE.Group(); plan.visible = false; floorObj[cur.key].g.add(plan);
+    const W = PW;
     const PY = 0.16;
     const floorM = M(0xf7f8fb, { roughness: 1 });
     const pf = box(W - 0.1, 0.02, DP - 0.1, floorM); pf.position.y = PY; plan.add(pf);
@@ -227,7 +253,7 @@ async function build() {
   function viewBuilding() {
     const a = Math.max(camera.aspect, 0.45), t = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
     const narrow = camera.aspect < 0.9;
-    const d = Math.max((TOP + 4) / 2 / t, (W * 2.1) / 2 / (t * a)) * (narrow ? 1.12 : 1.04);
+    const d = Math.max((TOP + 4) / 2 / t, (SPAN * 1.75) / 2 / (t * a)) * (narrow ? 1.12 : 1.04);
     const dir = new THREE.Vector3(0.78, 0.36, 1).normalize();
     const tg = new THREE.Vector3(0, TOP / 2 + (narrow ? 0.6 : -0.2), 1.0);
     return { pos: tg.clone().addScaledVector(dir, d), tg };
@@ -235,9 +261,9 @@ async function build() {
   function viewPlan() {
     const a = Math.max(camera.aspect, 0.45), t = Math.tan(THREE.MathUtils.degToRad(camera.fov / 2));
     const narrow = camera.aspect < 0.9;
-    const d = Math.max(4.2 / t, (W + 1.0) / 2 / (t * a)) * (narrow ? 1.0 : 1.12);
+    const d = Math.max(4.2 / t, (PW + 1.0) / 2 / (t * a)) * (narrow ? 1.0 : 1.12);
     const dir = (narrow ? new THREE.Vector3(0.05, 1.5, 0.75) : new THREE.Vector3(0.18, 0.95, 0.85)).normalize();
-    const tg = new THREE.Vector3(0.2, cur.y + 0.2, PULL + (narrow ? 0.3 : 0.55));
+    const tg = new THREE.Vector3(cur.tx + 0.2, cur.y + 0.2, PULL + (narrow ? 0.3 : 0.55));
     return { pos: tg.clone().addScaledVector(dir, d), tg };
   }
   let tween = null;
@@ -361,7 +387,7 @@ async function build() {
     if (!IDX) {
       pull += (pullTo - pull) * Math.min(1, dt * (REDUCED ? 60 : 3.2));
       if (Math.abs(pullTo - pull) < 0.001) pull = pullTo;
-      const o = floorObj[cur.key]; o.g.position.z = PULL * pull; o.g.position.x = 0;
+      const o = floorObj[cur.key]; o.g.position.z = PULL * pull; o.g.position.x = cur.tx;
       plan.visible = pull > 0.55;
       if (o.glass) { o.glass.visible = pull < 0.35; }
       if (o.deco) o.deco.forEach(m => { m.visible = pull < 0.35; });
@@ -383,7 +409,7 @@ async function build() {
       const p = route.getPointAt(walkT), q = route.getTangentAt(walkT);
       walker.position.copy(p); walker.rotation.y = Math.atan2(q.x, q.z);
       walker.children[0].position.y = 0.27 + Math.abs(Math.sin(now / 140)) * 0.04;
-      if (p.x < -W / 2 + 1.55) nowRoom = 0;
+      if (p.x < -PW / 2 + 1.55) nowRoom = 0;
       else rooms.forEach(rm => { if (rm.fm && Math.abs(p.x - rm.x) < rm.w / 2 && (rm.top ? p.z < 0 : p.z > 0)) nowRoom = rm.i; });
     }
     rooms.forEach(rm => {
@@ -401,7 +427,13 @@ async function build() {
         show = IDX || mode === 'b' || L.key === TD.cur;
         if (!IDX && mode === 'p' && L.key === TD.cur) show = false;
         const f = L.f, o = floorObj[f.key];
-        tmp.set(0, f.y + Math.max(f.h, 0.6) / 2, o.g.position.z).addScaledVector(right, W * 0.62 + 0.35);
+        L.mid = f.key === '08' && (IDX || mode === 'b');
+        if (L.mid) { tmp.set(0, f.y + f.h + 0.75, o.g.position.z); L.left = false; }   // 스카이브리지: 다리 위 가운데
+        else {
+          const lx = f.key === '00' ? XO : f.tx, side = (f.tx < 0 || f.key === '08') ? -1 : 1;
+          L.left = side < 0;
+          tmp.set(lx, f.y + Math.max(f.h, 0.6) / 2, o.g.position.z).addScaledVector(right, side * (W * 0.62 + 0.35));
+        }
       } else {
         show = mode === 'p' && plan.visible;
         tmp.copy(L.rm.pos); plan.localToWorld(tmp);
@@ -409,7 +441,7 @@ async function build() {
       tmp.project(camera);
       const vis = show && tmp.z < 1 && tmp.x > -1.2 && tmp.x < 1.2 && tmp.y > -1.2 && tmp.y < 1.2;
       L.el.classList.toggle('hide', !vis);
-      if (vis) L.el.style.transform = `translate(${((tmp.x + 1) / 2 * cw).toFixed(1)}px,${((1 - tmp.y) / 2 * ch).toFixed(1)}px) ${L.kind === 'fl' ? 'translate(0,-50%)' : 'translate(-50%,-100%)'}`;
+      if (vis) L.el.style.transform = `translate(${((tmp.x + 1) / 2 * cw).toFixed(1)}px,${((1 - tmp.y) / 2 * ch).toFixed(1)}px) ${L.kind === 'fl' ? (L.mid ? 'translate(-50%,-100%)' : L.left ? 'translate(-100%,-50%)' : 'translate(0,-50%)') : 'translate(-50%,-100%)'}`;
       const on = L.kind === 'fl' ? (L.key === hoverKey || L.key === cardKey) : (L.i === hoverRoom || L.i === nowRoom);
       L.el.classList.toggle('on', on);
     });
