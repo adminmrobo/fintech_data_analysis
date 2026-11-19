@@ -28,7 +28,7 @@ C = {'doc': 'chibi scientist, thin teal rectangular glasses, spiky black hair wi
      'asst': 'girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans',
      'fly': 'anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings',
      'robo': 'boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus'}
-L = ['# 표지 지시문 모음 — 핀테크 데이터 분석 기초', '', '각 페이지 맨 위 `data-img="cover_{N}"` 자리에 넣을 16:9 표지 그림 지시문입니다(ai-lab-explainer 18-14). 지금 페이지에는 네 캐릭터를 나란히 세운 대체 표지가 들어 있어요. 그림을 받으면 WebP 1600×900(220 KB 이하)으로 바꿔 넣습니다.', '', '**참고 이미지(함께 올리기):** 네 캐릭터 기본 그림 4장 — GitHub `adminmrobo/fruitfly-lab-expressions`. 첫 표지(목차)를 먼저 받아 그림체를 확인한 뒤 나머지에 참고 그림으로 함께 올리세요.', '']
+L = ['# 표지 지시문 모음 — 핀테크 데이터 분석 기초', '', '각 페이지 맨 위 `data-img="cover_{N}"` 자리에 넣을 16:9 표지 그림 지시문입니다(ai-lab-explainer 18-14). **그림체는 16비트 RPG풍 픽셀아트(도트)로 통일합니다** — 캐릭터 팩 스프라이트와 같은 그림체여야 해요. 지금 페이지에는 네 캐릭터를 나란히 세운 대체 표지가 들어 있고, 그림을 받으면 픽셀이 뭉개지지 않게 1920×1080 WebP로 넣습니다.', '', '**참고 이미지(함께 올리기):** 네 캐릭터 기본 그림 4장 — GitHub `adminmrobo/fruitfly-lab-expressions`. 첫 표지(목차)를 먼저 받아 그림체를 확인한 뒤 나머지에 참고 그림으로 함께 올리세요.', '']
 for P in pages:
     key = P.get('key', P['num'].lower())
     k = key if key in META else P['num']
@@ -36,10 +36,11 @@ for P in pages:
     place, scene = SC[k]
     ps = [re.sub(r'^(박사|조수|초파리|주판봇)( on the (left|right))?\s*', '', x.strip()) for x in pose.split(';')]
     alt = f'{P["title"]}의 표지: 박사, 조수, 초파리 연구원, 주판봇이 {place}에서 주제 소품을 바라보는 장면'
-    prompt = f'''Website top cover illustration, wide 16:9.
-Match the art style, proportions and colors of the attached reference images exactly
-  (if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2-3 tone shading, small highlights).
-Scene: {scene} in soft daylight, styled like a friendly research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), gentle shadows, pale blue monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
+    prompt = f'''16-bit RPG style PIXEL ART website cover, wide 16:9.
+Art style (mandatory): retro 16-bit pixel art like a SNES-era RPG scene. Draw on a low-resolution grid of 480x270 pixels, then upscale exactly 4x with nearest-neighbor to 1920x1080, so every pixel is a crisp square block.
+  Limited palette (about 32 colors), bold dark 1-pixel outlines, flat 2-3 tone cel shading, small pixel highlights, hard pixel edges, no anti-aliasing, no blur.
+  The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors.
+Scene: {scene} in soft daylight, styled like a friendly research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), simple flat pixel shadows, pale blue pixel monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
   {C['doc']}, {ps[0]};
   {C['asst']}, {ps[1]};
@@ -47,15 +48,16 @@ All four characters together:
   {C['robo']}, on the right facing left, {ps[3]}.
 Visual metaphor of the topic: {meta}.
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
-  keep the bottom-left corner light and simple (plain white wall); let the bottom edge fade to near-white so the image melts into a white page; the topic prop is the most saturated spot.
+  keep the bottom-left corner light and simple (plain white wall); make the bottom strip a plain near-white floor so the image sits well on a white page (use flat pixel dithering, not a smooth gradient); the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
+Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, high-resolution detail, blurry or anti-aliased edges.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.'''
-    L += [f'## cover_{key} — {P["title"]}', '', '| 항목 | 내용 |', '|---|---|', f'| 키 · 판 | cover_{key} · L (16:9, 1920 이상) |', f'| 페이지 | `{P["file"]}` |', f'| 장소 | {place} |', f'| 주제 소품 | {KO[k]} |', f'| 주제 은유 | {meta} |', f'| 대체 글(alt) | {alt} |', '', '**Genspark에 붙여 넣기 ↓**', '```', '웹페이지 맨 위에 거는 표지 그림 1장을 만들어 줘.', '- 비율 16:9, 가로 1920px 이상', '- 첨부한 참고 이미지의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 그림체·같은 외형으로, 넷 모두 등장', '- 그림 안에 글자·숫자·로고를 넣지 말 것', '- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게', '- 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면', '아래 영어 프롬프트를 그대로 써 줘.', '', prompt, '```', '', '고칠 때: `Same four characters, same art style and composition. Change only: {고칠 점}. Still no text.`', '']
+    L += [f'## cover_{key} — {P["title"]}', '', '| 항목 | 내용 |', '|---|---|', f'| 키 · 판 | cover_{key} · L (16:9 픽셀아트, 480×270 → 4배 1920×1080) |', f'| 페이지 | `{P["file"]}` |', f'| 장소 | {place} |', f'| 주제 소품 | {KO[k]} |', f'| 주제 은유 | {meta} |', f'| 대체 글(alt) | {alt} |', '', '**Genspark에 붙여 넣기 ↓**', '```', '웹페이지 맨 위에 거는 표지 그림 1장을 만들어 줘.', '- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 네모 칸으로 또렷하게 보이게', '- 비율 16:9, 480×270 픽셀로 그린 뒤 4배(1920×1080)로 확대 — 확대할 때 흐리게 하지 말 것', '- 첨부한 참고 이미지(픽셀아트 스프라이트)의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 픽셀 그림체·같은 외형으로, 넷 모두 등장', '- 그림 안에 글자·숫자·로고를 넣지 말 것', '- 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게', '- 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면', '아래 영어 프롬프트를 그대로 써 줘.', '', prompt, '```', '', '고칠 때: `Same four characters, same 16-bit pixel art style (480x270 grid, 4x nearest-neighbor, crisp square pixels) and composition. Change only: {고칠 점}. Still no text.`', '']
 OV = ['## 작업 순서', '',
       '1. **cover_00(목차)부터** 만듭니다. 참고 이미지로 네 캐릭터 기본 그림 4장을 함께 올리세요.',
       '2. 마음에 드는 cover_00을 받으면, 나머지 15장을 만들 때 **cover_00도 참고 이미지로 같이 올려** 그림체를 맞춥니다.',
       '3. 받은 파일은 `cover_NN.png` 이름으로 저장소 루트 `incoming/` 폴더에 넣고 `cd src && python3 build/add_covers.py` → `python3 build/build.py ..` 를 실행합니다.',
-      '4. 글자·숫자·로고가 섞여 나오면 맨 아래 "고칠 때" 문장으로 다시 요청합니다.', '',
+      '4. 매끈한 일러스트로 나오거나 글자·숫자·로고가 섞여 나오면 "고칠 때" 문장으로 다시 요청합니다. **픽셀아트가 아니면 쓰지 않습니다.**', '',
       '| 키 | 층 · 장면 | 주제 소품 (한 줄) |', '|---|---|---|']
 for P in pages:
     key = P.get('key', P['num'].lower()); k = key if key in META else P['num']
@@ -70,6 +72,6 @@ for P in pages:
     if P.get('kind', 'lesson') == 'lesson':
         man.append({'key': f'thumb_{key}', 'board': 'I', 'size': '600x400', 'page': 'index.html', 'status': 'needed', 'fallback': '목차 카드는 글자만'})
 man.append({'key': 'og_series', 'board': 'K', 'size': '1200x630', 'page': 'all', 'status': 'done', 'file': 'assets/og_series.jpg', 'note': '대체 표지 화면을 찍은 임시 공유 그림. 목차 표지를 받으면 잘라 바꿈'})
-doc = ['# 이미지 제작 명세서 — 핀테크 데이터 분석 기초 (시리즈 공용)', '', '## 1. 그림체와 고정 외형', '캐릭터 팩 `CHAR_lab4` 18-3·18-4를 따릅니다. 16비트 RPG풍 픽셀아트, 굵은 어두운 외곽선, 흰 배경에 어울리는 밝은 낮 연구실 조명. 그림 안에 글자·숫자·로고 없음.', '', '## 2. 지금 쓰는 그림', '- 캐릭터 표정: 캐릭터 팩 1.3(fruitfly-lab-expressions @ 86d04ac) 96px를 페이지마다 필요한 키만 base64로 넣었습니다(페이지당 약 13~16장, 100 KB 안팎). 새로 그릴 표정은 없습니다.', '- 장면·컷: 모든 실험 그림은 Canvas로 그려 그림 파일이 필요 없습니다.', '- 표지: 16쪽 모두 대체 표지(그림 없이 완성 상태). 표지 지시문은 `COVER_PROMPTS_series.md`.', '', '## 3. 새로 그릴 그림 (우선순위)', '| 우선 | 키 | 판 | 내용 |', '|---|---|---|---|', '| P1 | cover_00 | L | 목차 표지(그림체 기준) |', '| P1 | cover_01 ~ cover_07, cover_09 ~ cover_14 | L | 회차 표지 13장 |', '| P2 | cover_08, cover_15 | L | 중간·기말 점검 표지 |', '| — | thumb_01 ~ thumb_15 | I | 따로 그리지 않음 — 빌드가 표지에서 자동으로 만듦 |', '| P3 | og_series | K | 목차 표지를 1200×630으로 잘라 교체 |', '', '## 4. 넘겨받은 뒤 처리', '1. 16:9·글자 없음·네 캐릭터 외형 확인 → 2. 저장소 루트 `incoming/` 폴더에 `cover_NN.png` 이름으로 넣기 → 3. `cd src && python3 build/add_covers.py` (WebP 1600×900·220 KB 이하, 공유 미리보기 1200×630 자동) → 4. `python3 build/build.py ..` → 5. 390·768·1280 폭에서 얼굴 잘림 확인 → 6. 아래 매니페스트 status를 done으로.', '', '## 5. 매니페스트', '```json', json.dumps(man, ensure_ascii=False, indent=1), '```']
+doc = ['# 이미지 제작 명세서 — 핀테크 데이터 분석 기초 (시리즈 공용)', '', '## 1. 그림체와 고정 외형', '캐릭터 팩 `CHAR_lab4` 18-3·18-4를 따릅니다. 16비트 RPG풍 픽셀아트, 굵은 어두운 외곽선, 흰 배경에 어울리는 밝은 낮 연구실 조명. 그림 안에 글자·숫자·로고 없음.', '', '## 2. 지금 쓰는 그림', '- 캐릭터 표정: 캐릭터 팩 1.3(fruitfly-lab-expressions @ 86d04ac) 96px를 페이지마다 필요한 키만 base64로 넣었습니다(페이지당 약 13~16장, 100 KB 안팎). 새로 그릴 표정은 없습니다.', '- 장면·컷: 모든 실험 그림은 Canvas로 그려 그림 파일이 필요 없습니다.', '- 표지: 16쪽 모두 대체 표지(그림 없이 완성 상태). 표지 지시문은 `COVER_PROMPTS_series.md`.', '', '## 3. 새로 그릴 그림 (우선순위)', '| 우선 | 키 | 판 | 내용 |', '|---|---|---|---|', '| P1 | cover_00 | L | 목차 표지(그림체 기준) |', '| P1 | cover_01 ~ cover_07, cover_09 ~ cover_14 | L | 회차 표지 13장 |', '| P2 | cover_08, cover_15 | L | 중간·기말 점검 표지 |', '| — | thumb_01 ~ thumb_15 | I | 따로 그리지 않음 — 빌드가 표지에서 자동으로 만듦 |', '| P3 | og_series | K | 목차 표지를 1200×630으로 잘라 교체 |', '', '## 4. 넘겨받은 뒤 처리', '1. 16:9·글자 없음·네 캐릭터 외형 확인 → 2. 저장소 루트 `incoming/` 폴더에 `cover_NN.png` 이름으로 넣기 → 3. `cd src && python3 build/add_covers.py` (픽셀을 살린 1920×1080 WebP, 공유 미리보기 1200×630 자동) → 4. `python3 build/build.py ..` → 5. 390·768·1280 폭에서 얼굴 잘림 확인 → 6. 아래 매니페스트 status를 done으로.', '', '## 5. 매니페스트', '```json', json.dumps(man, ensure_ascii=False, indent=1), '```']
 open('out/docs/IMG_00_index.md', 'w').write('\n'.join(doc))
 print('docs ok', len(pages))

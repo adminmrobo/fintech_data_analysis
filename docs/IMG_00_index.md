@@ -18,7 +18,7 @@
 | P3 | og_series | K | 목차 표지를 1200×630으로 잘라 교체 |
 
 ## 4. 넘겨받은 뒤 처리
-1. 16:9·글자 없음·네 캐릭터 외형 확인 → 2. 저장소 루트 `incoming/` 폴더에 `cover_NN.png` 이름으로 넣기 → 3. `cd src && python3 build/add_covers.py` (WebP 1600×900·220 KB 이하, 공유 미리보기 1200×630 자동) → 4. `python3 build/build.py ..` → 5. 390·768·1280 폭에서 얼굴 잘림 확인 → 6. 아래 매니페스트 status를 done으로.
+1. 16:9·글자 없음·네 캐릭터 외형 확인 → 2. 저장소 루트 `incoming/` 폴더에 `cover_NN.png` 이름으로 넣기 → 3. `cd src && python3 build/add_covers.py` (픽셀을 살린 1920×1080 WebP, 공유 미리보기 1200×630 자동) → 4. `python3 build/build.py ..` → 5. 390·768·1280 폭에서 얼굴 잘림 확인 → 6. 아래 매니페스트 status를 done으로.
 
 ## 5. 매니페스트
 ```json

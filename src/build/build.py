@@ -88,7 +88,7 @@ def cover(P, M, key):
         t = re.sub('<[^>]+>', '', P['title'])
         alt = f'{t} 표지 그림: 박사, 조수(하루), 초파리 연구원, 주판봇이 밝은 연구실에서 이 회차의 주제 소품을 둘러싼 장면'
         return (f'<header class="cover hasimg" id="cover" data-img="{key}">'
-                f'<img src="data:image/webp;base64,{b64}" width="1600" height="900" alt="{e(alt)}" decoding="async">'
+                f'<img src="data:image/webp;base64,{b64}" width="1920" height="1080" alt="{e(alt)}" decoding="async">'
                 f'<span class="cover-chip">{e(chip)}</span></header>\n')
     return (f'<header class="cover fallback" id="cover" data-img="{key}" role="img" aria-label="표지 그림 자리: 박사, 조수, 초파리 연구원, 주판봇이 나란히 선 대체 표지">'
             f'<div class="glow"></div><div class="line">{img("fly","point",M,"fly")}{img("doc","front",M,"")}{img("asst","smile",M,"")}{img("robo","coin",M,"")}</div>'
