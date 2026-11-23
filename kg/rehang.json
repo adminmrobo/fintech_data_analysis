@@ -1,0 +1,576 @@
+{
+ "version": "1.0",
+ "made": "2026-11-24",
+ "via": "rehang-2026-11-24",
+ "domains": [
+  "fin",
+  "ml"
+ ],
+ "note": "분야 뼈대 주제에 다시 걸기(ai-lab-retrofit 15장). links는 자동 후보이며 틀린 줄은 지우면 된다. 빌드 스크립트가 있는 저장소는 빌드 끝에 rehang.apply_overlay()가 이 파일을 적용한다.",
+ "topics": {
+  "lab:topic/activation-function": {
+   "ko": "활성화 함수",
+   "en": "Activation function",
+   "domain": [
+    "ai",
+    "dl"
+   ],
+   "level": 2
+  },
+  "lab:topic/business-model": {
+   "ko": "비즈니스 모델",
+   "en": "Business model",
+   "domain": [
+    "biz"
+   ],
+   "level": 2
+  },
+  "lab:topic/central-tendency": {
+   "ko": "대표값",
+   "en": "Measures of central tendency",
+   "domain": [
+    "stats"
+   ],
+   "level": 1
+  },
+  "lab:topic/data-leakage": {
+   "ko": "데이터 누수",
+   "en": "Data leakage",
+   "domain": [
+    "ai",
+    "ml"
+   ],
+   "level": 2
+  },
+  "lab:topic/data-types": {
+   "ko": "자료 종류",
+   "en": "Types of data",
+   "domain": [
+    "stats"
+   ],
+   "level": 1
+  },
+  "lab:topic/decision-tree": {
+   "ko": "결정 트리",
+   "en": "Decision tree",
+   "domain": [
+    "ai",
+    "ml"
+   ],
+   "level": 2
+  },
+  "lab:topic/digital-payments": {
+   "ko": "디지털 결제",
+   "en": "Digital payments",
+   "domain": [
+    "fin"
+   ],
+   "level": 2
+  },
+  "lab:topic/document-kv-stores": {
+   "ko": "문서·키-값 저장소",
+   "en": "Document and key–value stores",
+   "domain": [
+    "data"
+   ],
+   "level": 3
+  },
+  "lab:topic/entity-relationship": {
+   "ko": "개체-관계 모형(ERD)",
+   "en": "Entity–relationship modeling",
+   "domain": [
+    "data"
+   ],
+   "level": 1
+  },
+  "lab:topic/etl-elt": {
+   "ko": "ETL·ELT",
+   "en": "ETL and ELT",
+   "domain": [
+    "data"
+   ],
+   "level": 2
+  },
+  "lab:topic/feature-engineering": {
+   "ko": "특징 공학",
+   "en": "Feature engineering",
+   "domain": [
+    "ai",
+    "ml"
+   ],
+   "level": 1
+  },
+  "lab:topic/fintech-data": {
+   "ko": "금융 데이터 분석",
+   "en": "Financial data analytics",
+   "domain": [
+    "fin"
+   ],
+   "level": 2
+  },
+  "lab:topic/generalization": {
+   "ko": "일반화·과적합",
+   "en": "Generalization and overfitting",
+   "domain": [
+    "ai",
+    "ml"
+   ],
+   "level": 1
+  },
+  "lab:topic/gradient-descent": {
+   "ko": "경사하강법",
+   "en": "Gradient descent",
+   "domain": [
+    "ai",
+    "dl"
+   ],
+   "level": 2
+  },
+  "lab:topic/knn": {
+   "ko": "k-최근접 이웃",
+   "en": "k-nearest neighbors",
+   "domain": [
+    "ai",
+    "ml"
+   ],
+   "level": 2
+  },
+  "lab:topic/linear-regression": {
+   "ko": "선형 회귀",
+   "en": "Linear regression",
+   "domain": [
+    "ai",
+    "ml"
+   ],
+   "level": 2
+  },
+  "lab:topic/logistic-regression": {
+   "ko": "로지스틱 회귀",
+   "en": "Logistic regression",
+   "domain": [
+    "ai",
+    "ml"
+   ],
+   "level": 2
+  },
+  "lab:topic/platforms": {
+   "ko": "플랫폼",
+   "en": "Platforms",
+   "domain": [
+    "biz"
+   ],
+   "level": 3
+  },
+  "lab:topic/precision-recall": {
+   "ko": "정밀도·재현율",
+   "en": "Precision and recall",
+   "domain": [
+    "ai",
+    "ml"
+   ],
+   "level": 2
+  },
+  "lab:topic/privacy": {
+   "ko": "프라이버시",
+   "en": "Privacy",
+   "domain": [
+    "ai",
+    "crime"
+   ],
+   "level": 4
+  },
+  "lab:topic/rnn": {
+   "ko": "순환 신경망",
+   "en": "Recurrent neural network",
+   "domain": [
+    "ai",
+    "dl"
+   ],
+   "level": 3
+  },
+  "lab:topic/robo-advisor": {
+   "ko": "로보어드바이저",
+   "en": "Robo-advisors",
+   "domain": [
+    "fin"
+   ],
+   "level": 2
+  },
+  "lab:topic/roc-auc": {
+   "ko": "ROC·AUC",
+   "en": "ROC and AUC",
+   "domain": [
+    "ai",
+    "ml"
+   ],
+   "level": 2
+  },
+  "lab:topic/supervised-learning": {
+   "ko": "지도 학습",
+   "en": "Supervised learning",
+   "domain": [
+    "ai",
+    "ml"
+   ],
+   "level": 1
+  },
+  "lab:topic/svm": {
+   "ko": "서포트 벡터 머신",
+   "en": "Support vector machine",
+   "domain": [
+    "ai",
+    "ml"
+   ],
+   "level": 2
+  },
+  "lab:topic/time-series": {
+   "ko": "시계열 예측",
+   "en": "Time-series forecasting",
+   "domain": [
+    "ai",
+    "dl"
+   ],
+   "level": 3
+  },
+  "lab:topic/unsupervised-learning": {
+   "ko": "비지도 학습 개념",
+   "en": "Unsupervised learning (concept)",
+   "domain": [
+    "ai",
+    "ml"
+   ],
+   "level": 1
+  },
+  "lab:topic/weight-decay": {
+   "ko": "가중치 감쇠(L2)",
+   "en": "Weight decay (L2)",
+   "domain": [
+    "ai",
+    "dl"
+   ],
+   "level": 3
+  }
+ },
+ "links": {
+  "lab:concept/activation-function": {
+   "topic": "lab:topic/activation-function",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "활성화 함수"
+  },
+  "lab:concept/anonymous-data": {
+   "topic": "lab:topic/privacy",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "익명정보"
+  },
+  "lab:concept/behavioral-data": {
+   "topic": "lab:topic/fintech-data",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "행동 데이터"
+  },
+  "lab:concept/churn": {
+   "topic": "lab:topic/fintech-data",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "이탈"
+  },
+  "lab:concept/data-dictionary": {
+   "topic": "lab:topic/entity-relationship",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "데이터 사전"
+  },
+  "lab:concept/data-leakage": {
+   "topic": "lab:topic/data-leakage",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "정보 누수"
+  },
+  "lab:concept/demographic-data": {
+   "topic": "lab:topic/fintech-data",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "인구통계"
+  },
+  "lab:concept/fintech": {
+   "topic": "lab:topic/fintech-data",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "핀테크"
+  },
+  "lab:concept/fintech-data-types": {
+   "topic": "lab:topic/fintech-data",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "핀테크 데이터 유형"
+  },
+  "lab:concept/fintech-platform": {
+   "topic": "lab:topic/platforms",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "핀테크 플랫폼"
+  },
+  "lab:concept/generalization": {
+   "topic": "lab:topic/generalization",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "일반화와 과대적합"
+  },
+  "lab:concept/open-data": {
+   "topic": "lab:topic/etl-elt",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "공공데이터"
+  },
+  "lab:concept/payment-value-chain": {
+   "topic": "lab:topic/digital-payments",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "결제 가치사슬"
+  },
+  "lab:concept/platform": {
+   "topic": "lab:topic/platforms",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "플랫폼"
+  },
+  "lab:concept/pseudonymization": {
+   "topic": "lab:topic/privacy",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "가명처리와 재식별 위험"
+  },
+  "lab:concept/pseudonymized-data": {
+   "topic": "lab:topic/privacy",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "가명정보"
+  },
+  "lab:concept/quasi-identifier": {
+   "topic": "lab:topic/privacy",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "준식별자"
+  },
+  "lab:concept/robo-advisor": {
+   "topic": "lab:topic/robo-advisor",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "로보어드바이저"
+  },
+  "lab:concept/simple-payment": {
+   "topic": "lab:topic/digital-payments",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "간편결제"
+  },
+  "lab:concept/structured-data": {
+   "topic": "lab:topic/data-types",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "정형 데이터"
+  },
+  "lab:concept/support-vector": {
+   "topic": "lab:topic/svm",
+   "score": 2,
+   "why": "개념 이름이 주제 이름에 들어 있음",
+   "ko": "서포트 벡터"
+  },
+  "lab:concept/time-series": {
+   "topic": "lab:topic/time-series",
+   "score": 2,
+   "why": "개념 이름이 주제 이름에 들어 있음",
+   "ko": "시계열"
+  },
+  "lab:concept/unstructured-data": {
+   "topic": "lab:topic/document-kv-stores",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "비정형 데이터"
+  },
+  "lab:concept/weighted-mean": {
+   "topic": "lab:topic/central-tendency",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "가중평균"
+  },
+  "lab:method/07-duel-fly": {
+   "topic": "lab:topic/logistic-regression",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "로지스틱 회귀 (기준 2%)"
+  },
+  "lab:method/09-duel-fly": {
+   "topic": "lab:topic/linear-regression",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "선형 회귀(직선)"
+  },
+  "lab:method/business-model-canvas": {
+   "topic": "lab:topic/business-model",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "9-캔버스"
+  },
+  "lab:method/data-collection": {
+   "topic": "lab:topic/etl-elt",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "데이터 수집 방법"
+  },
+  "lab:method/decision-tree": {
+   "topic": "lab:topic/decision-tree",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "결정나무"
+  },
+  "lab:method/feature-engineering": {
+   "topic": "lab:topic/feature-engineering",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "특성공학"
+  },
+  "lab:method/gradient-descent": {
+   "topic": "lab:topic/gradient-descent",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "경사하강법"
+  },
+  "lab:method/knn": {
+   "topic": "lab:topic/knn",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "K-최근접 이웃(KNN)"
+  },
+  "lab:method/knn-regression": {
+   "topic": "lab:topic/knn",
+   "score": 2,
+   "why": "영어 이름 낱말이 모두 겹침",
+   "ko": "KNN 회귀"
+  },
+  "lab:method/linear-regression": {
+   "topic": "lab:topic/linear-regression",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "선형 회귀"
+  },
+  "lab:method/logistic-regression": {
+   "topic": "lab:topic/logistic-regression",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "로지스틱 회귀"
+  },
+  "lab:method/open-api": {
+   "topic": "lab:topic/etl-elt",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "Open API"
+  },
+  "lab:method/polynomial-regression": {
+   "topic": "lab:topic/linear-regression",
+   "score": 2,
+   "why": "영어 이름 낱말이 모두 겹침",
+   "ko": "선형·다항 회귀"
+  },
+  "lab:method/regularization": {
+   "topic": "lab:topic/weight-decay",
+   "score": 2,
+   "why": "사람이 고침: 모형 규제(정규화)",
+   "ko": "정규화"
+  },
+  "lab:method/rnn": {
+   "topic": "lab:topic/rnn",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "RNN"
+  },
+  "lab:method/robo-advisor-allocation": {
+   "topic": "lab:topic/robo-advisor",
+   "score": 2,
+   "why": "주제 이름이 개념 이름에 들어 있음",
+   "ko": "로보어드바이저 자산 배분"
+  },
+  "lab:method/supervised-learning": {
+   "topic": "lab:topic/supervised-learning",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "지도학습"
+  },
+  "lab:method/svm": {
+   "topic": "lab:topic/svm",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "서포트 벡터 머신(SVM)"
+  },
+  "lab:method/unsupervised-learning": {
+   "topic": "lab:topic/unsupervised-learning",
+   "score": 3,
+   "why": "이름 같음",
+   "ko": "비지도학습"
+  },
+  "lab:method/web-crawling": {
+   "topic": "lab:topic/etl-elt",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "웹 크롤링"
+  },
+  "lab:method/web-scraping": {
+   "topic": "lab:topic/etl-elt",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "웹 스크래핑"
+  },
+  "lab:metric/auc": {
+   "topic": "lab:topic/roc-auc",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "AUC"
+  },
+  "lab:metric/recall": {
+   "topic": "lab:topic/precision-recall",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "재현율"
+  },
+  "lab:metric/roc-auc": {
+   "topic": "lab:topic/roc-auc",
+   "score": 2,
+   "why": "영어 이름 낱말이 모두 겹침",
+   "ko": "ROC 곡선과 AUC"
+  },
+  "lab:term/internet-only-bank": {
+   "topic": "lab:topic/digital-payments",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "인터넷전문은행"
+  },
+  "lab:term/investor-profile": {
+   "topic": "lab:topic/robo-advisor",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "투자자 정보 확인서"
+  },
+  "lab:term/pg": {
+   "topic": "lab:topic/digital-payments",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "PG"
+  },
+  "lab:term/van": {
+   "topic": "lab:topic/digital-payments",
+   "score": 3,
+   "why": "사람이 고름",
+   "ko": "VAN"
+  }
+ },
+ "retag": {
+  "from": [
+   "fintech"
+  ],
+  "to": [
+   "fin"
+  ]
+ }
+}
