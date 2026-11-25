@@ -279,7 +279,7 @@ async function build() {
     TW.querySelectorAll('.tw-tools button[data-v=b],.tw-tools button[data-v=p]').forEach(b => b.classList.toggle('on', b.dataset.v === m));
     if (!IDX) pullTo = m === 'p' ? 1 : 0;
     if (m === 'p') { controls.autoRotate = false; closeCard(); }
-    $t('.tw-hint').textContent = m === 'p' ? '방을 누르면 그 칸으로 내려갑니다 · 드래그로 돌려 보기' : (IDX ? '드래그로 돌려 보고 층을 누르면 안내 카드가 열려요' : '층을 누르면 안내 카드가 열려요 · 「이 층 평면」으로 돌아가기');
+    $t('.tw-hint').textContent = m === 'p' ? '방을 누르면 그 자리로 내려갑니다 · 드래그로 돌려 보기' : (IDX ? '드래그로 돌려 보고 층을 누르면 안내 카드가 열려요' : '층을 누르면 안내 카드가 열려요 · 「이 층 평면」으로 돌아가기');
     if (fly) flyTo(m === 'p' ? viewPlan() : viewBuilding(), m === 'p' ? 1700 : 1300);
   }
 

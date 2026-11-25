@@ -27,7 +27,7 @@
    ]
   },
   "lab:method/01-duel-fly": {
-   "ko": "행동 1칸: 연간 거래 횟수",
+   "ko": "행동 1열: 연간 거래 횟수",
    "en": "duel choice A 01",
    "page": "01_fintech_industry",
    "domain": [
@@ -35,7 +35,7 @@
    ]
   },
   "lab:method/01-duel-robo": {
-   "ko": "인구통계 5칸 (가변수 16칸)",
+   "ko": "인구통계 5열 (가변수 16열)",
    "en": "duel choice B 01",
    "page": "01_fintech_industry",
    "domain": [

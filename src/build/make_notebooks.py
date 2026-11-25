@@ -36,16 +36,16 @@ print(b.shape, '이탈 비율:', round(b.y.mean(), 3))'''
 NB = []
 
 NB.append(('01', '01_fintech_industry', '핀테크 산업의 이해와 핀테크 데이터', [
- M('## 1. 은행 고객 데이터 한눈에 보기\n신용카드 고객 10,127명의 정보입니다. 한 줄이 고객 한 명, 한 칸이 정보 하나예요.'),
+ M('## 1. 은행 고객 데이터 한눈에 보기\n신용카드 고객 10,127명의 정보입니다. 한 줄이 고객 한 명, 한 열이 정보 하나예요.'),
  C(BANK + '\nb.head()'),
- M('## 2. 칸마다 이탈 비율이 어떻게 다른가\n숫자 칸은 5개 구간으로 나눠 구간별 이탈 비율을, 글자 칸은 값별 이탈 비율을 봅니다.'),
+ M('## 2. 열마다 이탈 비율이 어떻게 다른가\n숫자 열은 5개 구간으로 나눠 구간별 이탈 비율을, 글자 열은 값별 이탈 비율을 봅니다.'),
  C('''for c in ['Gender', 'Income_Category', 'Total_Trans_Ct']:
     s = b[c]
     if not pd.api.types.is_numeric_dtype(s):
         print(b.groupby(c).y.mean().round(3), '\\n')
     else:
         print(b.groupby(pd.qcut(s, 5)).y.mean().round(3), '\\n')'''),
- M('## 3. 대결 재현: 행동 1칸 vs 인구통계 16칸\n거래 횟수 한 칸만 쓴 로지스틱 회귀와, 나이·성별·학력·소득·결혼(더미 16칸)을 쓴 로지스틱 회귀를 AUC로 비교합니다.'),
+ M('## 3. 대결 재현: 행동 1열 vs 인구통계 16열\n거래 횟수 한 열만 쓴 로지스틱 회귀와, 나이·성별·학력·소득·결혼(더미 16열)을 쓴 로지스틱 회귀를 AUC로 비교합니다.'),
  C('''from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
@@ -59,9 +59,9 @@ def lr_eval(X, y):
     return round(roc_auc_score(yte, p), 3), round(recall_score(yte, p >= .5), 3)
 
 demo = pd.get_dummies(b[['Customer_Age', 'Gender', 'Education_Level', 'Income_Category', 'Marital_Status']], drop_first=True).astype(float)
-print('인구통계', demo.shape[1], '칸  (AUC, 재현율):', lr_eval(demo, b.y))
-print('거래 횟수 1칸     (AUC, 재현율):', lr_eval(b[['Total_Trans_Ct']], b.y))'''),
- M('**AI 판단 연습** — 누군가 "칸이 많을수록 예측이 좋다"고 하면, 위 결과로 어떻게 반박할 수 있을까요? 칸의 개수와 칸의 정보량은 다릅니다.'),
+print('인구통계', demo.shape[1], '열  (AUC, 재현율):', lr_eval(demo, b.y))
+print('거래 횟수 1열     (AUC, 재현율):', lr_eval(b[['Total_Trans_Ct']], b.y))'''),
+ M('**AI 판단 연습** — 누군가 "열이 많을수록 예측이 좋다"고 하면, 위 결과로 어떻게 반박할 수 있을까요? 열의 개수와 열의 정보량은 다릅니다.'),
 ]))
 
 NB.append(('02', '02_data_collection', '핀테크 데이터 수집 기술', [
@@ -91,10 +91,10 @@ for name, m in [('깨끗한 600건', clean), ('전부 + 무작위 오류 20%', r
 ]))
 
 NB.append(('03', '03_collection_plan', '데이터 분석을 위한 준비 — 수집 계획', [
- M('## 1. 데이터 사전: 칸 이름만 보고는 뜻을 모른다'),
+ M('## 1. 데이터 사전: 열 이름만 보고는 뜻을 모른다'),
  C('''ld = load('Revolution4/loan_data_description.csv')
 ld = ld[ld.LoanStatNew.notna()]
-print(len(ld), '개 칸 설명'); ld.head(10)'''),
+print(len(ld), '개 열 설명'); ld.head(10)'''),
  M('## 2. 대결 재현: 수집 주기가 길면 숫자가 얼마나 낡나\n주가를 매일 모으면 오늘 값을 바로 쓰고, 한 달(21거래일)마다 모으면 그 사이에는 마지막으로 받은 값을 씁니다. 그 차이를 평균 상대 오차로 봅니다.'),
  C('''p = load('Revolution3/portfolio_data.csv')
 def stale(x, gap):
@@ -108,7 +108,7 @@ for c in ['AMZN', 'BTC']:
 ]))
 
 NB.append(('04', '04_analysis_concepts', '데이터 분석 개념의 이해', [
- M('## 1. 학습 점수와 시험 점수\n거래 횟수·거래 금액 두 칸으로 KNN 분류기를 만들고, k를 바꿔 가며 학습 데이터 점수와 시험 데이터 점수를 비교합니다.'),
+ M('## 1. 학습 점수와 시험 점수\n거래 횟수·거래 금액 두 열로 KNN 분류기를 만들고, k를 바꿔 가며 학습 데이터 점수와 시험 데이터 점수를 비교합니다.'),
  C(BANK + '''
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -129,7 +129,7 @@ plt.xscale('log'); plt.xlabel('k'); plt.ylabel('accuracy'); plt.legend(); plt.sh
 ]))
 
 NB.append(('05', '05_preprocessing', '분류모형(1) — Colab과 전처리', [
- M('## 1. 빈칸 대신 "Unknown"으로 적힌 값'),
+ M('## 1. 빈 값 대신 "Unknown"으로 적힌 값'),
  C(BANK + '''
 for c in ['Education_Level', 'Income_Category', 'Marital_Status']:
     print(c, (b[c] == 'Unknown').sum())'''),

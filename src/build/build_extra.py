@@ -53,7 +53,7 @@ def review(P, B):
         rows = ''.join(f'<li><b>{e(strip(a))}</b> — {e(strip(b))} <span class="muted">(남은 한계: {e(strip(c))})</span></li>' for a, b, c in Q['summary']['table'])
         kp2 = ' · '.join(f'{strip(v)} {strip(t)}' for v, t, c in Q['kpis'][:2])
         keys = ''.join(f'<li>{e(strip(l["key"]))}</li>' for l in Q['levels'] if l.get('key'))
-        cards.append(f'<div class="sumcard"><span class="eyebrow">{n}회차</span><h3><a href="{Q["file"]}">{strip(Q["title"])}</a></h3><p class="muted" style="font-size:14px">{strip(Q["question"])}</p><div class="keyline small"><span class="kl-tag">가져갈 세 가지</span><ol>{keys}</ol></div><p style="font-size:14px"><b>박사의 한 줄:</b> {e(strip(Q["summary"]["doc_line"]))}</p><details class="more"><summary>칸별 요약과 숫자 (펼쳐 보기)</summary><ul>{rows}</ul><p style="font-size:14px"><b>숫자 두 개:</b> {e(kp2)}</p></details></div>')
+        cards.append(f'<div class="sumcard"><span class="eyebrow">{n}회차</span><h3><a href="{Q["file"]}">{strip(Q["title"])}</a></h3><p class="muted" style="font-size:14px">{strip(Q["question"])}</p><div class="keyline small"><span class="kl-tag">가져갈 세 가지</span><ol>{keys}</ol></div><p style="font-size:14px"><b>박사의 한 줄:</b> {e(strip(Q["summary"]["doc_line"]))}</p><details class="more"><summary>단계별 요약과 숫자 (펼쳐 보기)</summary><ul>{rows}</ul><p style="font-size:14px"><b>숫자 두 개:</b> {e(kp2)}</p></details></div>')
     flow = ' <i>→</i> '.join(f'<span>{n} {e(L[n]["short_title"])}</span>' for n in nums)
     o.append(f'<section class="level" id="summary"><div class="wrap stack"><div class="lvhead"><div class="hexrow"><div class="hexno">1<small>요약</small></div><h2>1부 · 회차별 요약정리</h2></div><p class="lead">{P["summary_lead"]}</p></div><div class="flowchips">{flow}</div><div class="sumgrid">{"".join(cards)}</div>{B.say(*P["summary_say"], M)}</div></section>')
     # 2부 교안 문제
@@ -68,13 +68,13 @@ def review(P, B):
     for n in nums:
         c = P['calc'][n]
         steps = ''.join(f'<li>{s}</li>' for s in c['steps'])
-        pr.append(f'''<div class="prac" data-ans="{c["ans"]}" data-tol="{c["tol"]}" data-wk="{n}"><h4>{n}회차 · {c["title"]}</h4><p>{c["q"]}</p><div class="inrow"><input type="text" inputmode="decimal" aria-label="{n}회차 답 입력" placeholder="숫자만"><span class="muted">{c["unit"]}</span><button class="bt primary chk" type="button">채점</button><button class="bt show" type="button">풀이 보기</button></div><p class="pfb" aria-live="polite"></p><div class="sol"><ol>{steps}</ol><p class="miss"><b>초파리의 흔한 실수</b> · {c["miss"]}</p><p class="muted" style="font-size:14px"><b>업무에서는</b> · {c["work"]} (숫자는 예시값)</p><p style="font-size:14px"><a href="{L[n]["file"]}#{c["lv"]}">관련 칸 다시 보기 →</a></p></div></div>''')
+        pr.append(f'''<div class="prac" data-ans="{c["ans"]}" data-tol="{c["tol"]}" data-wk="{n}"><h4>{n}회차 · {c["title"]}</h4><p>{c["q"]}</p><div class="inrow"><input type="text" inputmode="decimal" aria-label="{n}회차 답 입력" placeholder="숫자만"><span class="muted">{c["unit"]}</span><button class="bt primary chk" type="button">채점</button><button class="bt show" type="button">풀이 보기</button></div><p class="pfb" aria-live="polite"></p><div class="sol"><ol>{steps}</ol><p class="miss"><b>초파리의 흔한 실수</b> · {c["miss"]}</p><p class="muted" style="font-size:14px"><b>업무에서는</b> · {c["work"]} (숫자는 예시값)</p><p style="font-size:14px"><a href="{L[n]["file"]}#{c["lv"]}">관련 단계 다시 보기 →</a></p></div></div>''')
     o.append(f'<section class="level" id="calc"><div class="wrap stack"><div class="lvhead"><div class="hexrow"><div class="hexno">3<small>계산</small></div><h2>3부 · 업무 장면 계산 문제</h2></div><p class="lead">회차마다 업무 장면 하나를 숫자로 풀어 봅니다. 답을 넣고 채점하면 허용 오차 안에서 정답 처리돼요. 모든 숫자는 예시값입니다.</p></div>{B.say("fly","point","단위부터 확인해. 퍼센트로 넣으라는데 0.15를 넣으면 틀린 거야.",M)}{"".join(pr)}</div></section>')
     # 점수
     sb = ''.join(f'<div data-wk="{n}" data-n="{len(P["orig"][n]["items"]) + 1}"><span>{n}회차</span><b>0/{len(P["orig"][n]["items"]) + 1}</b><small class="muted"></small></div>' for n in nums)
     o.append(f'<section class="level" id="score"><div class="wrap stack"><div class="lvhead"><h2>회차별 점수</h2><p class="lead">교안 문제와 계산 문제를 맞힌 수예요. 저장하지 않으며, 새로고침하면 처음부터입니다.</p></div><div class="scoreboard">{sb}</div>{B.say("asst","report","70% 미만인 회차는 노란색으로 표시돼요. 그 회차 해설 페이지의 확인 퀴즈부터 다시 보세요.",M)}{B.say(*P["outro_doc"], M)}</div></section>')
     o.append(B.KG_SEC); o.append(B.export_sec(M)); o.append(B.footer(P))
-    # KG: 회차 칸 개념 + 문항
+    # KG: 회차 단계 개념 + 문항
     nodes = []; edges = []; ids = set()
     def node(id, type, ko, en, anchor, d=''):
         if id in ids: return
@@ -95,7 +95,7 @@ def review(P, B):
     for r in P['refs']:
         node(r['lab']['work'], 'Work', r['title'][:80], r['title'][:80], '#footer')
         edges.append({'s': r['lab']['work'], 'p': 'lab:relatedTo', 'o': L[nums[0]]['levels'][0]['node'][0], 'anchor': '#footer', 'confidence': 'mid'}) if r['id'].startswith('ahn2025') and False else None
-    # 문헌 노드 고립 방지: 각 회차 첫 칸이 해당 원고에 근거
+    # 문헌 노드 고립 방지: 각 회차 첫 단계가 해당 원고에 근거
     for n in nums:
         w = f'lab:work/ahn2024fintech{n}'
         if w in ids: edges.append({'s': L[n]['levels'][0]['node'][0], 'p': 'lab:relatedTo', 'o': w, 'anchor': '#summary', 'confidence': 'high'})
@@ -111,7 +111,7 @@ LES2 = ['09', '10', '11', '12', '13', '14']
 def index(P, B):
     M = B.Moods(); L = lessons(B)
     for k, v in B.DEFM.items(): M.add(k, v)
-    links = [('three', '3줄 요약'), ('map', '회차 지도'), ('keys', '한 줄 핵심'), ('dash', '종합 대시보드'), ('path', '개념 사다리'), ('data', '실습 데이터'), ('how', '식구·사용법'), ('about', '자료와 원칙')]
+    links = [('three', '3줄 요약'), ('map', '회차 지도'), ('keys', '한 줄 핵심'), ('dash', '종합 대시보드'), ('path', '개념 흐름'), ('data', '실습 데이터'), ('how', '식구·사용법'), ('about', '자료와 원칙')]
     o = [B.head(P, P['title'], P['desc'], P['file']), B.nav(links, B.SERIES_SHORT), B.tower.tower_html('00'), B.cover(P, M, 'cover_index')]
     kp = ''.join(f'<div class="kpi {c}"><b>{v}</b><span>{t}</span></div>' for v, t, c in P['kpis'])
     o.append(thumbs_css(B))
@@ -120,7 +120,7 @@ def index(P, B):
     mosaic = ''.join(f'<a class="mt th-{k}" href="{f}" title="{e(t)}"><span>{"중간" if k == "08" else "기말" if k == "15" else int(k)}</span><i class="sr">{e(t)}</i></a>' for k, f, t in tk)
     o.append(f'<header class="hero ihero" id="hero"><div class="wrap ihero-grid"><div class="hero-text"><span class="eyebrow">{e(P["eyebrow"])}</span><h1>{P["title"]}</h1><p class="q">{P["question"]}</p><p>{P["intro"]}</p><section class="kpis k4">{kp}</section></div><nav class="mosaic" aria-label="표지로 고르는 전체 15회차">{mosaic}</nav></div><div class="wrap"><div class="dialog">{"".join(B.say(*t, M) for t in P["hero_talk"])}</div></div></header>')
     T = P['three']
-    o.append(f'<section class="level" id="three"><div class="wrap"><div class="three"><h2>처음 오신 분께 — 이 과정을 3줄로</h2><ol><li><b>무엇을</b><span>{T["what"]}</span></li><li><b>왜 중요한가</b><span>{T["why"]}</span></li><li><b>업무에서는</b><span>{T["work"]}</span></li></ol><p class="ok">코드·수식을 몰라도 됩니다. 처음이라면 아래 <a href="#keys">한 줄 핵심 모음</a>부터 보고, 각 회차에서는 칸마다 한 가지 핵심 → 일상 비유 → 실험만 봐도 충분해요. 수식·풀이·코드는 접어 두었어요.</p></div></div></section>')
+    o.append(f'<section class="level" id="three"><div class="wrap"><div class="three"><h2>처음 오신 분께 — 이 과정을 3줄로</h2><ol><li><b>무엇을</b><span>{T["what"]}</span></li><li><b>왜 중요한가</b><span>{T["why"]}</span></li><li><b>업무에서는</b><span>{T["work"]}</span></li></ol><p class="ok">코드·수식을 몰라도 됩니다. 처음이라면 아래 <a href="#keys">한 줄 핵심 모음</a>부터 보고, 각 회차에서는 단계마다 한 가지 핵심 → 일상 비유 → 실험만 봐도 충분해요. 수식·풀이·코드는 접어 두었어요.</p></div></div></section>')
     def card(n):
         Q = L[n]
         return f'<a href="{Q["file"]}"><span class="ct th-{n}" aria-hidden="true"></span><b>{int(n)}회차 · {e(Q["eyebrow"].split("·",1)[1].strip())}</b><span style="font-weight:700">{e(strip(Q["title"]))}</span><small>{e(strip(Q["question"]))}</small></a>'
@@ -129,11 +129,11 @@ def index(P, B):
     part2 = ''.join(card(n) for n in LES2) + rv('15', '15_final_review.html', '기말 요약정리 및 퀴즈', '9~14회차 요약, 교안 연습문제, 업무 계산 문제 6개')
     o.append(f'<section class="level" id="map"><div class="wrap stack"><div class="lvhead"><h2>회차 지도</h2><p class="lead">강의 13회차에 요약·퀴즈 두 회차를 끼워 모두 15회차예요. 8회차는 중간 점검, 15회차는 기말 점검입니다. 1부는 핀테크 데이터를 모으고 다듬어 분류 모델을 만드는 과정, 2부는 회귀·딥러닝·시각화와 서비스 기획·보안이에요.</p></div><h3>1부 · 핀테크 데이터에서 분류 모델까지 (1~7회차 → 8회차 중간 점검)</h3><div class="series">{part1}</div><h3>2부 · 회귀에서 서비스와 보안까지 (9~14회차 → 15회차 기말 점검)</h3><div class="series">{part2}</div></div></section>')
     kcards = ''.join(f'<div class="kcard"><a href="{L[n]["file"]}"><b>{int(n)}회차</b> {e(strip(L[n].get("short_title") or L[n]["title"]))}</a><ol>' + ''.join(f'<li>{e(strip(l["key"]))}</li>' for l in L[n]['levels'] if l.get('key')) + '</ol></div>' for n in LES1 + LES2)
-    o.append(f'<section class="level" id="keys"><div class="wrap stack"><div class="lvhead"><h2>한 줄 핵심 모음 — 13회차 39가지</h2><p class="lead">각 회차 칸 맨 위의 "이 칸에서 가져갈 한 가지"를 모았어요. 복습하거나 수업·팀 교육에서 한 장으로 띄울 때 쓰세요.</p></div><div class="kgrid">{kcards}</div></div></section>')
+    o.append(f'<section class="level" id="keys"><div class="wrap stack"><div class="lvhead"><h2>한 줄 핵심 모음 — 13회차 39가지</h2><p class="lead">각 회차 단계 맨 위의 "이 단계에서 가져갈 한 가지"를 모았어요. 복습하거나 수업·팀 교육에서 한 장으로 띄울 때 쓰세요.</p></div><div class="kgrid">{kcards}</div></div></section>')
     tabs = ''.join(f'<button class="bt" type="button" aria-pressed="false" data-k="{n}" data-f="{L[n]["file"]}">{int(n)}회차</button>' for n in LES1 + LES2)
     o.append(f'<section class="level" id="dash"><div class="wrap stack"><div class="lvhead"><h2>종합 대시보드 — 13개 강의 회차를 한 화면에서</h2><p class="lead">회차 버튼을 누르면 그 회차의 핵심 데이터가 열립니다. 슬라이더를 움직이거나 ▶ 재생을 눌러 보세요. 같은 대시보드가 각 회차 페이지에도 들어 있어요.</p></div><div class="dtabs" role="group" aria-label="회차 고르기">{tabs}</div><div class="dash panel" id="dashbox"></div><p><a id="dashlink" href="01_fintech_industry.html#dash">1회차 해설 페이지에서 자세히 보기 →</a></p></div></section>')
     chips = ' <i>→</i> '.join(f'<span>{e(x)}</span>' for x in P['ladder'])
-    o.append(f'<section class="level" id="path"><div class="wrap stack"><div class="lvhead"><h2>개념 사다리</h2><p class="lead">앞 회차의 한계가 다음 회차의 이유가 되도록 이어 두었어요.</p></div><div class="flowchips">{chips}</div><div class="tw"><table class="tb"><tr><th>회차</th><th>핵심 질문</th><th>이 회차가 남긴 한계 → 다음 회차</th></tr>' + ''.join(f'<tr><td>{int(n)}</td><td>{e(strip(L[n]["question"]))}</td><td>{e(strip(L[n]["next_q"]))}</td></tr>' for n in LES1 + LES2) + '</table></div></div></section>')
+    o.append(f'<section class="level" id="path"><div class="wrap stack"><div class="lvhead"><h2>개념 흐름</h2><p class="lead">앞 회차의 한계가 다음 회차의 이유가 되도록 이어 두었어요.</p></div><div class="flowchips">{chips}</div><div class="tw"><table class="tb"><tr><th>회차</th><th>핵심 질문</th><th>이 회차가 남긴 한계 → 다음 회차</th></tr>' + ''.join(f'<tr><td>{int(n)}</td><td>{e(strip(L[n]["question"]))}</td><td>{e(strip(L[n]["next_q"]))}</td></tr>' for n in LES1 + LES2) + '</table></div></div></section>')
     rows = ''.join(f'<tr><td><code>{e(a)}</code></td><td>{b}</td><td>{c}</td><td>{d}</td></tr>' for a, b, c, d in P['datasets'])
     o.append(f'<section class="level" id="data"><div class="wrap stack"><div class="lvhead"><h2>실습 데이터 — fintech-data</h2><p class="lead">모든 실험·대결·대시보드는 <a href="https://github.com/fintech-data" target="_blank" rel="noopener">github.com/fintech-data</a>의 공개 실습 데이터를 이 저장소의 <code>data/</code> 폴더로 복사해 계산했어요. 계산 코드는 <code>src/analysis/compute.py</code>, 결과는 <code>results.json</code>입니다.</p></div><div class="tw"><table class="tb"><tr><th>파일</th><th>내용</th><th>규모</th><th>쓰는 회차</th></tr>{rows}</table></div>{B.say("asst","report",P["data_note"],M)}</div></section>')
     cast = B.crew_html(M)

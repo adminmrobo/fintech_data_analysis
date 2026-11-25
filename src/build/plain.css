@@ -1,4 +1,4 @@
-/* ai-lab-explainer-plain 추가 규격: 3줄 상자, 왜/조수 수식, 칸 대화, 코드 접기, 표지, 화면 밀도 */
+/* ai-lab-explainer-plain 추가 규격: 3줄 상자, 왜/조수 수식, 단계 대화, 코드 접기, 표지, 화면 밀도 */
 :root{--stat:#3f5fa8;--seq:#3f5fa8}
 body{line-height:1.8}
 section.level{padding-block:88px}
@@ -158,7 +158,7 @@ details.mathmore .mathbox{border:0;padding:4px 0 0;background:transparent}
 .duel .audience img.aud{width:52px;height:52px;object-fit:contain;filter:saturate(.9)}
 .duel .audience span{font-size:13px;flex-basis:100%;text-align:center}
 
-/* 연구실 식구 — 아홉 칸 같은 크기 */
+/* 연구실 식구 — 아홉 명 같은 크기 */
 .crew{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;align-items:stretch}
 .crewcard{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:6px;align-items:flex-start;min-width:0}
 .crewcard .ctag{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.02em}

@@ -56,12 +56,12 @@ DASHES['01']={tag:'1회차',title:'은행 고객 데이터 한눈에',sub:'거�
         {t:'line',title:'기준을 옮길 때 두 무리의 이탈률',xs:cuts,ys:[{n:'기준 미만',c:COL.r,d:cuts.map(function(c){var a=0,b=0;S.x.forEach(function(x,i){if(x<c){a++;b+=S.t[i]}});return b/(a||1)*100})},{n:'기준 이상',c:COL.g,d:cuts.map(function(c){var a=0,b=0;S.x.forEach(function(x,i){if(x>=c){a++;b+=S.t[i]}});return b/(a||1)*100})}],ymin:0,fy:function(v){return v+'%'},mark:{x:q.cut},xl:'거래 횟수 기준'}],
       note:[['g','거래가 적은 고객일수록 떠날 가능성이 커요. 핀테크가 "행동 데이터"를 중시하는 이유입니다.'],['a','표본 400명의 결과예요. 전체 데이터로 계산한 대결 결과(1회차 대결)와 함께 보세요.']]}}};
 
-DASHES['02']={tag:'2회차',title:'공개할 칸과 다시 알아보기 위험',sub:'보험 고객 1,338명 — 칸을 줄일수록 유일한 사람이 줄어든다',play:'lv',playLabel:'공개 칸을 5개→3개로',
-  params:[['lv','공개 칸 단계',0,2,1,0,function(v){return FD.ins.uniq[v][0]}]],
+DASHES['02']={tag:'2회차',title:'공개할 열과 다시 알아보기 위험',sub:'보험 고객 1,338명 — 열을 줄일수록 유일한 사람이 줄어든다',play:'lv',playLabel:'공개 열을 5개→3개로',
+  params:[['lv','공개 열 단계',0,2,1,0,function(v){return FD.ins.uniq[v][0]}]],
   f:function(q){var U=FD.ins.uniq,u=U[q.lv];return {k:[[nf(u[1])+'명','유일한 조합을 가진 사람','r'],[P1(u[1]/FD.ins.n),'전체 중','a'],[nf(u[3]),'서로 다른 조합','i'],[String(u[2]),'가장 작은 묶음(k)','g']],
-    c:[{t:'bar',title:'공개 칸별 유일한 사람 수',labels:U.map(function(x){return x[0].replace(/·/g,'\n').split('\n').length+'칸'}),vals:U.map(function(x){return x[1]}),cols:U.map(function(x,i){return i===q.lv?COL.r:'rgba(63,95,168,.55)'}),fy:nf},
+    c:[{t:'bar',title:'공개 열별 유일한 사람 수',labels:U.map(function(x){return x[0].replace(/·/g,'\n').split('\n').length+'열'}),vals:U.map(function(x){return x[1]}),cols:U.map(function(x,i){return i===q.lv?COL.r:'rgba(63,95,168,.55)'}),fy:nf},
       {t:'bar',title:'지금 단계의 사람 나눔',labels:['유일한 사람','나머지'],vals:[u[1],FD.ins.n-u[1]],cols:[COL.r,COL.g],fy:nf}],
-    note:[['g','이름을 지운 것만으로는 익명이 아니에요. 남은 칸의 조합이 사람을 가리킵니다.'],['a','법에서는 이름 등을 지우고 추가 정보 없이는 알아볼 수 없게 한 것을 가명정보, 어떤 방법으로도 알아볼 수 없게 한 것을 익명정보라 해요.']]}}};
+    note:[['g','이름을 지운 것만으로는 익명이 아니에요. 남은 열의 조합이 사람을 가리킵니다.'],['a','법에서는 이름 등을 지우고 추가 정보 없이는 알아볼 수 없게 한 것을 가명정보, 어떤 방법으로도 알아볼 수 없게 한 것을 익명정보라 해요.']]}}};
 
 DASHES['03']={tag:'3회차',title:'수집 주기와 정보의 신선도',sub:'가장 최근에 모은 값으로 오늘 가격을 어림할 때의 오차 (실제 주가 2013~2019)',play:'gap',playLabel:'주기를 1일→63일로',
   params:[['gap','수집 주기',1,63,1,21,function(v){return v+'거래일'}]],
@@ -96,7 +96,7 @@ DASHES['07']={tag:'7회차',title:'임계값 대시보드',sub:'여행자 보험
   params:[['ti','임계값',0,12,1,3,function(v){return P1(FD.travel.cms[v].th)}]],
   f:function(q){var T=FD.travel.cms,m=T[q.ti],s=cmCalc(m),th=T.map(function(x){return x.th*100});
     return {k:[[P1(s.acc),'정확도','i'],[P1(s.pre),'정밀도','a'],[P1(s.rec),'재현율','r'],[nf(m.fp),'괜히 의심한 고객(FP)','m']],
-      c:[{t:'bar',title:'혼동행렬 네 칸',labels:['TP','FN','FP','TN'],vals:[m.tp,m.fn,m.fp,m.tn],cols:[COL.g,COL.r,COL.a,COL.s],fy:nf},
+      c:[{t:'bar',title:'혼동행렬 네 구역',labels:['TP','FN','FP','TN'],vals:[m.tp,m.fn,m.fp,m.tn],cols:[COL.g,COL.r,COL.a,COL.s],fy:nf},
         {t:'line',title:'임계값에 따른 지표',xs:th,logx:true,ys:[{n:'정확도',c:COL.s,d:T.map(function(x){return cmCalc(x).acc*100})},{n:'재현율',c:COL.r,d:T.map(function(x){return cmCalc(x).rec*100})},{n:'정밀도',c:COL.a,d:T.map(function(x){return cmCalc(x).pre*100})}],ymin:0,ymax:100,fy:function(v){return v+'%'},fx:function(v){return v+'%'},mark:{x:m.th*100},xl:'임계값(로그)'}],
       note:[['g','정확도는 거의 늘 높고, 재현율과 정밀도가 서로 맞바꿔져요.'],['a','어느 지표를 볼지는 모델이 아니라 업무가 정합니다. 놓친 청구 한 건과 괜한 조사 한 건의 비용을 비교하세요.']]}}};
 
@@ -147,4 +147,4 @@ DASHES['14']={tag:'14회차',title:'비식별 조치의 균형',sub:'보험 고�
     return {k:[['k = '+o.k,'가장 작은 묶음','g'],[nf(o.groups),'묶음 수','i'],[nf(o.rows_small)+'명','5명 미만 묶음 속 사람','r'],[nf(o.small),'5명 미만 묶음 수','a']],
       c:[{t:'bar',title:'나이 폭별 위험한 사람 수 (지금 지역·자녀 설정)',labels:ws.map(function(x){return x+'살'}),vals:ws.map(function(x){return FD.kanon.filter(function(k){return k.w===x&&k.reg===q.reg&&k.ch===q.ch})[0].rows_small}),cols:ws.map(function(x){return x===w?COL.r:'rgba(63,95,168,.55)'}),fy:nf},
         {t:'bar',title:'나이 폭별 묶음 수 (정보의 양)',labels:ws.map(function(x){return x+'살'}),vals:ws.map(function(x){return FD.kanon.filter(function(k){return k.w===x&&k.reg===q.reg&&k.ch===q.ch})[0].groups}),cols:ws.map(function(x){return x===w?COL.g:'rgba(19,138,82,.4)'}),fy:nf}],
-      note:[['g','위험(왼쪽)과 정보(오른쪽)는 함께 줄어요. 비식별은 둘 사이의 균형을 고르는 일입니다.'],['a','지역 하나만 지워도 k가 1에서 11~13으로 뛰는 경우가 있어요. 어떤 칸이 사람을 가리키는지 먼저 찾는 것이 핵심입니다.']]}}};
+      note:[['g','위험(왼쪽)과 정보(오른쪽)는 함께 줄어요. 비식별은 둘 사이의 균형을 고르는 일입니다.'],['a','지역 하나만 지워도 k가 1에서 11~13으로 뛰는 경우가 있어요. 어떤 열이 사람을 가리키는지 먼저 찾는 것이 핵심입니다.']]}}};

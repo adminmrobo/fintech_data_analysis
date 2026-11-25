@@ -132,7 +132,7 @@ p_all0 = np.zeros_like(yte); p_lr = (pr >= .02).astype(int)
 R['duel07'] = dict(all0=dict(acc=r3(accuracy_score(yte, p_all0)), rec=0.0, caught=0),
                    lr=dict(acc=r3(accuracy_score(yte, p_lr)), rec=r3(recall_score(yte, p_lr)), caught=int(((p_lr == 1) & (yte == 1)).sum()),
                            prec=r3(precision_score(yte, p_lr))))
-# 7회차 칸③: 교차검증 (은행 데이터, KNN k=5) 한 번 분할 vs 5겹
+# 7회차 단계③: 교차검증 (은행 데이터, KNN k=5) 한 번 분할 vs 5겹
 Xs = StandardScaler().fit_transform(X2)
 singles = []
 for seed in range(20):

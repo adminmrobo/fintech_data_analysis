@@ -16,13 +16,13 @@ function seg(n){return Array.apply(null,Array(n)).map(function(_,i){return i})}
 var REAL='실제 데이터',EX='예시값';
 var C0='rgba(63,95,168,.55)',C1='rgba(210,63,44,.85)';
 
-/* ── 공용: 분류해 보기(카드를 칸에 넣기) ── */
+/* ── 공용: 분류해 보기(카드를 상자에 넣기) ── */
 SIMS.sorter=function(el,cfg){var tw=tbl(el),row=ctrlRow(el),K=kpis(el,3),I=insight(el),pick={},cur=0;
   function draw(){var it=cfg.items[cur];tw.innerHTML='<div class="sortcard"><span class="muted">'+(cur+1)+' / '+cfg.items.length+'</span><p><b>'+it[0]+'</b></p></div>';
     var g=h('div',{class:'group'});cfg.cats.forEach(function(c,ci){var b=h('button',{class:'bt',type:'button','aria-pressed':String(pick[cur]===ci)},c);b.addEventListener('click',function(){pick[cur]=ci;draw()});g.appendChild(b)});tw.appendChild(g);
     var done=Object.keys(pick).length,ok=Object.keys(pick).filter(function(k){return pick[k]===cfg.items[k][1]}).length;
     K([[done+'/'+cfg.items.length,'고른 카드','i'],[ok+'개','맞힌 카드','g'],[done?pct(ok/done,0):'—','정답률','a']]);
-    I(pick[cur]==null?[['a','위 버튼에서 알맞은 칸을 골라 보세요. '+(cfg.hint||'')]]:[[pick[cur]===it[1]?'g':'r',(pick[cur]===it[1]?'맞아요. ':'정답은 <b>'+cfg.cats[it[1]]+'</b>예요. ')+it[2]]])}
+    I(pick[cur]==null?[['a','위 버튼에서 알맞은 상자를 골라 보세요. '+(cfg.hint||'')]]:[[pick[cur]===it[1]?'g':'r',(pick[cur]===it[1]?'맞아요. ':'정답은 <b>'+cfg.cats[it[1]]+'</b>예요. ')+it[2]]])}
   action(row,'← 이전',function(){cur=(cur+cfg.items.length-1)%cfg.items.length;draw()});action(row,'다음 →',function(){cur=(cur+1)%cfg.items.length;draw()},true);action(row,'처음부터',function(){pick={};cur=0;draw()});draw()};
 
 /* ── 공용: 순서 맞히기 ── */
@@ -88,32 +88,32 @@ SIMS.collect=function(el,cfg){var c=S0(el,cfg,250,'수집 방법별 가중 점�
 
 /* ── 2-③ 준식별자 조합과 다시 알아보기(재식별) 위험 — 보험 데이터 1,338명 ── */
 SIMS.pseudo=function(el,cfg){var tw=tbl(el),row=ctrlRow(el),K=kpis(el,4),I=insight(el),lv=0;var U=FD.ins.uniq;
-  buttons(row,'공개할 칸',U.map(function(u,i){return [i,u[0]]}),0,function(v){lv=v;draw()});
+  buttons(row,'공개할 열',U.map(function(u,i){return [i,u[0]]}),0,function(v){lv=v;draw()});
   function draw(){var u=U[lv];tw.innerHTML='<table class="tb"><tr><th>단계</th><th>하는 일</th><th>법적 구분</th></tr>'+cfg.rows.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td></tr>'}).join('')+'</table>';
     K([[nf(u[1])+'명','세상에 한 명뿐인 조합','r'],[pct(u[1]/FD.ins.n,1),'전체 '+nf(FD.ins.n)+'명 중','a'],[nf(u[3]),'서로 다른 조합 수','i'],[u[2]+'명','가장 작은 묶음 크기 (k)','g']]);
-    I([[u[1]>100?'r':'a','이름을 지워도 <b>'+u[0]+'</b>를 그대로 두면 '+nf(u[1])+'명은 그 조합이 유일해요. 이 사람의 이웃·동료가 이 칸들을 알면 누구인지 알아볼 수 있습니다(재식별).'],['g','칸을 줄일수록 유일한 사람이 줄어요. 이름만 지운 데이터는 "가명정보"이지 "익명정보"가 아닙니다. 14회차에서 k-익명성으로 더 자세히 봐요.']])}
+    I([[u[1]>100?'r':'a','이름을 지워도 <b>'+u[0]+'</b>를 그대로 두면 '+nf(u[1])+'명은 그 조합이 유일해요. 이 사람의 이웃·동료가 이 열들을 알면 누구인지 알아볼 수 있습니다(재식별).'],['g','열을 줄일수록 유일한 사람이 줄어요. 이름만 지운 데이터는 "가명정보"이지 "익명정보"가 아닙니다. 14회차에서 k-익명성으로 더 자세히 봐요.']])}
   draw()};
 
 /* ── 3-② 서비스 vs 플랫폼 (예시값) ── */
-SIMS.network=function(el,cfg){var c=S0(el,cfg,250,'사용자 수에 따른 연결 수와 데이터 칸 수'),row=ctrlRow(el),K=kpis(el,4),I=insight(el),n=20,s=3;
+SIMS.network=function(el,cfg){var c=S0(el,cfg,250,'사용자 수에 따른 연결 수와 데이터 열 수'),row=ctrlRow(el),K=kpis(el,4),I=insight(el),n=20,s=3;
   slider(row,'사용자 수',2,60,1,n,function(v){return v+'명'},function(v){n=v;draw()});slider(row,'연결된 서비스 수',1,8,1,s,function(v){return v+'개'},function(v){s=v;draw()});
   function draw(){var W=fit(c,250),ctx=c.getContext('2d');ctx.clearRect(0,0,W,250);grid(ctx,W,250);var r=rng(3),cx=W*.3,cy=130,R=95,pts=seg(n).map(function(i){var a=i/n*Math.PI*2;return [cx+R*Math.cos(a),cy+R*Math.sin(a)]});
     ctx.strokeStyle='rgba(63,95,168,.12)';ctx.lineWidth=1;if(n<=40)pts.forEach(function(p,i){for(var j=i+1;j<n;j++){ctx.beginPath();ctx.moveTo(p[0],p[1]);ctx.lineTo(pts[j][0],pts[j][1]);ctx.stroke()}});
     pts.forEach(function(p){dot(ctx,p[0],p[1],4,COL.s)});txt(ctx,'플랫폼: 사용자끼리 연결',cx,22,COL.text,12,'center',true);
     var x0=W*.62,links=n*(n-1)/2,cells=n*s*cfg.per;txt(ctx,'서비스 1개: 회사 ↔ 사용자',x0+W*.18,22,COL.text,12,'center',true);
-    var bx=x0,bw=W-x0-20;[['서비스 연결 수',n,COL.muted],['플랫폼 연결 수',links,COL.s],['쌓이는 데이터 칸',cells,COL.g]].forEach(function(b,i){var mx=Math.max(links,cells,n);var w=b[1]/mx*bw;ctx.fillStyle=b[2];ctx.fillRect(bx,60+i*55,Math.max(w,2),26);txt(ctx,b[0]+' '+nf(b[1]),bx,54+i*55,COL.text,11,'left',true)});stamp(ctx,W,EX);
-    K([[nf(n),'서비스형: 회사와의 연결','i'],[nf(links),'플랫폼형: 사용자끼리 연결 n(n−1)/2','g'],[nf(cells),'통합 데이터 칸 (사용자×서비스×'+cfg.per+')','a'],[(links/n).toFixed(1)+'배','연결 수 차이','r']]);
+    var bx=x0,bw=W-x0-20;[['서비스 연결 수',n,COL.muted],['플랫폼 연결 수',links,COL.s],['쌓이는 데이터 열',cells,COL.g]].forEach(function(b,i){var mx=Math.max(links,cells,n);var w=b[1]/mx*bw;ctx.fillStyle=b[2];ctx.fillRect(bx,60+i*55,Math.max(w,2),26);txt(ctx,b[0]+' '+nf(b[1]),bx,54+i*55,COL.text,11,'left',true)});stamp(ctx,W,EX);
+    K([[nf(n),'서비스형: 회사와의 연결','i'],[nf(links),'플랫폼형: 사용자끼리 연결 n(n−1)/2','g'],[nf(cells),'통합 데이터 열 (사용자×서비스×'+cfg.per+')','a'],[(links/n).toFixed(1)+'배','연결 수 차이','r']]);
     I([['g','사용자가 늘면 플랫폼의 연결 수는 제곱에 가깝게 늘어요(네트워크 효과). 송금·결제·보험이 한 앱에 붙으면 한 사람의 데이터가 여러 서비스에 걸쳐 통합됩니다.'],['a','"데이터가 많다"가 "쓸모 있다"는 뜻은 아니에요. 통합된 만큼 개인정보 보호와 품질 관리 부담도 커집니다.']])}
   addMod(c,function(dt){if(!dt)draw()});draw()};
 
-/* ── 3-③ 대출 데이터 사전(80칸)에서 목표에 필요한 칸 고르기 ── */
+/* ── 3-③ 대출 데이터 사전(80열)에서 목표에 필요한 열 고르기 ── */
 SIMS.dict=function(el,cfg){var tw=tbl(el),row=ctrlRow(el),K=kpis(el,4),I=insight(el),goal=0,q='';
   buttons(row,'분석 목표',cfg.goals.map(function(g,i){return [i,g[0]]}),0,function(v){goal=v;draw()});
-  var inp=h('input',{class:'search',type:'search',placeholder:'칸 이름·설명 검색 (예: annual, 연체)','aria-label':'데이터 사전 검색'});row.appendChild(inp);inp.addEventListener('input',function(){q=inp.value.toLowerCase();draw()});
+  var inp=h('input',{class:'search',type:'search',placeholder:'열 이름·설명 검색 (예: annual, 연체)','aria-label':'데이터 사전 검색'});row.appendChild(inp);inp.addEventListener('input',function(){q=inp.value.toLowerCase();draw()});
   function draw(){var G=cfg.goals[goal],need=G[1],D=FD.loan_dict;var rows=D.filter(function(d){return !q||d[0].toLowerCase().indexOf(q)>=0||d[1].toLowerCase().indexOf(q)>=0});
-    tw.innerHTML='<table class="tb"><tr><th>칸 이름</th><th>설명(원문)</th><th>이 목표에</th></tr>'+rows.slice(0,14).map(function(d){var on=need.indexOf(d[0])>=0;return '<tr'+(on?' class="hit"':'')+'><td><code>'+esc(d[0])+'</code></td><td>'+esc(d[1])+'</td><td>'+(on?'<b style="color:var(--g)">필요</b>':'<span class="muted">—</span>')+'</td></tr>'}).join('')+'</table>'+(rows.length>14?'<p class="muted">… 검색 결과 '+rows.length+'칸 중 14칸만 보여요.</p>':'');
-    K([[D.length+'칸','데이터 사전 전체','i'],[need.length+'칸','이 목표에 필요한 칸(예시 선택)','g'],[pct(need.length/D.length,0),'전체 중 필요한 비율','a'],[rows.length+'칸','검색 결과','m']]);
-    I([['g',G[2]],['a','원본 대출 데이터(loan.csv)는 용량이 커서 이 저장소에 넣지 못했고, 칸 설명서(loan_data_description.csv)만 들어 있어요. 필요한 칸 고르기는 설명용 예시예요.']])}
+    tw.innerHTML='<table class="tb"><tr><th>열 이름</th><th>설명(원문)</th><th>이 목표에</th></tr>'+rows.slice(0,14).map(function(d){var on=need.indexOf(d[0])>=0;return '<tr'+(on?' class="hit"':'')+'><td><code>'+esc(d[0])+'</code></td><td>'+esc(d[1])+'</td><td>'+(on?'<b style="color:var(--g)">필요</b>':'<span class="muted">—</span>')+'</td></tr>'}).join('')+'</table>'+(rows.length>14?'<p class="muted">… 검색 결과 '+rows.length+'열 중 14열만 보여요.</p>':'');
+    K([[D.length+'열','데이터 사전 전체','i'],[need.length+'열','이 목표에 필요한 열(예시 선택)','g'],[pct(need.length/D.length,0),'전체 중 필요한 비율','a'],[rows.length+'열','검색 결과','m']]);
+    I([['g',G[2]],['a','원본 대출 데이터(loan.csv)는 용량이 커서 이 저장소에 넣지 못했고, 열 설명서(loan_data_description.csv)만 들어 있어요. 필요한 열 고르기는 설명용 예시예요.']])}
   draw()};
 
 /* ── 4-① 분석 도구 고르기 (예시 규칙) ── */
@@ -166,7 +166,7 @@ SIMS.labeling=function(el,cfg){var c=S0(el,cfg,200,'기존 고객과 이탈 고�
     [[step?'0 (기존 고객)':'Existing Customer',a,C0],[step?'1 (이탈 고객)':'Attrited Customer',b,C1]].forEach(function(x,i){var w=x[1]/FD.bank.n*(W-200);ctx.fillStyle=x[2];ctx.fillRect(170,40+i*64,w,36);txt(ctx,x[0],162,63+i*64,COL.text,12,'right',true);txt(ctx,nf(x[1])+'명',176+w,63+i*64,COL.text,12,'left',true)});stamp(ctx,W,REAL);
     var R=FD.rows5;tw.innerHTML=step<2?'<pre class="out">'+(step===0?'Attrition_Flag: '+R.map(function(r){return r[3]?'"Attrited Customer"':'"Existing Customer"'}).join(', '):'target = [0]*'+nf(a)+' + [1]*'+nf(b)+'   # 교안의 [1]*35 + [0]*14와 같은 방법\n# 실제로는 순서대로가 아니라 고객마다: (df.Attrition_Flag == "Attrited Customer").astype(int)')+'</pre>':'<pre class="out">data = [[c, a] for c, a in zip(trans_ct, trans_amt)]\n'+R.map(function(r){return '['+r[1]+', '+r[2]+'] → '+r[3]}).join('\n')+'</pre>';
     K([[nf(FD.bank.n),'전체 고객','i'],[pct(b/FD.bank.n,1),'이탈 고객 비율','r'],[(a/b).toFixed(1)+' : 1','기존 : 이탈','a']]);
-    I([['g',['문자 라벨은 모델이 계산할 수 없어요. 숫자로 바꿔야 합니다.','관심 있는 쪽(이탈)을 1로 두는 것이 관례예요. 정밀도·재현율이 "1을 얼마나 잘 잡나"로 계산되기 때문입니다.','zip은 두 리스트를 지퍼처럼 한 칸씩 짝지어요. 고객마다 [거래횟수, 거래금액] 한 쌍이 입력, 0/1이 정답이 됩니다.'][step]],['a','이탈 고객이 16%뿐이라 "모두 남는다"고 찍어도 84%가 맞아요. 이 불균형은 6·7회차 내내 따라다닙니다.']])}
+    I([['g',['문자 라벨은 모델이 계산할 수 없어요. 숫자로 바꿔야 합니다.','관심 있는 쪽(이탈)을 1로 두는 것이 관례예요. 정밀도·재현율이 "1을 얼마나 잘 잡나"로 계산되기 때문입니다.','zip은 두 리스트를 지퍼처럼 하나씩 짝지어요. 고객마다 [거래횟수, 거래금액] 한 쌍이 입력, 0/1이 정답이 됩니다.'][step]],['a','이탈 고객이 16%뿐이라 "모두 남는다"고 찍어도 84%가 맞아요. 이 불균형은 6·7회차 내내 따라다닙니다.']])}
   addMod(c,function(dt){if(!dt)draw()});draw()};
 
 /* ── 6-① KNN: 새 고객의 이웃 투표 (실제 표본 400명) ── */
@@ -304,18 +304,18 @@ SIMS.logit=function(el,cfg){var c=S0(el,cfg,270,'거래 횟수 구간별 실제 
     var cut=(Math.log(th/(1-th))-L.b0)/L.w;dot(ctx,F.X(x),F.Y(p(x)),7,COL.r,'#fff');txt(ctx,'■ 실제 이탈률(구간)',F.L+8,F.T+4,COL.r,11,'left',true);txt(ctx,'— 로지스틱 곡선',F.L+130,F.T+4,COL.s,11,'left',true);stamp(ctx,W,REAL+' 10,127명');
     var z=L.w*x+L.b0;K([[pct(p(x),1),'예측 이탈 확률','r'],[p(x)>=th?'이탈':'유지','기준 '+pct(th,0)+'에서 판정','g'],[z.toFixed(2),'z (직선 부분)','i'],[cut>10?Math.round(cut)+'회 미만':'—','이 기준에서 "이탈"이 되는 거래 횟수','a']]);
     E('z = '+L.w.toFixed(4)+' × '+x+' + '+L.b0.toFixed(3)+' = '+z.toFixed(2)+' → 확률 = 1 ÷ (1 + e<sup>−z</sup>) = <i>'+pct(p(x),1)+'</i>');
-    I([['g','직선(z)을 시그모이드에 넣으면 0~1 사이 확률이 돼요. 그래서 이름은 "회귀"지만 분류에 씁니다.'],['a','실제 이탈률(빨간 막대)은 40~50회 구간에서 오히려 솟아요. 특성 하나짜리 매끈한 S자 곡선은 이 굴곡을 못 따라갑니다. 결정나무(칸 ②)는 구간을 잘라 이런 굴곡을 잡아요.']])}
+    I([['g','직선(z)을 시그모이드에 넣으면 0~1 사이 확률이 돼요. 그래서 이름은 "회귀"지만 분류에 씁니다.'],['a','실제 이탈률(빨간 막대)은 40~50회 구간에서 오히려 솟아요. 특성 하나짜리 매끈한 S자 곡선은 이 굴곡을 못 따라갑니다. 결정나무(단계 ②)는 구간을 잘라 이런 굴곡을 잡아요.']])}
   addMod(c,function(dt){if(!dt)draw()});draw()};
 
 /* ── 10-② 결정나무: 깊이별 잎 (실제 데이터에서 sklearn으로 학습한 결과) ── */
-SIMS.tree=function(el,cfg){var c=S0(el,cfg,300,'거래 횟수·회전 잔액 평면을 나무가 자른 칸'),row=ctrlRow(el),K=kpis(el,4),E=eqline(el),I=insight(el),d=1;var T=FD.tree,S=T.sample;
+SIMS.tree=function(el,cfg){var c=S0(el,cfg,300,'거래 횟수·회전 잔액 평면을 나무가 자른 구역'),row=ctrlRow(el),K=kpis(el,4),E=eqline(el),I=insight(el),d=1;var T=FD.tree,S=T.sample;
   buttons(row,'깊이',[[1,'1'],[2,'2'],[3,'3'],[4,'4']],d,function(v){d=v;draw()});
   function draw(){var W=fit(c,300),ctx=c.getContext('2d');ctx.clearRect(0,0,W,300);grid(ctx,W,300);var F=frame(ctx,W,300,{xlo:10,xhi:140,ylo:0,yhi:2600,fx:String,fy:nf,xl:'연간 거래 횟수',yl:'회전 잔액($)'});
     T.leaves[d].forEach(function(l){var x0=F.X(Math.max(10,l[0])),x1=F.X(Math.min(140,l[2])),y0=F.Y(Math.min(2600,l[3])),y1=F.Y(Math.max(0,l[1]));ctx.fillStyle=l[4]>.5?'rgba(210,63,44,'+(.10+.3*l[4])+')':'rgba(63,95,168,'+(.06+.2*(1-l[4]))+')';ctx.fillRect(x0,y0,x1-x0,y1-y0);ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.strokeRect(x0,y0,x1-x0,y1-y0);if(x1-x0>38&&y1-y0>18)txt(ctx,pct(l[4],0),(x0+x1)/2,(y0+y1)/2+4,COL.text,11,'center',true)});
     S.x.forEach(function(x,i){dot(ctx,F.X(x),F.Y(S.y[i]),2.4,S.t[i]?C1:C0)});stamp(ctx,W,REAL);
-    var A=T.depth[d],R=T.root;K([[pct(A[0],1),'학습 정확도','r'],[pct(A[1],1),'시험 정확도','g'],[A[2]+'개','잎(마지막 칸) 수','i'],[pct(T.depth['None'][1],1),'끝까지 자란 나무의 시험 정확도','a']]);
+    var A=T.depth[d],R=T.root;K([[pct(A[0],1),'학습 정확도','r'],[pct(A[1],1),'시험 정확도','g'],[A[2]+'개','잎(마지막 구역) 수','i'],[pct(T.depth['None'][1],1),'끝까지 자란 나무의 시험 정확도','a']]);
     E('첫 질문: 거래 횟수 ≤ '+R.th+'회? → 예: '+nf(R.nl)+'명(이탈 '+pct(R.left_rate,0)+', 지니 '+R.left_gini+') / 아니오: '+nf(R.nr)+'명(이탈 '+pct(R.right_rate,0)+', 지니 '+R.right_gini+') · 처음 지니 '+R.gini);
-    I([['g','나무는 "어디서 자르면 양쪽이 가장 깨끗해질까(지니 불순도↓)"를 묻는 질문을 반복해요. 칸 숫자는 그 칸의 이탈 고객 비율입니다.'],[d>=4?'a':'g',d>=4?'깊이를 더 키우면 학습 정확도는 오르지만 시험 정확도는 '+pct(T.depth['6'][1],1)+' 근처에서 멈췄다가, 끝까지 자라면 '+pct(T.depth['None'][1],1)+'로 떨어져요(과대적합). 그래서 max_depth로 가지치기를 합니다.':'깊이 2만으로 "거래가 적고 잔액도 적은 고객" 칸이 따로 생겨요. 로지스틱 곡선이 못 잡던 굴곡입니다.']])}
+    I([['g','나무는 "어디서 자르면 양쪽이 가장 깨끗해질까(지니 불순도↓)"를 묻는 질문을 반복해요. 구역 숫자는 그 구역의 이탈 고객 비율입니다.'],[d>=4?'a':'g',d>=4?'깊이를 더 키우면 학습 정확도는 오르지만 시험 정확도는 '+pct(T.depth['6'][1],1)+' 근처에서 멈췄다가, 끝까지 자라면 '+pct(T.depth['None'][1],1)+'로 떨어져요(과대적합). 그래서 max_depth로 가지치기를 합니다.':'깊이 2만으로 "거래가 적고 잔액도 적은 고객" 구역이 따로 생겨요. 로지스틱 곡선이 못 잡던 굴곡입니다.']])}
   addMod(c,function(dt){if(!dt)draw()});draw()};
 
 /* ── 10-③ 특성공학: 보험료 예측에 특성 더하기 (실제 결과) ── */
@@ -443,18 +443,18 @@ SIMS.kanon=function(el,cfg){var c=S0(el,cfg,230,'묶음 크기별 사람 수와 
   function draw(){var o=FD.kanon.filter(function(k){return k.w===w&&k.reg===reg&&k.ch===ch})[0],W=fit(c,230),ctx=c.getContext('2d');ctx.clearRect(0,0,W,230);grid(ctx,W,230);
     var safe=FD.ins.n-o.rows_small,L=150,pw=W-L-80;[['5명 미만 묶음 속 사람',o.rows_small,COL.r],['5명 이상 묶음 속 사람',safe,COL.g]].forEach(function(x,i){var bw=x[1]/FD.ins.n*pw;ctx.fillStyle=x[2];ctx.fillRect(L,40+i*70,Math.max(bw,2),38);txt(ctx,x[0],L-8,64+i*70,COL.text,12,'right',true);txt(ctx,nf(x[1])+'명',L+bw+6,64+i*70,COL.text,12,'left',true)});stamp(ctx,W,REAL+' 1,338명');
     K([['k = '+o.k,'가장 작은 묶음 크기','g'],[nf(o.groups),'묶음 수 (많을수록 정보 많음)','i'],[nf(o.rows_small)+'명','5명 미만 묶음 속 사람','r'],['나이 '+(w>1?w+'살 단위':'그대로')+(reg?' · 지역':'')+(ch?' · 자녀':''),'남긴 준식별자 (+성별)','a']]);
-    I([[o.k>=5?'g':'r',o.k>=5?'모든 묶음이 '+o.k+'명 이상이에요. 같은 조합을 가진 사람이 최소 '+o.k+'명이라, 이 칸들만으로는 한 사람을 집어낼 수 없어요(k-익명성).':'아직 한 명뿐인 묶음이 있어요(k = 1). 나이 폭을 넓히거나 칸을 지워 보세요.'],['a','칸을 지우고 폭을 넓힐수록 안전해지지만 분석에 쓸 정보도 줄어요. 지역·자녀 수를 지우면 그 칸에 대한 분석은 할 수 없습니다. 같은 묶음 안의 민감정보가 모두 같으면 여전히 알 수 있어(l-다양성) 함께 점검해야 해요.']])}
+    I([[o.k>=5?'g':'r',o.k>=5?'모든 묶음이 '+o.k+'명 이상이에요. 같은 조합을 가진 사람이 최소 '+o.k+'명이라, 이 열들만으로는 한 사람을 집어낼 수 없어요(k-익명성).':'아직 한 명뿐인 묶음이 있어요(k = 1). 나이 폭을 넓히거나 열을 지워 보세요.'],['a','열을 지우고 폭을 넓힐수록 안전해지지만 분석에 쓸 정보도 줄어요. 지역·자녀 수를 지우면 그 열에 대한 분석은 할 수 없습니다. 같은 묶음 안의 민감정보가 모두 같으면 여전히 알 수 있어(l-다양성) 함께 점검해야 해요.']])}
   addMod(c,function(dt){if(!dt)draw()});draw()};
 
 /* ── 14-③ 데이터 품질 진단: fintech-data 원자료에서 실제로 찾은 문제 ── */
 SIMS.dq=function(el,cfg){var tw=tbl(el),row=ctrlRow(el),K=kpis(el,3),I=insight(el),dim='all';var Q=FD.quality;
-  var items=[['완전성','여행자 보험의 성별(Gender) 결측',Q.travel_gender_missing,Q.travel_rows,'결측이 71%라 그대로는 쓸 수 없어요. 칸을 빼거나 "모름" 범주로 둡니다.'],
-    ['완전성','은행 고객의 학력 "Unknown"',Q.bank_unknown.Education_Level,Q.bank_n,'빈칸 대신 "Unknown"이라는 글자로 들어 있어 isna()로는 안 잡혀요. 숨은 결측입니다.'],
+  var items=[['완전성','여행자 보험의 성별(Gender) 결측',Q.travel_gender_missing,Q.travel_rows,'결측이 71%라 그대로는 쓸 수 없어요. 열을 빼거나 "모름" 범주로 둡니다.'],
+    ['완전성','은행 고객의 학력 "Unknown"',Q.bank_unknown.Education_Level,Q.bank_n,'빈 값 대신 "Unknown"이라는 글자로 들어 있어 isna()로는 안 잡혀요. 숨은 결측입니다.'],
     ['완전성','마케팅 데이터의 구매 이력(History) 결측',Q.dm_hist_missing,Q.dm_rows,'이력이 없는 신규 고객일 수 있어요. 결측 자체가 정보일 수 있으니 이유를 먼저 확인합니다.'],
     ['유효성','여행 기간(Duration)이 음수',Q.travel_dur_neg,Q.travel_rows,'기간이 0보다 작을 수는 없어요. 입력 오류로 보고 고치거나 뺍니다.'],
     ['유효성','나이 100세 초과(118세)',Q.travel_age_118,Q.travel_rows,'같은 값 118이 수백 건 반복돼요. "모름"을 118로 적은 기본값일 가능성이 큽니다.'],
     ['유효성','순매출(Net Sales)이 음수',Q.travel_sales_neg,Q.travel_rows,'환불일 수 있어 오류라고 단정할 수 없어요. 업무 규칙(환불 기록 방식)을 확인해야 합니다.'],
-    ['일관성','국제 지표의 다우·VIX 결측(한국 휴일과 미국 휴일 차이)',Q.intl_missing.DOW,Q.intl_rows,'나라마다 거래일이 달라 생긴 빈칸이에요. 날짜 기준을 맞추는 표준화가 필요합니다.'],
+    ['일관성','국제 지표의 다우·VIX 결측(한국 휴일과 미국 휴일 차이)',Q.intl_missing.DOW,Q.intl_rows,'나라마다 거래일이 달라 생긴 빈 값이에요. 날짜 기준을 맞추는 표준화가 필요합니다.'],
     ['일관성','감성 문장: 같은 문장에 다른 감성 라벨',Q.sent_conflict,Q.sent_rows,'같은 문장이 긍정·중립으로 따로 붙어 있어요. 라벨링 기준이 일관되지 않은 것입니다.'],
     ['유일성','감성 문장 중복',Q.sent_dup,Q.sent_rows,'중복 문장이 학습·시험에 나뉘어 들어가면 성능이 부풀려져요.'],
     ['정확성','Revolution4의 두 파일이 같은 내용 + 머리글 없음',1,2,'bank_customers.csv와 direct_marketimg.csv가 바이트까지 같고 열 이름 줄이 빠져 있어요. 파일 이름과 내용이 다른 메타데이터 오류입니다.']];
@@ -465,7 +465,7 @@ SIMS.dq=function(el,cfg){var tw=tbl(el),row=ctrlRow(el),K=kpis(el,3),I=insight(e
   draw()};
 
 /* ───────── 대결 ───────── */
-DUELS.beh_vs_demo=function(){var A=FD.d.duel01;return {fly:A.beh.auc,robo:A.demo.auc,say:'시험 고객 2,532명에서 이탈 고객을 가려내는 힘(AUC)은 초파리 쪽(거래 횟수 1칸) '+A.beh.auc.toFixed(3)+', 주판봇 쪽(나이·성별·학력·소득·결혼 → 가변수 '+A.n_demo_cols+'칸) '+A.demo.auc.toFixed(3)+'이에요. 0.5가 찍기 수준입니다.'}};
+DUELS.beh_vs_demo=function(){var A=FD.d.duel01;return {fly:A.beh.auc,robo:A.demo.auc,say:'시험 고객 2,532명에서 이탈 고객을 가려내는 힘(AUC)은 초파리 쪽(거래 횟수 1열) '+A.beh.auc.toFixed(3)+', 주판봇 쪽(나이·성별·학력·소득·결혼 → 가변수 '+A.n_demo_cols+'열) '+A.demo.auc.toFixed(3)+'이에요. 0.5가 찍기 수준입니다.'}};
 DUELS.phish_quality=function(){var P=FD.d.phish;return {fly:P.clean_rec,robo:P.biased_rec,say:'시험 사이트 406개 중 실제 피싱을 잡아낸 비율(재현율)은 초파리 쪽(점검한 600건) '+pct(P.clean_rec,1)+', 주판봇 쪽(점검 없이 모은 '+P.noisy_n+'건, 피싱 '+P.flip2+'건이 "정상"으로 잘못 적힘) '+pct(P.biased_rec,1)+'예요.'}};
 DUELS.collect_cycle=function(){var D=FD.d.duel03;return {fly:D.AMZN.monthly*100,robo:D.AMZN.daily*100,say:'아마존 주가를 "가장 최근에 모은 값"으로 어림했을 때 평균 오차는 초파리 쪽(한 달에 한 번 수집) '+pct(D.AMZN.monthly,1)+', 주판봇 쪽(매일 수집) '+pct(D.AMZN.daily,1)+'예요. 비트코인은 '+pct(D.BTC.monthly,1)+' 대 '+pct(D.BTC.daily,1)+'로 차이가 더 커요.'}};
 DUELS.train_vs_test=function(){var D=FD.d.duel04;return {fly:D.k15_test*100,robo:D.test_acc*100,say:'새 고객 2,532명 정확도는 초파리 쪽(시험 세트 점수로 고른 k=15 모델) '+pct(D.k15_test,1)+', 주판봇 쪽(학습 데이터 점수 '+pct(D.train_acc,1)+'로 고른 k=1 모델) '+pct(D.test_acc,1)+'예요. 주판봇이 본 99.8%는 이미 본 고객을 다시 맞힌 점수였어요.'}};

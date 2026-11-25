@@ -42,7 +42,7 @@ CREW = [
 SPARE = [('x1', 'No.007', '분홍 리본'), ('x2', 'No.008', '청록 안경 반사'), ('x3', 'No.009', '노란 방울')]
 
 def crew_html(M):
-    """연구실 식구 소개 — 아홉 칸을 같은 크기 카드로 한 격자에. 미공개 X1~X3는 🔒 버튼을 눌러야 보임."""
+    """연구실 식구 소개 — 아홉 명을 같은 크기 카드로 한 격자에. 미공개 X1~X3는 🔒 버튼을 눌러야 보임."""
     cards = []
     for head, ms in CREW:
         for w_, t in ms:
@@ -236,7 +236,7 @@ KG_SEC = '''<section class="level noglos" id="kg"><div class="wrap stack">
 <div class="searchrow"><input class="search" id="kgQ" type="search" placeholder="예: 사후확률, prior" aria-label="지식 색인 검색"></div>
 <div class="group" id="kgChips"></div>
 <div class="kgl" id="kgList"></div>
-<h3>사다리 경로</h3><div class="flowchips" id="kgFlow"></div>
+<h3>개념 흐름</h3><div class="flowchips" id="kgFlow"></div>
 <h3>미니 그래프 <small class="muted">점을 누르면 목록에서 펼쳐집니다</small></h3>
 <div class="cwrap"><canvas id="kgGraph" aria-label="이 페이지 지식 그래프" role="img"></canvas></div>
 <h3>열린 질문</h3><ul id="kgOpen" style="margin:0;padding-left:20px"></ul>
@@ -265,7 +265,7 @@ def level_html(l, i, M, P):
     tags = ''.join(f'<span class="lvtag{" g" if k == 0 else ""}">{t}</span>' for k, t in enumerate(l['tags']))
     o.append(f'<section class="level" id="{l["id"]}"><div class="wrap stack">\n<div class="lvhead"><div class="hexrow"><div class="hexno">{i+1}<small>{e(l["short"])}</small></div><h2>{l["title"]}</h2></div><p class="sub">{tags}</p><p class="lead">{l["lead"]}</p></div>')
     if l.get('key'):
-        o.append(f'<div class="keyline"><span class="kl-tag">이 칸에서 가져갈 한 가지</span><p>{l["key"]}</p></div>')
+        o.append(f'<div class="keyline"><span class="kl-tag">이 단계에서 가져갈 한 가지</span><p>{l["key"]}</p></div>')
     if w or m:
         o.append('<div class="whymath">')
         if w:
@@ -282,7 +282,7 @@ def level_html(l, i, M, P):
     if l.get('sim2'):
         o.append(f'<section class="panel" aria-label="{e(l["sim2_title"])}"><h3>실험 2 — {l["sim2_title"]}</h3><div class="sim" data-sim="{l["sim2"][0]}" data-cfg="{e(json.dumps(l["sim2"][1], ensure_ascii=False))}"></div></section>')
     ex = l['explain']; steps = ''.join(f'<li>{s}</li>' for s in ex['steps'])
-    o.append(f'<div class="explain"><details class="more"><summary>자세한 {ex["title"]} (펼쳐 보기)</summary><ol>{steps}</ol></details><p class="limit"><b>이 칸의 한계</b> · {ex["limit"]}</p></div>')
+    o.append(f'<div class="explain"><details class="more"><summary>자세한 {ex["title"]} (펼쳐 보기)</summary><ol>{steps}</ol></details><p class="limit"><b>이 단계의 한계</b> · {ex["limit"]}</p></div>')
     if l.get('bridge'):
         b = l['bridge']; o.append('<details class="more"><summary>업무에 쓸 때 알아 둘 것 (펼쳐 보기)</summary><div class="bridges">' + (f'<div class="bridge gen"><h4>데이터 분석으로 치면</h4><p>{b["gen"]}</p><p class="lim">{b.get("gen_lim","")}</p></div>' if b.get('gen') else '') + (f'<div class="bridge field"><h4>현장에 옮기면</h4><p>{b["field"]}</p><p class="lim">{b.get("field_lim","")}</p></div>' if b.get('field') else '') + '</div></details>')
     if l.get('code'):
@@ -349,7 +349,7 @@ def apply_plainer(P):
 
 def page(P):
     apply_plainer(P)
-    import _supoja; _supoja.apply(P)  # 수포자 스킬 검토 반영
+    import _teaching; _teaching.apply(P)  # 교수법 스킬 검토 반영
     M = Moods(); L = P['levels']; num = P['num']
     for k, v in DEFM.items(): M.add(k, v)
     P['duels_js'] = [{'el': '#duelBox', 'fn': P['duel']['fn'], 'cfg': P['duel'].get('cfg', {}), 'metric': P['duel']['metric'], 'lesson': P['duel']['lesson'], 'condLesson': P['duel'].get('cond_lesson', ''), 'higherIsBetter': P['duel']['hib'], 'drawMargin': P['duel'].get('margin', 0), 'fmt': P['duel'].get('fmt', ''), 'unit': P['duel'].get('unit', ''), 'dec': P['duel'].get('dec', 1)}]
@@ -361,7 +361,7 @@ def page(P):
     hero_talk = ''.join(say(*t, M) for t in P['hero_talk'])
     o.append(f'''<header class="hero" id="hero"><div class="wrap hero-grid"><div class="hero-text"><span class="eyebrow">{e(P["eyebrow"])}</span><h1>{P["title"]}</h1><p class="q">{P["question"]}</p><p>{P["intro"]}</p><section class="kpis k4">{kp}</section></div><div class="dialog">{hero_talk}</div></div></header>''')
     T = P['three']; ab = ''.join(f'<dt>{e(a)}</dt><dd>{b}</dd>' for a, b in P.get('abbr', []))
-    o.append(f'''<section class="level" id="three"><div class="wrap"><div class="three"><h2>처음 오신 분께 — 이 페이지를 3줄로</h2><ol><li><b>무엇을</b><span>{T["what"]}</span></li><li><b>왜 중요한가</b><span>{T["why"]}</span></li><li><b>업무에서는</b><span>{T["work"]}</span></li></ol><div class="route"><p><b>처음이라면 이렇게 읽으세요.</b> 칸마다 ① <b>가져갈 한 가지</b> → ② <b>일상으로 치면</b> → ③ <b>실험</b>만 봐도 충분해요. 수식, 자세한 풀이, 업무 팁, 코드는 접어 두었어요(몰라도 됩니다).{(' 직접 돌려 보고 싶다면 <a href="' + colab_url(P) + '" target="_blank" rel="noopener">이 회차 Colab 실습 노트북</a>을 여세요.') if colab_url(P) else ''}</p><button class="bt" type="button" id="openAll" aria-pressed="false">접어 둔 내용 모두 펼치기</button></div>{"<details class='abbr'><summary>영어 약어 풀이</summary><dl>"+ab+"</dl></details>" if ab else ""}</div></div></section>''')
+    o.append(f'''<section class="level" id="three"><div class="wrap"><div class="three"><h2>처음 오신 분께 — 이 페이지를 3줄로</h2><ol><li><b>무엇을</b><span>{T["what"]}</span></li><li><b>왜 중요한가</b><span>{T["why"]}</span></li><li><b>업무에서는</b><span>{T["work"]}</span></li></ol><div class="route"><p><b>처음이라면 이렇게 읽으세요.</b> 열마다 ① <b>가져갈 한 가지</b> → ② <b>일상으로 치면</b> → ③ <b>실험</b>만 봐도 충분해요. 수식, 자세한 풀이, 업무 팁, 코드는 접어 두었어요(몰라도 됩니다).{(' 직접 돌려 보고 싶다면 <a href="' + colab_url(P) + '" target="_blank" rel="noopener">이 회차 Colab 실습 노트북</a>을 여세요.') if colab_url(P) else ''}</p><button class="bt" type="button" id="openAll" aria-pressed="false">접어 둔 내용 모두 펼치기</button></div>{"<details class='abbr'><summary>영어 약어 풀이</summary><dl>"+ab+"</dl></details>" if ab else ""}</div></div></section>''')
     cast = crew_html(M)
     prevtxt = f'앞 회차: <a href="{P["prev"][0]}">{e(P["prev"][1])}</a>' if P.get('prev') else '시리즈의 첫 회차입니다.'
     o.append(f'''<section class="level" id="cast"><div class="wrap stack"><div class="lvhead"><h2>연구실 식구와 이 페이지 사용법</h2></div>{cast}<p class="muted">노란 점선 밑줄을 누르거나 손가락으로 대면 뜻이 나옵니다. 오른쪽 아래 도우미에서 밑줄을 핵심 → 전체 → 끄기로 바꿀 수 있어요. 모든 실험은 시드를 고정한 설명용 모형입니다. {prevtxt}</p></div></section>''')
@@ -369,13 +369,13 @@ def page(P):
     o.append('<section class="level" id="why"><div class="wrap stack"><div class="lvhead"><h2>왜 이 주제인가</h2></div><div class="steps">' + ''.join(f'<div><b>{a}</b><p>{b}</p></div>' for a, b in W) + '</div>'
              + '<details class="more"><summary>큰 그림 — 이 회차가 흘러가는 4단계 (펼쳐 보기)</summary>' + (f'<p class="lead">{P["big_lead"]}</p>' if P.get('big_lead') else '') + '<div class="steps four">' + ''.join(f'<div><b>{a}</b><p>{b}</p></div>' for a, b in Bg) + '</div></details></div></section>')
     for i, l in enumerate(L): o.append(level_html(l, i, M, P))
-    o.append(f'<section class="level" id="dash"><div class="wrap stack"><div class="lvhead"><h2>한눈에 보는 대시보드</h2><p class="lead">칸 ①②③에서 본 것을 한 화면에 모았어요. ▶ 재생을 누르면 숫자 카드와 그림이 함께 바뀝니다. 처음 값은 본문 예시와 같아요.</p></div><div class="dash panel" data-dash="{num}"></div></div></section>')
+    o.append(f'<section class="level" id="dash"><div class="wrap stack"><div class="lvhead"><h2>한눈에 보는 대시보드</h2><p class="lead">단계 ①②③에서 본 것을 한 화면에 모았어요. ▶ 재생을 누르면 숫자 카드와 그림이 함께 바뀝니다. 처음 값은 본문 예시와 같아요.</p></div><div class="dash panel" data-dash="{num}"></div></div></section>')
     o.append(duel_html(P, M))
     S = P['summary']
     rows = ''.join(f'<tr><td>{a}</td><td>{b}</td><td>{c}</td></tr>' for a, b, c in S['table'])
     terms = ''.join(f'<div><b>{a}</b><p>{b}</p></div>' for a, b in S['terms'])
     lims = ''.join(f'<li>{x}</li>' for x in S['analogy_limits'])
-    o.append(f'''<section class="level" id="sum"><div class="wrap stack"><div class="lvhead"><h2>정리</h2></div><div class="tw"><table class="tb"><tr><th>칸</th><th>새로 생긴 능력</th><th>남은 한계</th></tr>{rows}</table></div><div class="steps">{terms}</div><div class="explain"><h4>비유의 한계</h4><ul>{lims}</ul></div>{say("doc","magic",S["doc_line"],M)}</div></section>''')
+    o.append(f'''<section class="level" id="sum"><div class="wrap stack"><div class="lvhead"><h2>정리</h2></div><div class="tw"><table class="tb"><tr><th>단계</th><th>새로 생긴 능력</th><th>남은 한계</th></tr>{rows}</table></div><div class="steps">{terms}</div><div class="explain"><h4>비유의 한계</h4><ul>{lims}</ul></div>{say("doc","magic",S["doc_line"],M)}</div></section>''')
     o.append('<section class="level" id="outro"><div class="wrap stack"><div class="lvhead"><h2>아웃트로</h2></div>' + ''.join(say(*t, M) for t in P['outro']) + '</div></section>')
     o.append(KG_SEC); o.append(export_sec(M)); o.append(footer(P))
     G = kg_build(P)
