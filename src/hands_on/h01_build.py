@@ -470,7 +470,13 @@ def scene_img(key, alt):
     import base64
     f = os.path.join(SRC, 'build', 'scenes', key + '.webp')
     if not os.path.exists(f): return ''
-    b64 = base64.b64encode(open(f, 'rb').read()).decode()
+    from PIL import Image
+    import io
+    im = Image.open(f).convert('RGB'); small = im.resize((im.width // 4, im.height // 4), Image.NEAREST)
+    # 4배 정수 격자 그림이므로 원래 격자(300×200)로 넣고 브라우저가 픽셀 그대로 키운다(무손실·용량 1/8)
+    assert small.resize(im.size, Image.NEAREST).tobytes() == im.tobytes(), key + ': 4배 격자가 아님'
+    buf = io.BytesIO(); small.save(buf, 'WEBP', lossless=True, method=6)
+    b64 = base64.b64encode(buf.getvalue()).decode()
     return f'<figure class="scene"><img src="data:image/webp;base64,{b64}" width="1200" height="800" alt="{e(alt)}" loading="lazy" decoding="async"></figure>'
 
 def say2(who, mood, text, M):
@@ -576,7 +582,8 @@ def page():
     h = h.replace('</style>', EXTRA_CSS + '\n</style>')
     h = h.replace('\uce78 대화', '단계 대화').replace('아홉 \uce78 같은 크기', '아홉 장 같은 크기')
     navh = '<nav class="top" aria-label="섹션 바로가기"><div class="wrap"><a class="logo" href="index.html"><i></i>핀테크 데이터 연구실 · 실전 #01</a><div class="links">' + ''.join(f'<a href="#{i}">{e(t)}</a>' for i, t in links) + '</div></div></nav>\n'
-    o = [h, navh, B.cover(P, M, 'cover_hands_on_01')]
+    cov = re.sub(r'alt="[^"]*"', 'alt="실제로 해보는 데이터 분석편 #01 표지: 초파리 팀(초파리 연구원·시아·하루·X2)과 주판봇 팀(주판봇·모아·X1·X3)이 발표회장 양쪽에 서고, 가운데 심판석에서 박사가 빨강·청록 판을 든 장면"', B.cover(P, M, 'cover_hands_on_01'), count=1)
+    o = [h, navh, cov]
     kp = ''.join(f'<div class="kpi {c}"><b>{v}</b><span>{t}</span></div>' for v, t, c in P['kpis'])
     hero = [('doc', 'front', '오늘은 강의 대신 발표회예요. 코드 여섯 개를 두 팀이 나눠 발표하고, 저는 심판을 봅니다.'),
             ('fly', 'point', '초파리 팀은 숫자를 의심하는 팀. 시아, 하루, X2가 함께해.'),
