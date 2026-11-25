@@ -71,6 +71,16 @@
   예: [01 노트북 Colab에서 열기](https://colab.research.google.com/github/adminmrobo/fintech_data_analysis/blob/main/notebooks/01_fintech_industry.ipynb)
 - **강사용 진행 가이드** [`docs/INSTRUCTOR_GUIDE.md`](docs/INSTRUCTOR_GUIDE.md) — 100분 기준 진행 순서, 회차별 3줄 요약·칸별 핵심·대결 설정·칠판 문장·원자료와 다른 곳.
 
+## 실제로 해보는 데이터 분석편 (독립 콘텐츠)
+
+강의 회차와 별도로, fintech-data 실습 코드를 **직접 돌려 보고 결과를 읽는** 시리즈입니다.
+
+| 편 | 페이지 | 코드·데이터 | 이미지 지시문 |
+|---|---|---|---|
+| #01 · 공개 금융 데이터 코드 6개 불러오기 | [hands_on_01.html](https://adminmrobo.github.io/fintech_data_analysis/hands_on_01.html) | [`hands_on/01/`](hands_on/01/) — Revolution~Revolution6을 코드 A~F 이름으로 복사, 원본·실행판 노트북·데이터 | [`docs/GENSPARK_PROMPTS_hands_on_01.md`](docs/GENSPARK_PROMPTS_hands_on_01.md) |
+
+#01은 연구실 식구가 두 팀(초파리 팀: 초파리 연구원·시아·하루·X2 / 주판봇 팀: 주판봇·모아·X1·X3)으로 나뉘어 조별 발표·개인 발표·시각화 대결·상담으로 진행하고, 박사가 심판을 봅니다. 라운드마다 코드가 하는 일 · 데이터 요약 · 실행 결과 · AI 판단 코너 · 확인 퀴즈가 있습니다.
+
 ## 검토 반영
 
 - **수포자 스킬(supoja-content) 검토:** AI 판단 문항 13개, 기호 읽는 법(Σ·e·φ·σ·R² 등), 손계산 예시 보강 — `src/pages/_supoja.py`
@@ -96,6 +106,7 @@ index.html, 01_…html ~ 15_…html   목차와 15회차 (08·15는 요약정리
 KG_00_registry.json               시리즈 지식 그래프 등록부
 data/                             fintech-data 복사본 (data/README.md)
 notebooks/                        회차별 Colab 실습 노트북 13개 (실행 결과 포함)
+hands_on_01.html, hands_on/01/    실제로 해보는 데이터 분석편 #01 (코드 A~F, 원본·실행판 노트북, 데이터)
 assets/og_series.jpg, og/         공유 미리보기 (픽셀아트 표지에서 자동 생성)
 assets/thumb_portfolio.webp       포트폴리오 카드 그림 (Genspark 픽셀아트, 원본 docs/portfolio_fintech_1920.png)
 docs/COVER_PROMPTS_series.md      표지 16장 그림 지시문 (Genspark용, 작업 순서 포함)
@@ -118,6 +129,7 @@ mkdir -p out/docs && python3 build/make_docs.py   # 그림 지시문 (out/docs �
 node build/check.js ../*.html        # 390·1280px 가로 넘침·콘솔 오류 점검 (Playwright)
 python3 build/make_notebooks.py      # Colab 노트북 생성·실행 (nbformat, nbclient, ipykernel 필요)
 python3 build/make_guide.py          # docs/INSTRUCTOR_GUIDE.md
+python3 hands_on/h01_build.py ..     # 실제로 해보는 데이터 분석편 #01 (hands_on_01.html)
 ```
 
 ### 표지 그림 넣기
