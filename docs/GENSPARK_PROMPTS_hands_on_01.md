@@ -3,14 +3,14 @@
 페이지: `hands_on_01.html` (핀테크 데이터 분석 : 실제로 해보는 데이터 분석편 #01)
 지금 페이지는 그림 없이도 완성 상태예요(대체 표지 + 캐릭터 팩 표정). 아래 그림을 받으면 자리에 자동으로 들어갑니다.
 
-**그림체는 모두 16비트 RPG풍 픽셀아트(도트)입니다.** 매끈한 일러스트·3D·수채화·애니메이션풍으로 나오면 쓰지 않고 다시 요청합니다. 배경은 밝은 낮, 흰 페이지에 어울리는 흰 벽 위주입니다. 그림 안에 글자·숫자·로고는 넣지 않습니다.
+**그림체는 모두 16비트 RPG풍 픽셀아트(도트)이되, 픽셀이 작고 촘촘한 고해상도입니다.** 매끈한 일러스트·3D·수채화·애니메이션풍으로 나오면 쓰지 않고 다시 요청합니다. 배경은 밝은 낮, 흰 페이지에 어울리는 흰 벽 위주입니다. 그림 안에 글자·숫자·로고는 넣지 않습니다.
 
 ## 1. 그림 전체 목록
 
 | 우선 | 키 | 비율 · 크기 | 자리 | 장면 한 줄 |
 |---|---|---|---|---|
-| P1 | `cover_hands_on_01` | 16:9 · 480×270 → 4배 1920×1080 | 맨 위 표지 | 연구실 발표회장. 왼쪽 초파리 팀, 오른쪽 주판봇 팀, 가운데 심판석의 박사 |
-| P2 | `h01_A` | 3:2 · 300×200 → 4배 1200×800 | 코드 A | 초파리 팀 조별 발표 — 펼친 장부 네 권과 빈 곳 찾기 |
+| P1 | `cover_hands_on_01` | 16:9 · 1920×1080 (최소 1600×900) | 맨 위 표지 | 연구실 발표회장. 왼쪽 초파리 팀, 오른쪽 주판봇 팀, 가운데 심판석의 박사 |
+| P2 | `h01_A` | 3:2 · 1536×1024 (최소 1200×800) | 코드 A | 초파리 팀 조별 발표 — 펼친 장부 네 권과 빈 곳 찾기 |
 | P2 | `h01_B` | 3:2 | 코드 B | X1 개인 발표 — 돋보기로 서류 속 물음표 모양 빈 곳 찾기 |
 | P2 | `h01_C` | 3:2 | 코드 C | 시각화 대결 — 이젤 두 개(솟은 선 하나 vs 한 점에서 퍼지는 선 넷) |
 | P2 | `h01_D` | 3:2 | 코드 D | 상담 — 모아와 박사, 똑같은 상자 두 개 |
@@ -44,7 +44,7 @@
 ## 3. 공통 그림체 문장 (지시문 맨 앞에 붙임)
 
 ```
-16-bit RPG style PIXEL ART. Retro SNES-era pixel art scene. Draw on a low-resolution grid, then upscale exactly 4x with nearest-neighbor so every pixel is a crisp square block. Limited palette (about 32 colors), bold dark 1-pixel outlines, flat 2-3 tone cel shading, small pixel highlights, hard pixel edges, no anti-aliasing, no blur. The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors. Bright daylight research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), high-key image that blends into a white web page, no dark background, no night. No text, no letters, no numbers, no logos, no watermark anywhere in the image (charts and papers show only shapes and lines).
+HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art illustration, like a polished modern pixel-art game key visual. Render natively at the full output size with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks. Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level and finish of the attached quality reference image (style_quality_reference.png), but keep THIS scene's bright daytime colors. The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors. Bright daylight research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), high-key image that blends into a white web page, no dark background, no night. No text, no letters, no numbers, no logos, no watermark anywhere in the image (charts and papers show only shapes and lines).
 ```
 
 ---
@@ -54,14 +54,14 @@
 **Genspark에 붙여 넣기 ↓**
 ```
 웹페이지 맨 위에 거는 표지 그림 1장을 만들어 줘.
-- 그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림). 매끈한 일러스트·3D·수채화 금지
-- 비율 16:9, 480×270 픽셀로 그린 뒤 4배(1920×1080)로 확대 — 확대할 때 흐리게 하지 말 것
+- 그림체는 16비트 RPG풍 픽셀아트(도트 그림)이되, 픽셀이 작고 촘촘한 고해상도로 얼굴·손·옷 주름·소품을 세밀하게. 매끈한 일러스트·3D·수채화 금지
+- 비율 16:9, 가로 1920(최소 1600) 픽셀 고해상도로. 작은 그림을 크게 확대해 큰 네모 블록이 보이는 그림은 안 됨
 - 첨부한 참고 이미지(픽셀아트 스프라이트)의 캐릭터들을 같은 그림체·같은 외형으로
 - 그림 안에 글자·숫자·로고 금지. 얼굴은 가장자리에서 떨어진 가운데 영역에
 아래 영어 프롬프트를 그대로 써 줘.
 
 [공통 그림체 문장]
-Wide 16:9 website cover, 480x270 grid upscaled 4x to 1920x1080.
+Wide 16:9 website cover, output 1920x1080 (at least 1600x900), high-resolution detailed pixel art.
 Scene: a bright lab presentation hall set up like a friendly school contest. A large blank projector screen at the back center showing only simple bar and line shapes. Six colorful file folders (A to F shown only by six different tab colors, no letters) pinned in a row under the screen.
 Left side, the red team with small red ribbons and a little red flag: [초파리 연구원 고정 문장] as team leader standing in front pointing at the screen; [시아 고정 문장]; [하루 고정 문장] holding a blank tablet; [X2 고정 문장].
 Right side, the teal team with small teal ribbons and a little teal flag: [주판봇 고정 문장] as team leader proudly raising its abacus; [모아 고정 문장] holding a clipboard; [X1 고정 문장]; [X3 고정 문장].
@@ -74,7 +74,7 @@ Cheerful, playful contest mood. All nine characters visible, nobody cut off at t
 
 ## P2 · 라운드 장면 6장 (3:2, 1200×800)
 
-모두 **[공통 그림체 문장] + "3:2 scene illustration, 300x200 grid upscaled 4x to 1200x800."** 로 시작합니다. 3장씩 두 번(A~C, D~F)으로 나눠 요청하세요.
+모두 **[공통 그림체 문장] + "3:2 scene illustration, output 1536x1024 (at least 1200x800), high-resolution detailed pixel art."** 로 시작합니다. 3장씩 두 번(A~C, D~F)으로 나눠 요청하세요.
 
 ### h01_A — 코드 A · 초파리 팀 조별 발표
 ```
@@ -108,7 +108,7 @@ Center: two separate piles of newspapers on a table (pages show only gray lines 
 
 ## P3 · h01_score — 공동 우승 (3:2, 1200×800)
 ```
-[공통 그림체 문장] 3:2 scene illustration, 300x200 grid upscaled 4x to 1200x800.
+[공통 그림체 문장] 3:2 scene illustration, output 1536x1024 (at least 1200x800), high-resolution detailed pixel art.
 A small award stage with two identical golden trophies, one with a red ribbon and one with a teal ribbon. [박사 고정 문장] stands in the middle as referee holding both arms up. Left: [초파리 연구원 고정 문장], [시아 고정 문장], [하루 고정 문장], [X2 고정 문장] celebrating. Right: [주판봇 고정 문장] looking a bit sheepish but happy, [모아 고정 문장], [X1 고정 문장], [X3 고정 문장] cheering. Confetti in red and teal. Behind them a scoreboard showing only two bars of nearly equal height (no numbers).
 ```
 
@@ -118,8 +118,8 @@ A small award stage with two identical golden trophies, one with a red ribbon an
 
 1. 받은 그림을 저장소 루트 `incoming/` 폴더에 키 이름 그대로 저장합니다: `cover_hands_on_01.png`, `h01_A.png` … `h01_F.png`, `h01_score.png`
 2. `cd src && python3 hands_on/add_images_h01.py`
-   - 표지 → `src/build/covers/cover_hands_on_01.webp` (1920×1080, 정수배 NEAREST, 무손실 WebP) + 공유 미리보기 `assets/og/cover_hands_on_01.jpg` (1200×630)
-   - 장면 → `src/build/scenes/h01_*.webp` (1200×800, 정수배 NEAREST, 무손실 WebP)
+   - 표지 → `src/build/covers/cover_hands_on_01.webp` (1600×900 WebP, 220KB 이하) + 공유 미리보기 `assets/og/cover_hands_on_01.jpg` (1200×630)
+   - 장면·구조 일러스트 → `src/build/scenes/h01_*.webp` (1200×800 WebP, 180KB 이하)
 3. `python3 hands_on/h01_build.py ..` — 표지와 라운드 장면이 페이지에 자동으로 들어갑니다.
 4. 390px·1280px 화면에서 얼굴이 잘리지 않았는지 확인합니다.
 

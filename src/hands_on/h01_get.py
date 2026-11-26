@@ -195,9 +195,13 @@ def ig_img(k):
     f = os.path.join(ROOT, 'src', 'build', 'scenes', f'h01_ig_{k}.webp')
     if not os.path.exists(f): return ''
     im = Image.open(f).convert('RGB'); sm = im.resize((im.width // 4, im.height // 4), Image.NEAREST)
-    if sm.resize(im.size, Image.NEAREST).tobytes() != im.tobytes(): sm = im
-    b = io.BytesIO(); sm.save(b, 'WEBP', lossless=True, method=6)
-    return (f'<figure class="igill"><img src="data:image/webp;base64,{base64.b64encode(b.getvalue()).decode()}" width="1200" height="800" alt="{e(IG_ALT[k])}" loading="lazy" decoding="async">'
+    grid = sm.resize(im.size, Image.NEAREST).tobytes() == im.tobytes()
+    if grid:
+        b = io.BytesIO(); sm.save(b, 'WEBP', lossless=True, method=6); data = b.getvalue()
+    else:
+        data = open(f, 'rb').read()
+    cls = ' class="px"' if grid else ''
+    return (f'<figure class="igill"><img{cls} src="data:image/webp;base64,{base64.b64encode(data).decode()}" width="1200" height="800" alt="{e(IG_ALT[k])}" loading="lazy" decoding="async">'
             f'<figcaption><b>그림 속 순서</b> — 아래 번호 카드와 같은 번호예요. {e(IG_CAP[k])}</figcaption></figure>')
 
 def infographic(r, img):
@@ -304,7 +308,7 @@ svg.pix{display:inline-block;flex:none;image-rendering:pixelated;vertical-align:
 .sk-steps li:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:30%;color:#8a90a0;font-weight:700}
 .sk-steps b{font-size:14px}.sk-steps span{font-size:12px;color:var(--muted);line-height:1.5}
 .sk-mx td,.sk-mx th{text-align:center;font-size:13px;padding:6px}.sk-mx td{color:var(--seq);font-size:16px}
-.igill{margin:0}.igill img{width:100%;height:auto;border-radius:12px;image-rendering:pixelated;border:1px solid var(--rule)}.igill figcaption{font-size:13px;color:#4a5068;line-height:1.7;margin-top:8px;background:var(--panel2);border-radius:8px;padding:8px 12px}
+.igill{margin:0}.igill img{width:100%;height:auto;border-radius:12px;border:1px solid var(--rule)}.igill figcaption{font-size:13px;color:#4a5068;line-height:1.7;margin-top:8px;background:var(--panel2);border-radius:8px;padding:8px 12px}
 .getbox{border:1px solid var(--rule);border-radius:12px;padding:12px 16px;background:#fff}
 .getbox>summary{cursor:pointer;font-weight:700;display:flex;gap:8px;align-items:center;list-style:none}.getbox>summary::-webkit-details-marker{display:none}
 .getbox>summary::after{content:"펼치기 ▾";margin-left:auto;font-size:12px;color:var(--muted);font-weight:400}.getbox[open]>summary::after{content:"접기 ▴"}
