@@ -478,8 +478,11 @@ def scene_img(key, alt):
     grid = small.resize(im.size, Image.NEAREST).tobytes() == im.tobytes()
     if grid:  # 예전 4배 격자 그림: 원래 격자로 넣고 브라우저가 픽셀 그대로 키운다
         buf = io.BytesIO(); small.save(buf, 'WEBP', lossless=True, method=6); data = buf.getvalue()
-    else:     # 고해상도 그림: 받은 WebP 그대로
-        data = open(f, 'rb').read()
+    else:     # 고해상도 그림: 별도 파일로 두고 지연 로딩(페이지 HTML을 가볍게)
+        import shutil
+        os.makedirs(os.path.join(ROOT, 'assets', 'img', 'h01'), exist_ok=True)
+        shutil.copyfile(f, os.path.join(ROOT, 'assets', 'img', 'h01', key + '.webp'))
+        return f'<figure class="scene"><img src="assets/img/h01/{key}.webp" width="1200" height="800" alt="{e(alt)}" loading="lazy" decoding="async"></figure>'
     b64 = base64.b64encode(data).decode()
     cls = ' class="px"' if grid else ''
     return f'<figure class="scene"><img{cls} src="data:image/webp;base64,{b64}" width="1200" height="800" alt="{e(alt)}" loading="lazy" decoding="async"></figure>'
