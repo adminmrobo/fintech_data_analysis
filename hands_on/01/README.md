@@ -33,6 +33,21 @@
 
 - [A](https://colab.research.google.com/github/adminmrobo/fintech_data_analysis/blob/main/hands_on/01/A_customer_data_tour/A_customer_data_tour.ipynb) · [B](https://colab.research.google.com/github/adminmrobo/fintech_data_analysis/blob/main/hands_on/01/B_fraud_phishing_check/B_fraud_phishing_check.ipynb) · [C](https://colab.research.google.com/github/adminmrobo/fintech_data_analysis/blob/main/hands_on/01/C_portfolio_price_diary/C_portfolio_price_diary.ipynb) · [D](https://colab.research.google.com/github/adminmrobo/fintech_data_analysis/blob/main/hands_on/01/D_loan_ledger_check/D_loan_ledger_check.ipynb) · [E](https://colab.research.google.com/github/adminmrobo/fintech_data_analysis/blob/main/hands_on/01/E_dictionary_and_bankruptcy/E_dictionary_and_bankruptcy.ipynb) · [F](https://colab.research.google.com/github/adminmrobo/fintech_data_analysis/blob/main/hands_on/01/F_text_and_ratings/F_text_and_ratings.ipynb)
 
+## 받기 — 장별로 또는 한꺼번에
+
+해설 페이지의 **"받아서 직접 해 보기"** 상자(맨 위 한꺼번에, 라운드마다 장별)에서 아래를 모두 받을 수 있습니다.
+
+| 받을 것 | 장별(코드 하나) | 한꺼번에 |
+|---|---|---|
+| Colab으로 데이터 받기 | 라운드의 ① 코드 셀 | 여섯 코드의 표 23개를 `data` 상자에 담는 셀 하나 |
+| 코드 풀버전 | `<폴더>/<폴더>.py` · `downloads/<폴더>_code.zip` · Colab에서 열기 | `downloads/all_code.zip` · 폴더째 받아 A~F 차례로 실행하는 셀 |
+| CSV 파일 | `downloads/<폴더>_csv.zip` · 파일별 받기 링크 · Colab에서 `to_csv` 후 내려받기 | `downloads/all_csv.zip` · 전체 파일 목록 |
+| 코드 구조 | 라운드마다 구조 인포그래픽(픽셀 아이콘 6단계) | 여섯 코드의 공통 뼈대 인포그래픽 |
+
+- 풀버전 `.py`는 실행판 노트북을 파이썬 파일 하나로 옮긴 것입니다. 폴더 안에서는 `data/`를, 밖에서는 GitHub의 데이터를 읽어 어디서든 그대로 돌아갑니다. Colab에서는 `%run <폴더>.py`.
+- zip에는 보통 CSV만 넣었습니다. gzip 파일(뉴스·넷플릭스·영화 정보)과 대출 장부 세 조각은 따로 받으세요.
+- 다시 만들기: `python3 tools/make_downloads.py`
+
 ## 코드별 요약 (실행 결과 기준)
 
 ### A · 고객 데이터 4종 둘러보기
@@ -80,6 +95,7 @@
 
 ```bash
 cd hands_on/01 && python3 tools/make_notebooks.py        # 실행판 노트북 6개 생성·실행
+python3 tools/make_downloads.py                           # 풀버전 .py와 받기용 zip
 cd ../../src && python3 hands_on/h01_build.py ..          # 해설 페이지 hands_on_01.html
 ```
 

@@ -14,6 +14,8 @@ OUTDIR = os.path.abspath(sys.argv[1])
 sys.path.insert(0, os.path.join(SRC, 'build')); sys.path.insert(0, os.path.join(SRC, 'pages'))
 import build as B
 from _mk import Q, G
+sys.path.insert(0, HERE)
+import h01_get as GT
 e = html.escape
 D = os.path.join(ROOT, 'hands_on', '01')
 FILE = 'hands_on_01.html'
@@ -462,7 +464,7 @@ svg.chart .ct{font-size:14px;font-weight:700;fill:#2b2f3a}svg.chart .cv{font-siz
 .scene{margin:0}.scene img{width:100%;height:auto;border-radius:12px;image-rendering:pixelated;border:1px solid var(--rule)}
 @media (max-width:860px){.dsum{overflow:visible}.dsum table.tb{min-width:0}.dsum tr:first-child{display:none}.dsum tr{display:block;border:1px solid var(--rule);border-radius:10px;padding:10px 12px;margin-bottom:10px;background:#fff}.dsum td{display:block;border:0;padding:3px 0;text-align:left!important}.dsum td::before{content:attr(data-l);display:block;font-size:12px;color:var(--muted)}}
 .runbox{display:flex;gap:10px;flex-wrap:wrap}.runbox a{font-size:14px}
-'''
+''' + GT.CSS
 
 SCENE_ALT = {'A': '초파리 팀이 펼친 장부 네 권에서 빈 곳을 찾는 장면', 'B': 'X1이 돋보기로 보험 서류 속 물음표 모양 빈 곳을 찾는 장면', 'C': '원래 가격 차트와 첫날=100 차트를 나란히 놓고 박사가 판정하는 장면',
              'D': '모아가 박사에게 똑같은 두 상자에 대해 상담하는 장면', 'E': '하루가 변수 사전과 100개 건물 중 빨간 3개를 보여 주는 장면', 'F': '리본 색으로만 구분되는 신문 두 더미를 두고 X2가 반론하는 장면', 'score': '두 팀이 트로피 두 개를 받는 공동 우승 장면'}
@@ -517,6 +519,7 @@ def round_html(r, i, M):
 <div class="box3 c2"><h3><i>2</i>데이터 요약</h3><div class="tw dsum"><table class="tb"><tr><th>표</th><th>줄 × 열</th><th>한 줄은 무엇?</th><th>빈 값·주의</th></tr>{drow}</table></div></div>
 <div class="box3 c3"><h3><i>3</i>실행 결과 — 화면에 나온 숫자 읽기</h3><ul>{res}</ul><div class="charts">{charts}</div><p class="ana"><b>{r["work"].split(":")[0]}</b>{r["work"].split(":",1)[1]}</p></div>
 </div>''')
+    o.append(GT.infographic(r, lambda who, mood: B.img(who, mood, M, '')))
     w, m = r.get('why'), r.get('math')
     if w or m:
         o.append('<div class="whymath">')
@@ -531,6 +534,7 @@ def round_html(r, i, M):
     rows = ''.join(f'<tr><td><code>{e(c)}</code></td><td>{t}</td></tr>' for c, t in r['snip'])
     o.append(f'<details class="code"><summary>원본 파이썬 코드로 보면 (몰라도 됩니다)</summary><table>{rows}</table>'
              f'<p class="colab runbox">직접 돌려 보기 → <a href="{COLAB}{r["folder"]}/{r["folder"]}.ipynb" target="_blank" rel="noopener">실행판 노트북 Colab에서 열기</a> · <a href="{GH}{r["folder"]}/original_Loading_Data.ipynb" target="_blank" rel="noopener">원본 노트북 보기</a> · <a href="{GH}{r["folder"]}/data" target="_blank" rel="noopener">데이터 폴더</a></p></details>')
+    o.append(GT.get_box(r))
     j = r['judge']
     if j['score']:
         pts = f'<span>정확 <b>{j["score"][0]}</b></span><span>쉬움 <b>{j["score"][1]}</b></span><span>함정 찾기 <b>{j["score"][2]}</b></span><span>합 <b>{sum(j["score"])}</b>/15</span>'
@@ -575,7 +579,7 @@ FAQ = [('코드를 하나도 몰라도 이 페이지를 볼 수 있나요?', '�
 def page():
     M = B.Moods()
     for k, v in B.DEFM.items(): M.add(k, v)
-    links = [('three', '3줄 요약'), ('cast', '두 팀'), ('map', '코드 이름표'), ('review', '30초 복습')] + [(r['id'], f'코드 {r["code"]}') for r in R] + [('score', '판정'), ('sum', '정리'), ('faq', '상담실'), ('kg', '색인'), ('export', '꾸러미')]
+    links = [('three', '3줄 요약'), ('cast', '두 팀'), ('map', '코드 이름표'), ('get', '받기'), ('review', '30초 복습')] + [(r['id'], f'코드 {r["code"]}') for r in R] + [('score', '판정'), ('sum', '정리'), ('faq', '상담실'), ('kg', '색인'), ('export', '꾸러미')]
     h = B.head(P, P['title'], P['desc'], FILE)
     ogf = 'assets/og/cover_hands_on_01.jpg' if os.path.exists(os.path.join(ROOT, 'assets', 'og', 'cover_hands_on_01.jpg')) else 'assets/og_series.jpg'
     h = re.sub(r'<meta property="og:image" content="[^"]*">', f'<meta property="og:image" content="{B.SITE}{ogf}">', h)
@@ -583,7 +587,7 @@ def page():
     h = h.replace('\uce78 대화', '단계 대화').replace('아홉 \uce78 같은 크기', '아홉 장 같은 크기')
     navh = '<nav class="top" aria-label="섹션 바로가기"><div class="wrap"><a class="logo" href="index.html"><i></i>핀테크 데이터 연구실 · 실전 #01</a><div class="links">' + ''.join(f'<a href="#{i}">{e(t)}</a>' for i, t in links) + '</div></div></nav>\n'
     cov = re.sub(r'alt="[^"]*"', 'alt="실제로 해보는 데이터 분석편 #01 표지: 초파리 팀(초파리 연구원·시아·하루·X2)과 주판봇 팀(주판봇·모아·X1·X3)이 발표회장 양쪽에 서고, 가운데 심판석에서 박사가 빨강·청록 판을 든 장면"', B.cover(P, M, 'cover_hands_on_01'), count=1)
-    o = [h, navh, cov]
+    o = [h, GT.symbols(), navh, cov]
     kp = ''.join(f'<div class="kpi {c}"><b>{v}</b><span>{t}</span></div>' for v, t, c in P['kpis'])
     hero = [('doc', 'front', '오늘은 강의 대신 발표회예요. 코드 여섯 개를 두 팀이 나눠 발표하고, 저는 심판을 봅니다.'),
             ('fly', 'point', '초파리 팀은 숫자를 의심하는 팀. 시아, 하루, X2가 함께해.'),
@@ -595,6 +599,7 @@ def page():
     o.append(f'<section class="level" id="cast"><div class="wrap stack"><div class="lvhead"><h2>오늘의 두 팀과 심판</h2><p class="lead">인턴 시아·모아, 조수 하루, 그리고 처음 무대에 오른 X1·X2·X3가 두 팀으로 나뉘었어요. 초파리 연구원과 주판봇이 조장, 박사가 심판이에요.</p></div>{team_html(M)}<p class="muted">노란 점선 밑줄을 누르거나 손가락으로 대면 뜻이 나옵니다. 오른쪽 아래 도우미에서 밑줄을 핵심 → 전체 → 끄기로 바꿀 수 있어요.</p></div></section>')
     o.append(f'''<section class="level" id="map"><div class="wrap stack"><div class="lvhead"><h2>코드 이름표 — Revolution 대신 하는 일로 부르기</h2><p class="lead">원래 저장소 여섯 개는 이름이 Revolution, Revolution2 … Revolution6이라 열어 보기 전에는 무엇인지 알 수 없어요. 그대로 복사한 뒤, 코드가 하는 일에 맞춰 A~F 이름을 붙였어요.</p></div>{map_html()}
 <div class="steps"><div><b>폴더마다 들어 있는 것</b><p>① <code>original_Loading_Data.ipynb</code> 원본 노트북(손대지 않음) ② <code>README_original.md</code> 원본 설명 ③ <code>data/</code> 데이터 ④ 설명과 확인 셀을 더해 실행까지 마친 <b>실행판 노트북</b></p></div><div><b>오늘 진행 방식</b><p>조별 발표 2번, 개인 발표 2번, 시각화 대결 1번, 상담 1번. 라운드가 끝날 때마다 박사가 점수를 매기고 확인 퀴즈 2문제가 나와요.</p></div><div><b>직접 돌려 보려면</b><p>각 라운드의 "원본 파이썬 코드로 보면" 상자에서 Colab 링크를 누르세요. 설치할 것이 없어요. <a href="{GH}" target="_blank" rel="noopener">hands_on/01 폴더 전체 보기</a></p></div></div></div></section>''')
+    o.append(GT.get_section(R, lambda who, mood: B.img(who, mood, M, ''), say2('doc', 'explain', '코드를 읽는 것보다 한 번 돌려 보는 게 훨씬 빨리 이해돼요. 아래 공통 뼈대 그림을 먼저 보고, 마음에 드는 코드 하나를 Colab에서 열어 보세요. 막히면 그 라운드의 상담실과 퀴즈로 돌아오면 돼요.', M)))
     o.append(f'''<section class="level" id="review"><div class="wrap stack"><div class="lvhead"><h2>30초 복습 — 표 데이터를 읽는 네 단어</h2></div>
 <div class="review30"><h3>엑셀 시트 하나를 떠올려 보세요</h3>
 <table class="tabletoy"><tr><th></th><th>나이</th><th>흡연</th><th>의료비</th></tr><tr><th>1번 고객</th><td>19</td><td>yes</td><td>16,885</td></tr><tr><th>2번 고객</th><td>18</td><td>no</td><td>1,726</td></tr><tr><th>3번 고객</th><td class="na">?</td><td>no</td><td class="na">(비어 있음)</td></tr></table>
@@ -629,6 +634,7 @@ def page():
     js = open(os.path.join(SRC, 'build', 'lab.js'), encoding='utf-8').read()
     js += '\nvar FD={};var SIMS={};function initDash(){}\n'
     js += "document.addEventListener('DOMContentLoaded',function(){});(function(){var r=document.getElementById('voteRes');document.querySelectorAll('.vote .bt').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.vote .bt').forEach(function(x){x.classList.remove('on')});b.classList.add('on');r.textContent='\"'+b.dataset.v+'\"을(를) 골랐어요. 박사의 답: 질문에 따라 둘 다 맞아요. 합계는 기여, 평균은 발표 실력을 보여 줘요.'})})})();\n"
+    js += GT.JS
     B.JS = js
     P['duels_js'] = []
     o.append(B.tail(P, G_))
