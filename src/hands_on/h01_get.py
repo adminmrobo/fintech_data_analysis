@@ -239,7 +239,7 @@ def get_section(R, img, say):
 <div class="panel"><h3>{pix("zip", 22)} 파일로 한꺼번에 받기</h3>{btns}<p class="muted" style="margin:10px 0 0">gzip으로 줄인 큰 파일(가짜·진짜 뉴스, 넷플릭스, 영화 정보)과 대출 장부 세 조각은 zip에 넣지 않았어요. 아래 표에서 따로 받거나 Colab 코드로 읽으세요.</p>
 <p style="margin:12px 0 0"><b>장별로 받기</b></p><div class="getbtns">{per}</div></div>
 <details class="getbox"><summary>{pix("colab", 26)} Colab으로 여섯 코드의 데이터를 한 번에 받기</summary>
-<p class="muted">Colab 셀 하나에 붙여 넣고 ▶ 실행하면 여섯 코드의 표 23개가 <b>data</b>라는 상자에 담겨요(대출 장부는 기본으로 빼 두었어요). 예: <code>data['A.bank_customers']</code></p>
+<p class="muted">Colab 셀 하나에 붙여 넣고 ▶ 실행하면 여섯 코드의 표 {sum(1 for r in R for n, v, k, m in FILES[r["folder"]] if k != "LOAN")}개가 <b>data</b>라는 상자에 담겨요(대출 장부는 기본으로 빼 두었어요). 예: <code>data['A.bank_customers']</code></p>
 {codeblock(all_data_cell(R), "한꺼번에 · 데이터 받기 (Colab 셀 하나)")}</details>
 <details class="getbox"><summary>{pix("save", 22)} 코드 풀버전을 한 번에 받아 차례로 실행하기</summary>
 <p class="muted">여섯 코드의 실행판(.py)을 데이터와 함께 받아 A부터 F까지 차례로 돌려요. 대출 장부 때문에 몇 분 걸릴 수 있어요.</p>
