@@ -173,6 +173,25 @@ GUIDE = {'A': ('sia', 'explain', '시아', '네 권을 받기 → 펼치기 → 
          'E': ('asst', 'guide', '하루', '사전을 붙이는 작은 함수가 이 코드의 핵심이에요. 함수는 "반복할 일을 이름 붙여 묶은 것"이에요.'),
          'F': ('x3', 'joy', 'X3', '글자 데이터도 결국 표예요. 한 줄 = 문장 하나, 평점 하나.')}
 
+IG_ALT = {'skel': '연구실 바닥의 일곱 정거장을 따라 아홉 캐릭터가 표를 들고 걷는 데이터 분석 공통 순서 그림',
+ 'A': '코드 A 순서 그림: 도구 상자, 책 네 권, 표 펼치기, 빈 곳 세기, 두 묶음 평균, 이상한 카드',
+ 'B': '코드 B 순서 그림: 도구 상자, 서류 네 묶음, 건강검진, 물음표 찾기, 이름표 갈아 끼우기, 비율 막대',
+ 'C': '코드 C 순서 그림: 도구 상자, 일기장, 건강검진, 출발선 맞추기, 쉼표 지우기, 주말 달력',
+ 'D': '코드 D 순서 그림: 도구 상자, 세 조각 잇기, 크기 재기, 금리 계단, 거의 빈 서랍, 똑같은 두 상자',
+ 'E': '코드 E 순서 그림: 도구 상자, 장부와 사전, 쪽지 붙이기 기계, 건강검진표, 띄어쓰기 털기, 빨간 건물 3개',
+ 'F': '코드 F 순서 그림: 도구 상자, 편지 상자, 꼬리표 분류, 리본 색 비교, 빈 극장 좌석, 막대그래프'}
+def ig_img(k):
+    """src/build/scenes/h01_ig_<k>.webp가 있으면 인포그래픽 그림으로 넣는다(4배 격자면 원래 격자로 넣어 용량을 줄임)."""
+    import base64, io
+    from PIL import Image
+    f = os.path.join(ROOT, 'src', 'build', 'scenes', f'h01_ig_{k}.webp')
+    if not os.path.exists(f): return ''
+    im = Image.open(f).convert('RGB'); sm = im.resize((im.width // 4, im.height // 4), Image.NEAREST)
+    if sm.resize(im.size, Image.NEAREST).tobytes() != im.tobytes(): sm = im
+    b = io.BytesIO(); sm.save(b, 'WEBP', lossless=True, method=6)
+    return (f'<figure class="igill"><img src="data:image/webp;base64,{base64.b64encode(b.getvalue()).decode()}" width="1200" height="800" alt="{e(IG_ALT[k])}" loading="lazy" decoding="async">'
+            f'<figcaption>발판 색 순서(빨강 → 주황 → 노랑 → 초록 → 청록 → 파랑{" → 보라" if k == "skel" else ""})가 아래 단계 번호와 같아요.</figcaption></figure>')
+
 def infographic(r, img):
     c = r['code']; who, mood, nm, line = GUIDE[c]
     files = ''.join(f'<span class="ig-chip in">{pix("table" if not n.endswith((".gz", "part0~2")) else ("parts" if "part" in n else "zip"), 16)}{e(os.path.basename(n))}</span>' for n, v, k, m in FILES[r['folder']] if not (c == 'D' and v == 'travel_insurance') and not (c == 'F' and v == 'movies'))
@@ -180,6 +199,7 @@ def infographic(r, img):
     steps = ''.join(f'<li class="{t}"><div class="ig-n">{i+1}</div>{pix(ic, 46, ti)}<b>{e(ti)}</b><code>{e(tok)}</code><span class="ig-out">→ {e(out)}</span><em>{"원본 코드" if t == "o" else "실행판에서 더함"}</em></li>' for i, (ic, ti, tok, out, t) in enumerate(STEPS[c]))
     return f'''<div class="infog" aria-label="코드 {c} 구조 인포그래픽">
 <div class="ig-top"><h3>{pix("look", 26)} 코드 {c}의 구조 한눈에 보기</h3><div class="ig-guide">{img(who, mood)}<p><b>{nm}</b> {e(line)}</p></div></div>
+{ig_img(c)}
 <div class="ig-flow"><div><span class="ig-lab">들어가는 파일</span><div class="ig-chips">{files}</div></div><div class="ig-arrow" aria-hidden="true">{pix("get", 28)}</div><div><span class="ig-lab">만들어지는 표 이름(변수)</span><div class="ig-chips">{dfs}</div></div></div>
 <ol class="ig-steps">{steps}</ol>
 <p class="ig-legend"><span class="o">원본 코드</span> fintech-data 노트북에 있던 단계 · <span class="p">실행판에서 더함</span> 이 저장소의 실행판 노트북·.py에 더한 확인 단계 · 그림 속 코드 이름표는 몰라도 됩니다</p>
@@ -194,6 +214,7 @@ def skeleton(R):
         has = {kind[s[0]] for s in STEPS[r['code']]}
         rows += f'<tr><th><a href="#{r["id"]}">코드 {r["code"]}</a></th>' + ''.join(f'<td>{"●" if i in has else ("○" if i == 6 else "")}</td>' for i in range(7)) + '</tr>'
     return f'''<div class="infog skel"><h3>{pix("look", 26)} 여섯 코드의 공통 뼈대 — 데이터 분석의 첫 일곱 걸음</h3>
+{ig_img('skel')}
 <ol class="sk-steps">{cells}</ol>
 <div class="tw"><table class="tb sk-mx"><tr><th></th>{"".join(f"<th>{t}</th>" for _, t, _ in SKEL)}</tr>{rows}</table></div>
 <p class="ig-legend">● 그 코드에 있는 단계 · ○ 이 페이지의 "CSV로 받기" 상자에서 직접 해 보는 단계. 코드마다 받는 데이터는 달라도 순서는 거의 같아요. 이 순서가 데이터 분석의 첫 걸음입니다.</p></div>'''
@@ -275,6 +296,7 @@ svg.pix{display:inline-block;flex:none;image-rendering:pixelated;vertical-align:
 .sk-steps li:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:30%;color:#8a90a0;font-weight:700}
 .sk-steps b{font-size:14px}.sk-steps span{font-size:12px;color:var(--muted);line-height:1.5}
 .sk-mx td,.sk-mx th{text-align:center;font-size:13px;padding:6px}.sk-mx td{color:var(--seq);font-size:16px}
+.igill{margin:0}.igill img{width:100%;height:auto;border-radius:12px;image-rendering:pixelated;border:1px solid var(--rule)}.igill figcaption{font-size:12.5px;color:var(--muted);margin-top:6px}
 .getbox{border:1px solid var(--rule);border-radius:12px;padding:12px 16px;background:#fff}
 .getbox>summary{cursor:pointer;font-weight:700;display:flex;gap:8px;align-items:center;list-style:none}.getbox>summary::-webkit-details-marker{display:none}
 .getbox>summary::after{content:"펼치기 ▾";margin-left:auto;font-size:12px;color:var(--muted);font-weight:400}.getbox[open]>summary::after{content:"접기 ▴"}

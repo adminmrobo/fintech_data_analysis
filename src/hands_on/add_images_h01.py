@@ -18,7 +18,7 @@ def pixel_fit(im, w, h):
     return im.resize((gw, gh), Image.NEAREST).resize((w, h), Image.NEAREST)
 
 for f in sorted(glob.glob(os.path.join(IN, '*'))):
-    b = os.path.basename(f); m = re.match(r'(cover_hands_on_01|h01_[A-F]|h01_score)\.(png|jpe?g|webp)$', b, re.I)
+    b = os.path.basename(f); m = re.match(r'(cover_hands_on_01|h01_[A-F]|h01_score|h01_ig_(?:skel|[A-F]))\.(png|jpe?g|webp)$', b, re.I)
     if not m: continue
     k = m.group(1); im = Image.open(f).convert('RGB')
     if k.startswith('cover'):
