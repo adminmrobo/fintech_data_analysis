@@ -180,6 +180,14 @@ IG_ALT = {'skel': '연구실 바닥의 일곱 정거장을 따라 아홉 캐릭�
  'D': '코드 D 순서 그림: 도구 상자, 세 조각 잇기, 크기 재기, 금리 계단, 거의 빈 서랍, 똑같은 두 상자',
  'E': '코드 E 순서 그림: 도구 상자, 장부와 사전, 쪽지 붙이기 기계, 건강검진표, 띄어쓰기 털기, 빨간 건물 3개',
  'F': '코드 F 순서 그림: 도구 상자, 편지 상자, 꼬리표 분류, 리본 색 비교, 빈 극장 좌석, 막대그래프'}
+IG_CAP = {
+ 'skel': '① 왼쪽 위 공구 상자(도구 꺼내기) · ② 위 줄 오른쪽의 내려받기 화살표(받기) · ③ 캐릭터들이 함께 든 큰 표(펼쳐 보기) · ④ 오른쪽 위 돋보기(확인하기) · ⑤ 왼쪽 아래 빗자루(고치기) · ⑥ 오른쪽 아래 막대그래프 이젤(요약·그림) · ⑦ 맨 오른쪽 아래 플로피디스크(저장하기)',
+ 'A': '① 왼쪽 위 공구 상자(시아) · ② 컨베이어로 도착한 책 네 권 · ③ 오른쪽 위 벽의 큰 표(초파리 연구원) · ④ 왼쪽 아래 빨간 빈 곳 세기(하루) · ⑤ 아래 가운데 저울 — 두 묶음 평균 비교 · ⑥ 오른쪽 아래 경고 표지와 이상한 카드',
+ 'B': '① 왼쪽 위 공구 상자 · ② 위 가운데 서류 수레(X1) · ③ 오른쪽 위 청진기와 기록판 — 건강검진 · ④ 오른쪽 아래 돋보기 속 물음표(X1) · ⑤ 아래 가운데 폴더 이름표 바꿔 달기 · ⑥ 왼쪽 아래 막대그래프(주판봇 응원)',
+ 'C': '① 왼쪽 위 공구 상자 · ② 위 가운데 일기장을 든 주판봇 · ③ 오른쪽 위 청진기와 기록판 — 건강검진 · ④ 오른쪽 아래 같은 출발선의 네 주자(초파리 연구원 깃발) · ⑤ 아래 가운데 쉼표 쓸어 내기(X2) · ⑥ 왼쪽 아래 주말이 빈 달력(모아)',
+ 'D': '① 왼쪽 위 공구 상자 · ② 위 가운데 퍼즐 조각 잇기(주판봇) · ③ 오른쪽 위 긴 두루마리 재기 · ④ 왼쪽 아래 등급별 금리 계단 · ⑤ 아래 가운데 거의 빈 서랍장(X3) · ⑥ 오른쪽 아래 똑같은 두 상자(모아와 박사)',
+ 'E': '① 왼쪽 위 공구 상자 · ② 위 가운데 장부와 사전 수레 · ③ 오른쪽 위 쪽지 붙이기 기계(하루) · ④ 오른쪽 아래 회사 건강검진표 묶음(박사) · ⑤ 왼쪽 아래 이름표 털기 — 띄어쓰기 지우기(X3) · ⑥ 아래 가운데 빨간 건물이 섞인 건물판(X1)',
+ 'F': '① 왼쪽 위 공구 상자 · ② 위 가운데 편지 상자(모아·X3) · ③ 오른쪽 위 분류 쟁반 세 개 — 꼬리표 세기 · ④ 왼쪽 아래 리본 색이 다른 신문 두 더미(X2) · ⑤ 아래 가운데 거의 빈 극장 좌석 · ⑥ 오른쪽 아래 주판봇 — 그림으로 정리'}
 def ig_img(k):
     """src/build/scenes/h01_ig_<k>.webp가 있으면 인포그래픽 그림으로 넣는다(4배 격자면 원래 격자로 넣어 용량을 줄임)."""
     import base64, io
@@ -190,7 +198,7 @@ def ig_img(k):
     if sm.resize(im.size, Image.NEAREST).tobytes() != im.tobytes(): sm = im
     b = io.BytesIO(); sm.save(b, 'WEBP', lossless=True, method=6)
     return (f'<figure class="igill"><img src="data:image/webp;base64,{base64.b64encode(b.getvalue()).decode()}" width="1200" height="800" alt="{e(IG_ALT[k])}" loading="lazy" decoding="async">'
-            f'<figcaption>발판 색 순서(빨강 → 주황 → 노랑 → 초록 → 청록 → 파랑{" → 보라" if k == "skel" else ""})가 아래 단계 번호와 같아요.</figcaption></figure>')
+            f'<figcaption><b>그림 속 순서</b> — 아래 번호 카드와 같은 번호예요. {e(IG_CAP[k])}</figcaption></figure>')
 
 def infographic(r, img):
     c = r['code']; who, mood, nm, line = GUIDE[c]
@@ -296,7 +304,7 @@ svg.pix{display:inline-block;flex:none;image-rendering:pixelated;vertical-align:
 .sk-steps li:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:30%;color:#8a90a0;font-weight:700}
 .sk-steps b{font-size:14px}.sk-steps span{font-size:12px;color:var(--muted);line-height:1.5}
 .sk-mx td,.sk-mx th{text-align:center;font-size:13px;padding:6px}.sk-mx td{color:var(--seq);font-size:16px}
-.igill{margin:0}.igill img{width:100%;height:auto;border-radius:12px;image-rendering:pixelated;border:1px solid var(--rule)}.igill figcaption{font-size:12.5px;color:var(--muted);margin-top:6px}
+.igill{margin:0}.igill img{width:100%;height:auto;border-radius:12px;image-rendering:pixelated;border:1px solid var(--rule)}.igill figcaption{font-size:13px;color:#4a5068;line-height:1.7;margin-top:8px;background:var(--panel2);border-radius:8px;padding:8px 12px}
 .getbox{border:1px solid var(--rule);border-radius:12px;padding:12px 16px;background:#fff}
 .getbox>summary{cursor:pointer;font-weight:700;display:flex;gap:8px;align-items:center;list-style:none}.getbox>summary::-webkit-details-marker{display:none}
 .getbox>summary::after{content:"펼치기 ▾";margin-left:auto;font-size:12px;color:var(--muted);font-weight:400}.getbox[open]>summary::after{content:"접기 ▴"}
