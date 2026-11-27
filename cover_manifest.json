@@ -1,0 +1,1037 @@
+{
+  "series_ko": "핀테크 데이터 분석 기초 · 연구실 해설",
+  "title_ko": "핀테크 데이터 연구실",
+  "site_url": "https://adminmrobo.github.io/fintech_data_analysis/",
+  "site_title": "핀테크 데이터 연구실",
+  "ontology": {
+    "pages": [
+      {
+        "path": "01_fintech_industry.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "02_data_collection.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "03_collection_plan.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "04_analysis_concepts.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "05_preprocessing.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "06_knn_svm.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "07_model_evaluation.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "08_midterm_review.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "09_regression.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "10_logistic_tree.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "11_deep_learning_timeseries.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "12_visualization.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "13_robo_advisor.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "14_security_quality.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "15_final_review.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "hands_on_01.html",
+        "kg": true,
+        "export": true
+      },
+      {
+        "path": "index.html",
+        "kg": false,
+        "export": false
+      }
+    ],
+    "files": [
+      "KG_00_registry.json",
+      "kg/rehang.json"
+    ]
+  },
+  "i18n": {
+    "langs": [
+      "ko"
+    ],
+    "pages": {
+      "ko": 17
+    },
+    "readme_langs": [
+      "ko"
+    ]
+  },
+  "languages": [
+    "ko"
+  ],
+  "items": [
+    {
+      "id": "cover_00",
+      "role": "cover",
+      "embedded_in": "index.html",
+      "key": ".cover img",
+      "size": [
+        1920,
+        1080
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": null,
+      "status": "redraw",
+      "note": "작은 격자(480×270)를 4배로 키운 거친 픽셀 그림 — 본 스킬 18-15-2 v1.19에 따라 고해상도로 다시 받을 대상"
+    },
+    {
+      "id": "og_00",
+      "role": "og",
+      "path": "assets/og/cover_00.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_00",
+      "status": "redraw"
+    },
+    {
+      "id": "cover_01",
+      "role": "cover",
+      "embedded_in": "01_fintech_industry.html",
+      "key": ".cover img",
+      "size": [
+        1920,
+        1080
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": null,
+      "status": "redraw",
+      "note": "작은 격자(480×270)를 4배로 키운 거친 픽셀 그림 — 본 스킬 18-15-2 v1.19에 따라 고해상도로 다시 받을 대상"
+    },
+    {
+      "id": "og_01",
+      "role": "og",
+      "path": "assets/og/cover_01.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_01",
+      "status": "redraw"
+    },
+    {
+      "id": "cover_02",
+      "role": "cover",
+      "embedded_in": "02_data_collection.html",
+      "key": ".cover img",
+      "size": [
+        1920,
+        1080
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": null,
+      "status": "redraw",
+      "note": "작은 격자(480×270)를 4배로 키운 거친 픽셀 그림 — 본 스킬 18-15-2 v1.19에 따라 고해상도로 다시 받을 대상"
+    },
+    {
+      "id": "og_02",
+      "role": "og",
+      "path": "assets/og/cover_02.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_02",
+      "status": "redraw"
+    },
+    {
+      "id": "cover_03",
+      "role": "cover",
+      "embedded_in": "03_collection_plan.html",
+      "key": ".cover img",
+      "size": [
+        1920,
+        1080
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": null,
+      "status": "redraw",
+      "note": "작은 격자(480×270)를 4배로 키운 거친 픽셀 그림 — 본 스킬 18-15-2 v1.19에 따라 고해상도로 다시 받을 대상"
+    },
+    {
+      "id": "og_03",
+      "role": "og",
+      "path": "assets/og/cover_03.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_03",
+      "status": "redraw"
+    },
+    {
+      "id": "cover_04",
+      "role": "cover",
+      "embedded_in": "04_analysis_concepts.html",
+      "key": ".cover img",
+      "size": [
+        1920,
+        1080
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": null,
+      "status": "redraw",
+      "note": "작은 격자(480×270)를 4배로 키운 거친 픽셀 그림 — 본 스킬 18-15-2 v1.19에 따라 고해상도로 다시 받을 대상"
+    },
+    {
+      "id": "og_04",
+      "role": "og",
+      "path": "assets/og/cover_04.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_04",
+      "status": "redraw"
+    },
+    {
+      "id": "cover_05",
+      "role": "cover",
+      "embedded_in": "05_preprocessing.html",
+      "key": ".cover img",
+      "size": [
+        1920,
+        1080
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": null,
+      "status": "redraw",
+      "note": "작은 격자(480×270)를 4배로 키운 거친 픽셀 그림 — 본 스킬 18-15-2 v1.19에 따라 고해상도로 다시 받을 대상"
+    },
+    {
+      "id": "og_05",
+      "role": "og",
+      "path": "assets/og/cover_05.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_05",
+      "status": "redraw"
+    },
+    {
+      "id": "cover_06",
+      "role": "cover",
+      "embedded_in": "06_knn_svm.html",
+      "key": ".cover img",
+      "size": [
+        1920,
+        1080
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": null,
+      "status": "redraw",
+      "note": "작은 격자(480×270)를 4배로 키운 거친 픽셀 그림 — 본 스킬 18-15-2 v1.19에 따라 고해상도로 다시 받을 대상"
+    },
+    {
+      "id": "og_06",
+      "role": "og",
+      "path": "assets/og/cover_06.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_06",
+      "status": "redraw"
+    },
+    {
+      "id": "cover_07",
+      "role": "cover",
+      "embedded_in": "07_model_evaluation.html",
+      "key": ".cover img",
+      "size": [
+        1920,
+        1080
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": null,
+      "status": "redraw",
+      "note": "작은 격자(480×270)를 4배로 키운 거친 픽셀 그림 — 본 스킬 18-15-2 v1.19에 따라 고해상도로 다시 받을 대상"
+    },
+    {
+      "id": "og_07",
+      "role": "og",
+      "path": "assets/og/cover_07.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_07",
+      "status": "redraw"
+    },
+    {
+      "id": "cover_08",
+      "role": "cover",
+      "embedded_in": "08_midterm_review.html",
+      "key": ".cover img",
+      "size": [
+        1920,
+        1080
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": null,
+      "status": "redraw",
+      "note": "작은 격자(480×270)를 4배로 키운 거친 픽셀 그림 — 본 스킬 18-15-2 v1.19에 따라 고해상도로 다시 받을 대상"
+    },
+    {
+      "id": "og_08",
+      "role": "og",
+      "path": "assets/og/cover_08.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_08",
+      "status": "redraw"
+    },
+    {
+      "id": "cover_09",
+      "role": "cover",
+      "embedded_in": "09_regression.html",
+      "key": ".cover img",
+      "size": [
+        1920,
+        1080
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": null,
+      "status": "redraw",
+      "note": "작은 격자(480×270)를 4배로 키운 거친 픽셀 그림 — 본 스킬 18-15-2 v1.19에 따라 고해상도로 다시 받을 대상"
+    },
+    {
+      "id": "og_09",
+      "role": "og",
+      "path": "assets/og/cover_09.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_09",
+      "status": "redraw"
+    },
+    {
+      "id": "cover_10",
+      "role": "cover",
+      "embedded_in": "10_logistic_tree.html",
+      "key": ".cover img",
+      "size": [
+        1920,
+        1080
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": null,
+      "status": "redraw",
+      "note": "작은 격자(480×270)를 4배로 키운 거친 픽셀 그림 — 본 스킬 18-15-2 v1.19에 따라 고해상도로 다시 받을 대상"
+    },
+    {
+      "id": "og_10",
+      "role": "og",
+      "path": "assets/og/cover_10.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_10",
+      "status": "redraw"
+    },
+    {
+      "id": "cover_11",
+      "role": "cover",
+      "embedded_in": "11_deep_learning_timeseries.html",
+      "key": ".cover img",
+      "size": [
+        1920,
+        1080
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": null,
+      "status": "redraw",
+      "note": "작은 격자(480×270)를 4배로 키운 거친 픽셀 그림 — 본 스킬 18-15-2 v1.19에 따라 고해상도로 다시 받을 대상"
+    },
+    {
+      "id": "og_11",
+      "role": "og",
+      "path": "assets/og/cover_11.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_11",
+      "status": "redraw"
+    },
+    {
+      "id": "cover_12",
+      "role": "cover",
+      "embedded_in": "12_visualization.html",
+      "key": ".cover img",
+      "size": [
+        1920,
+        1080
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": null,
+      "status": "redraw",
+      "note": "작은 격자(480×270)를 4배로 키운 거친 픽셀 그림 — 본 스킬 18-15-2 v1.19에 따라 고해상도로 다시 받을 대상"
+    },
+    {
+      "id": "og_12",
+      "role": "og",
+      "path": "assets/og/cover_12.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_12",
+      "status": "redraw"
+    },
+    {
+      "id": "cover_13",
+      "role": "cover",
+      "embedded_in": "13_robo_advisor.html",
+      "key": ".cover img",
+      "size": [
+        1920,
+        1080
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": null,
+      "status": "redraw",
+      "note": "작은 격자(480×270)를 4배로 키운 거친 픽셀 그림 — 본 스킬 18-15-2 v1.19에 따라 고해상도로 다시 받을 대상"
+    },
+    {
+      "id": "og_13",
+      "role": "og",
+      "path": "assets/og/cover_13.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_13",
+      "status": "redraw"
+    },
+    {
+      "id": "cover_14",
+      "role": "cover",
+      "embedded_in": "14_security_quality.html",
+      "key": ".cover img",
+      "size": [
+        1920,
+        1080
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": null,
+      "status": "redraw",
+      "note": "작은 격자(480×270)를 4배로 키운 거친 픽셀 그림 — 본 스킬 18-15-2 v1.19에 따라 고해상도로 다시 받을 대상"
+    },
+    {
+      "id": "og_14",
+      "role": "og",
+      "path": "assets/og/cover_14.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_14",
+      "status": "redraw"
+    },
+    {
+      "id": "cover_15",
+      "role": "cover",
+      "embedded_in": "15_final_review.html",
+      "key": ".cover img",
+      "size": [
+        1920,
+        1080
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": null,
+      "status": "redraw",
+      "note": "작은 격자(480×270)를 4배로 키운 거친 픽셀 그림 — 본 스킬 18-15-2 v1.19에 따라 고해상도로 다시 받을 대상"
+    },
+    {
+      "id": "og_15",
+      "role": "og",
+      "path": "assets/og/cover_15.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_15",
+      "status": "redraw"
+    },
+    {
+      "id": "cover_hands_on_01",
+      "role": "cover",
+      "embedded_in": "hands_on_01.html",
+      "key": ".cover img",
+      "size": [
+        1600,
+        900
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art illustration, like a polished modern pixel-art game key visual. Render natively at the full output size with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks. Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level and finish of the attached quality reference image (style_quality_reference.png), but keep THIS scene's bright daytime colors. The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors. Bright daylight research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), high-key image that blends into a white web page, no dark background, no night. No text, no letters, no numbers, no logos, no watermark anywhere in the image (charts and papers show only shapes and lines).\nWide 16:9 website cover, output 1920x1080 (at least 1600x900), high-resolution detailed pixel art.\nScene: a bright lab presentation hall set up like a friendly school contest. A large blank projector screen at the back center showing only simple bar and line shapes. Six colorful file folders (A to F shown only by six different tab colors, no letters) pinned in a row under the screen.\nLeft side, the red team with small red ribbons and a little red flag: anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings as team leader standing in front pointing at the screen; calm anime girl maid intern, long straight jet-black hair to the waist, calm gray eyes, small silver drop earrings, charcoal-black maid dress with white lace cuffs, white high collar with a large soft gray bow, long white frilled apron; girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans holding a blank tablet; cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, chibi silhouette with a round beret and short hair, round glasses whose lenses show two small teal (#3FC8C0) reflections as the only colored part.\nRight side, the teal team with small teal ribbons and a little teal flag: boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus as team leader proudly raising its abacus; gentle cheerful anime girl maid intern, long ash-beige wavy hair, white frilled maid headband with a thin ribbon, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, black skirt holding a clipboard; cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, chibi girl silhouette with a long side ponytail tied with a big bright pink (#E9709A) bow as the only colored part; cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, very small chibi silhouette wearing a hood with cat ears and an oversized lab coat, two hood drawstrings ending in small yellow (#F2C744) pompoms as the only colored part.\nCenter front, a small judge's desk with a purple armband: chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie sitting as the referee, holding two small paddles, one red and one teal.\nCheerful, playful contest mood. All nine characters visible, nobody cut off at the edges.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "og_hands_on_01",
+      "role": "og",
+      "path": "assets/og/cover_hands_on_01.jpg",
+      "size": [
+        1200,
+        630
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": null,
+      "source_of": "cover_hands_on_01",
+      "status": "ok"
+    },
+    {
+      "id": "h01_A",
+      "role": "scene",
+      "path": "assets/img/h01/h01_A.webp",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "fly",
+        "asst"
+      ],
+      "robot": "none",
+      "prompt_en": "HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art illustration, like a polished modern pixel-art game key visual. Render natively at the full output size with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks. Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level and finish of the attached quality reference image (style_quality_reference.png), but keep THIS scene's bright daytime colors. The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors. Bright daylight research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), high-key image that blends into a white web page, no dark background, no night. No text, no letters, no numbers, no logos, no watermark anywhere in the image (charts and papers show only shapes and lines).\n3:2 scene illustration, output 1536x1024 (at least 1200x800), high-resolution detailed pixel art.\nFour thick open ledger books lying side by side on a long white table, each page filled with neat grid lines and tiny colored dots instead of writing; a few empty grid spots on the pages glow soft red. anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings stands at the head of the table with a pointer. calm anime girl maid intern, long straight jet-black hair to the waist, calm gray eyes, small silver drop earrings, charcoal-black maid dress with white lace cuffs, white high collar with a large soft gray bow, long white frilled apron counts rows with one finger, girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans holds a blank tablet showing two bars of different height, cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, chibi silhouette with a round beret and short hair, round glasses whose lenses show two small teal (#3FC8C0) reflections as the only colored part peers through its glasses at a glowing red empty spot. Small red ribbons on the three members. Calm, focused team presentation mood.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "h01_B",
+      "role": "scene",
+      "path": "assets/img/h01/h01_B.webp",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art illustration, like a polished modern pixel-art game key visual. Render natively at the full output size with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks. Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level and finish of the attached quality reference image (style_quality_reference.png), but keep THIS scene's bright daytime colors. The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors. Bright daylight research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), high-key image that blends into a white web page, no dark background, no night. No text, no letters, no numbers, no logos, no watermark anywhere in the image (charts and papers show only shapes and lines).\n3:2 scene illustration, output 1536x1024 (at least 1200x800), high-resolution detailed pixel art.\nA small podium with a teal ribbon. cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, chibi girl silhouette with a long side ponytail tied with a big bright pink (#E9709A) bow as the only colored part stands at the podium holding a big magnifying glass over a stack of insurance papers; under the lens, several hollow question-mark shaped holes appear in the paper (shapes only, no text). Behind, a computer monitor shows a fake website with a tiny fishing hook icon on it. In the audience: boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus cheering with its abacus raised, anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings pointing at a second paper sheet that is being covered by another identical sheet (overwritten). Bright, surprised discovery mood.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "h01_C",
+      "role": "scene",
+      "path": "assets/img/h01/h01_C.webp",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art illustration, like a polished modern pixel-art game key visual. Render natively at the full output size with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks. Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level and finish of the attached quality reference image (style_quality_reference.png), but keep THIS scene's bright daytime colors. The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors. Bright daylight research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), high-key image that blends into a white web page, no dark background, no night. No text, no letters, no numbers, no logos, no watermark anywhere in the image (charts and papers show only shapes and lines).\n3:2 scene illustration, output 1536x1024 (at least 1200x800), high-resolution detailed pixel art.\nTwo easels side by side. Left easel with a teal ribbon: a chart where one red line shoots straight up and three other lines lie flat along the bottom, almost invisible. Right easel with a red ribbon: a chart where four colored lines start from the same single point on the left and fan out upward at different slopes. boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus and gentle cheerful anime girl maid intern, long ash-beige wavy hair, white frilled maid headband with a thin ribbon, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, black skirt stand by the left easel, Moa sweating with a small sweat drop; anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings and cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, chibi silhouette with a round beret and short hair, round glasses whose lenses show two small teal (#3FC8C0) reflections as the only colored part stand by the right easel. In the middle chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie as referee raises a red paddle. No numbers, no axis labels, only lines.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "h01_D",
+      "role": "scene",
+      "path": "assets/img/h01/h01_D.webp",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc"
+      ],
+      "robot": "none",
+      "prompt_en": "HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art illustration, like a polished modern pixel-art game key visual. Render natively at the full output size with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks. Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level and finish of the attached quality reference image (style_quality_reference.png), but keep THIS scene's bright daytime colors. The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors. Bright daylight research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), high-key image that blends into a white web page, no dark background, no night. No text, no letters, no numbers, no logos, no watermark anywhere in the image (charts and papers show only shapes and lines).\n3:2 scene illustration, output 1536x1024 (at least 1200x800), high-resolution detailed pixel art.\nA cozy counseling corner in the lab: a small round table with two cups of tea. gentle cheerful anime girl maid intern, long ash-beige wavy hair, white frilled maid headband with a thin ribbon, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, black skirt sits on one side looking puzzled, holding a clipboard. chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie sits across, explaining kindly with one finger raised. On the table, two identical cardboard boxes with different colored stickers (one blue, one orange); both are open and show exactly the same stack of blue cards inside. Next to them, a very tall stack of paper reaching the ceiling and a small hourglass. In the doorway cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, very small chibi silhouette wearing a hood with cat ears and an oversized lab coat, two hood drawstrings ending in small yellow (#F2C744) pompoms as the only colored part peeks in, surprised. Warm, reassuring mood.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "h01_E",
+      "role": "scene",
+      "path": "assets/img/h01/h01_E.webp",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst"
+      ],
+      "robot": "none",
+      "prompt_en": "HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art illustration, like a polished modern pixel-art game key visual. Render natively at the full output size with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks. Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level and finish of the attached quality reference image (style_quality_reference.png), but keep THIS scene's bright daytime colors. The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors. Bright daylight research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), high-key image that blends into a white web page, no dark background, no night. No text, no letters, no numbers, no logos, no watermark anywhere in the image (charts and papers show only shapes and lines).\n3:2 scene illustration, output 1536x1024 (at least 1200x800), high-resolution detailed pixel art.\ngirl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans stands at a podium with a red ribbon, presenting cheerfully. On the left, a long unrolled scroll with many small sticky notes attached beside each line (blank notes, no writing), and three spots on the scroll with no sticky note, marked by small gray question-mark shapes. On the right, a wall board showing a grid of 100 tiny pixel office buildings: 97 gray buildings and 3 red buildings. cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, chibi girl silhouette with a long side ponytail tied with a big bright pink (#E9709A) bow as the only colored part in the audience looks amazed with sparkling eyes, chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie nods thoughtfully at the side.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "h01_F",
+      "role": "scene",
+      "path": "assets/img/h01/h01_F.webp",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art illustration, like a polished modern pixel-art game key visual. Render natively at the full output size with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks. Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level and finish of the attached quality reference image (style_quality_reference.png), but keep THIS scene's bright daytime colors. The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors. Bright daylight research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), high-key image that blends into a white web page, no dark background, no night. No text, no letters, no numbers, no logos, no watermark anywhere in the image (charts and papers show only shapes and lines).\n3:2 scene illustration, output 1536x1024 (at least 1200x800), high-resolution detailed pixel art.\nCenter: two separate piles of newspapers on a table (pages show only gray lines and simple picture boxes, no text); the left pile is tied with three different pink ribbons, the right pile with two different blue ribbons, so the piles can be told apart only by ribbon color. gentle cheerful anime girl maid intern, long ash-beige wavy hair, white frilled maid headband with a thin ribbon, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, black skirt and cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, very small chibi silhouette wearing a hood with cat ears and an oversized lab coat, two hood drawstrings ending in small yellow (#F2C744) pompoms as the only colored part present the piles happily, boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus gives a thumbs-up. cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, chibi silhouette with a round beret and short hair, round glasses whose lenses show two small teal (#3FC8C0) reflections as the only colored part raises a hand from the side to object, with anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings crossing its arms next to X2. Background: a small cinema seating chart on the wall where only a few seats glow orange and most seats are dark gray. Lively debate mood.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "h01_score",
+      "role": "outro",
+      "path": "assets/img/h01/h01_score.webp",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art illustration, like a polished modern pixel-art game key visual. Render natively at the full output size with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks. Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level and finish of the attached quality reference image (style_quality_reference.png), but keep THIS scene's bright daytime colors. The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors. Bright daylight research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), high-key image that blends into a white web page, no dark background, no night. No text, no letters, no numbers, no logos, no watermark anywhere in the image (charts and papers show only shapes and lines). 3:2 scene illustration, output 1536x1024 (at least 1200x800), high-resolution detailed pixel art.\nA small award stage with two identical golden trophies, one with a red ribbon and one with a teal ribbon. chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie stands in the middle as referee holding both arms up. Left: anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, calm anime girl maid intern, long straight jet-black hair to the waist, calm gray eyes, small silver drop earrings, charcoal-black maid dress with white lace cuffs, white high collar with a large soft gray bow, long white frilled apron, girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, chibi silhouette with a round beret and short hair, round glasses whose lenses show two small teal (#3FC8C0) reflections as the only colored part celebrating. Right: boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus looking a bit sheepish but happy, gentle cheerful anime girl maid intern, long ash-beige wavy hair, white frilled maid headband with a thin ribbon, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, black skirt, cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, chibi girl silhouette with a long side ponytail tied with a big bright pink (#E9709A) bow as the only colored part, cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, very small chibi silhouette wearing a hood with cat ears and an oversized lab coat, two hood drawstrings ending in small yellow (#F2C744) pompoms as the only colored part cheering. Confetti in red and teal. Behind them a scoreboard showing only two bars of nearly equal height (no numbers).",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "h01_ig_skel",
+      "role": "scene",
+      "path": "assets/img/h01/h01_ig_skel.webp",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art illustration, like a polished modern pixel-art game key visual. Render natively at the full output size with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks. Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level and finish of the attached quality reference image (style_quality_reference.png), but keep THIS scene's bright daytime colors. The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors. Bright daylight research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), high-key image that blends into a white web page, no dark background, no night. No text, no letters, no numbers, no logos, no watermark anywhere in the image (charts and papers show only shapes and lines).\n3:2 infographic illustration, output 1536x1024 (at least 1200x800), high-resolution detailed pixel art. Flat, clean, diagram-like composition seen from a slight top-down angle, like a cute pixel board game map. No text, no letters, no numbers on anything (signs, papers, screens and charts show only shapes, lines and colors).\nThe board-game path has SEVEN stations: top row four, bottom row three, path turns down at the right; floor tiles colored red, orange, yellow, green, teal, blue, purple in order. Stations: (1) a red toolbox opening with tools; (2) a big blue down-arrow dropping a spreadsheet sheet into a tray; (3) a large spreadsheet board with a yellow header row and one red empty cell; (4) a giant magnifying glass on a stand over the board; (5) a yellow broom sweeping small dust pixels off a sheet; (6) an easel with a simple bar chart of three bars; (7) a big navy floppy disk with a white label area. Characters walk along the path carrying one shared big paper table like a parade: [anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings] leading at the toolbox, [calm anime girl maid intern, long straight jet-black hair to the waist, calm gray eyes, small silver drop earrings, charcoal-black maid dress with white lace cuffs, white high collar with a large soft gray bow, long white frilled apron], [girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans], [cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, chibi silhouette with a round beret and short hair, round glasses whose lenses show two small teal (#3FC8C0) reflections as the only colored part], [boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus], [gentle cheerful anime girl maid intern, long ash-beige wavy hair, white frilled maid headband with a thin ribbon, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, black skirt], [cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, chibi girl silhouette with a long side ponytail tied with a big bright pink (#E9709A) bow as the only colored part], [cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, very small chibi silhouette wearing a hood with cat ears and an oversized lab coat, two hood drawstrings ending in small yellow (#F2C744) pompoms as the only colored part]; [chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie] waves from the last station next to the floppy disk. Cheerful, orderly mood.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "h01_ig_A",
+      "role": "scene",
+      "path": "assets/img/h01/h01_ig_A.webp",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "asst",
+        "fly"
+      ],
+      "robot": "none",
+      "prompt_en": "HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art illustration, like a polished modern pixel-art game key visual. Render natively at the full output size with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks. Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level and finish of the attached quality reference image (style_quality_reference.png), but keep THIS scene's bright daytime colors. The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors. Bright daylight research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), high-key image that blends into a white web page, no dark background, no night. No text, no letters, no numbers, no logos, no watermark anywhere in the image (charts and papers show only shapes and lines).\n3:2 infographic illustration, output 1536x1024 (at least 1200x800), high-resolution detailed pixel art. Flat, clean, diagram-like composition seen from a slight top-down angle, like a cute pixel board game map. No text, no letters, no numbers on anything (signs, papers, screens and charts show only shapes, lines and colors).\nThe stations are laid out like a board-game path on the lab floor: top row three stations from left to right, then the path turns down at the right edge, bottom row three stations from left to right (reading order like a book). The path is made of square floor tiles; the stepping tiles under each station are colored in order red, orange, yellow, green, teal, blue so the order is clear without numbers. Each station has one big, simple pixel-art prop that is easy to recognize at small size. Keep empty white space between stations. Stations: (1) a red toolbox; (2) a small conveyor belt delivering four thick ledger books of different colors; (3) a big spreadsheet board on the wall with a yellow header row; (4) a sheet with several glowing red empty spots and a tally clicker; (5) two stacks of blue cards on a balance scale, one stack clearly heavier (about four times taller) than the other; (6) a warning-yellow triangle sign next to a single strange card that glows and floats, marked only by a tiny pixel candle cake icon (no numbers). [calm anime girl maid intern, long straight jet-black hair to the waist, calm gray eyes, small silver drop earrings, charcoal-black maid dress with white lace cuffs, white high collar with a large soft gray bow, long white frilled apron] guides at station 1 pointing along the path, [girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans] counts red spots at station 4 with the clicker, [cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, chibi silhouette with a round beret and short hair, round glasses whose lenses show two small teal (#3FC8C0) reflections as the only colored part] peers at the strange card at station 6, [anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings] supervises at station 3 with a pointer. Small red ribbons on these four.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "h01_ig_B",
+      "role": "scene",
+      "path": "assets/img/h01/h01_ig_B.webp",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art illustration, like a polished modern pixel-art game key visual. Render natively at the full output size with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks. Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level and finish of the attached quality reference image (style_quality_reference.png), but keep THIS scene's bright daytime colors. The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors. Bright daylight research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), high-key image that blends into a white web page, no dark background, no night. No text, no letters, no numbers, no logos, no watermark anywhere in the image (charts and papers show only shapes and lines).\n3:2 infographic illustration, output 1536x1024 (at least 1200x800), high-resolution detailed pixel art. Flat, clean, diagram-like composition seen from a slight top-down angle, like a cute pixel board game map. No text, no letters, no numbers on anything (signs, papers, screens and charts show only shapes, lines and colors).\nThe stations are laid out like a board-game path on the lab floor: top row three stations from left to right, then the path turns down at the right edge, bottom row three stations from left to right (reading order like a book). The path is made of square floor tiles; the stepping tiles under each station are colored in order red, orange, yellow, green, teal, blue so the order is clear without numbers. Each station has one big, simple pixel-art prop that is easy to recognize at small size. Keep empty white space between stations. Stations: (1) a red toolbox; (2) four bundles of papers arriving on a cart, one bundle showing a computer screen with a tiny fishing-hook icon; (3) a doctor-style health-check station: a sheet on a clipboard with a stethoscope lying on it; (4) a sheet under a magnifying glass revealing hollow question-mark shapes; (5) two folders, an old name tag being peeled off one folder and a new tag being stuck on (tags show only colors, blue and orange); (6) a horizontal bar chart where one bar is much longer and red. [cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, chibi girl silhouette with a long side ponytail tied with a big bright pink (#E9709A) bow as the only colored part] is the hero, shown at station 4 holding the magnifying glass and again small at station 5 swapping the tag. [boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus] cheers from the side with its abacus raised, [anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings] points at the two folders at station 5. Teal ribbons on X1 and Jupanbot.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "h01_ig_C",
+      "role": "scene",
+      "path": "assets/img/h01/h01_ig_C.webp",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "fly",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art illustration, like a polished modern pixel-art game key visual. Render natively at the full output size with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks. Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level and finish of the attached quality reference image (style_quality_reference.png), but keep THIS scene's bright daytime colors. The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors. Bright daylight research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), high-key image that blends into a white web page, no dark background, no night. No text, no letters, no numbers, no logos, no watermark anywhere in the image (charts and papers show only shapes and lines).\n3:2 infographic illustration, output 1536x1024 (at least 1200x800), high-resolution detailed pixel art. Flat, clean, diagram-like composition seen from a slight top-down angle, like a cute pixel board game map. No text, no letters, no numbers on anything (signs, papers, screens and charts show only shapes, lines and colors).\nThe stations are laid out like a board-game path on the lab floor: top row three stations from left to right, then the path turns down at the right edge, bottom row three stations from left to right (reading order like a book). The path is made of square floor tiles; the stepping tiles under each station are colored in order red, orange, yellow, green, teal, blue so the order is clear without numbers. Each station has one big, simple pixel-art prop that is easy to recognize at small size. Keep empty white space between stations. Stations: (1) a red toolbox; (2) a mail slot delivering two diaries plus one extra small diary; (3) a health-check clipboard with a stethoscope; (4) a race start line where four small runner tokens (blue, orange, red, teal) are lined up on the same starting line, then fan out upward at different slopes; (5) a large comma-shaped pixel symbol being swept off a number strip by a broom; (6) a wall calendar where the weekend columns are gray and empty and the weekday columns are filled with colored dots. [anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings] waves a small red flag at the start line (station 4), [cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, chibi silhouette with a round beret and short hair, round glasses whose lenses show two small teal (#3FC8C0) reflections as the only colored part] sweeps the comma at station 5, [boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus] stands at station 2 holding up the biggest diary, [gentle cheerful anime girl maid intern, long ash-beige wavy hair, white frilled maid headband with a thin ribbon, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, black skirt] looks at the calendar at station 6.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "h01_ig_D",
+      "role": "scene",
+      "path": "assets/img/h01/h01_ig_D.webp",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art illustration, like a polished modern pixel-art game key visual. Render natively at the full output size with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks. Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level and finish of the attached quality reference image (style_quality_reference.png), but keep THIS scene's bright daytime colors. The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors. Bright daylight research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), high-key image that blends into a white web page, no dark background, no night. No text, no letters, no numbers, no logos, no watermark anywhere in the image (charts and papers show only shapes and lines).\n3:2 infographic illustration, output 1536x1024 (at least 1200x800), high-resolution detailed pixel art. Flat, clean, diagram-like composition seen from a slight top-down angle, like a cute pixel board game map. No text, no letters, no numbers on anything (signs, papers, screens and charts show only shapes, lines and colors).\nThe stations are laid out like a board-game path on the lab floor: top row three stations from left to right, then the path turns down at the right edge, bottom row three stations from left to right (reading order like a book). The path is made of square floor tiles; the stepping tiles under each station are colored in order red, orange, yellow, green, teal, blue so the order is clear without numbers. Each station has one big, simple pixel-art prop that is easy to recognize at small size. Keep empty white space between stations. Stations: (1) a red toolbox; (2) three blue puzzle-piece blocks snapping together into one long block; (3) a giant ruler and a measuring tape measuring a very long scroll of table rows; (4) a staircase of seven steps, each step a little higher and a slightly warmer color from blue to red; (5) a tall filing cabinet where most drawers are open and empty, only a few drawers contain papers; (6) two identical cardboard boxes with different colored stickers (one blue, one orange), both open showing exactly the same stack of blue cards, with a small equals-sign shape between them. [gentle cheerful anime girl maid intern, long ash-beige wavy hair, white frilled maid headband with a thin ribbon, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, black skirt] holds a clipboard at station 6 looking surprised, [chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie] explains next to her with one finger raised, [cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, very small chibi silhouette wearing a hood with cat ears and an oversized lab coat, two hood drawstrings ending in small yellow (#F2C744) pompoms as the only colored part] peeks out from behind the filing cabinet at station 5, [boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus] pushes the puzzle blocks together at station 2.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "h01_ig_E",
+      "role": "scene",
+      "path": "assets/img/h01/h01_ig_E.webp",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "doc",
+        "asst",
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art illustration, like a polished modern pixel-art game key visual. Render natively at the full output size with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks. Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level and finish of the attached quality reference image (style_quality_reference.png), but keep THIS scene's bright daytime colors. The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors. Bright daylight research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), high-key image that blends into a white web page, no dark background, no night. No text, no letters, no numbers, no logos, no watermark anywhere in the image (charts and papers show only shapes and lines).\n3:2 infographic illustration, output 1536x1024 (at least 1200x800), high-resolution detailed pixel art. Flat, clean, diagram-like composition seen from a slight top-down angle, like a cute pixel board game map. No text, no letters, no numbers on anything (signs, papers, screens and charts show only shapes, lines and colors).\nThe stations are laid out like a board-game path on the lab floor: top row three stations from left to right, then the path turns down at the right edge, bottom row three stations from left to right (reading order like a book). The path is made of square floor tiles; the stepping tiles under each station are colored in order red, orange, yellow, green, teal, blue so the order is clear without numbers. Each station has one big, simple pixel-art prop that is easy to recognize at small size. Keep empty white space between stations. Stations: (1) a red toolbox; (2) a cart delivering a thick ledger and a thin dictionary book; (3) a cute small machine with a crank that sticks blank sticky notes next to each line of a long scroll, three lines left without a note and marked by small gray question-mark shapes; (4) a stack of company health-check cards arriving; (5) a sheet of name tags being shaken so that tiny blank space pixels fall off the front of each tag; (6) a wall grid of one hundred tiny office buildings, ninety-seven gray and three red. [girl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans] turns the crank of the sticky-note machine at station 3 happily, [cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, chibi girl silhouette with a long side ponytail tied with a big bright pink (#E9709A) bow as the only colored part] watches the building grid at station 6 with sparkling eyes, [chibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie] nods at station 4 with a hand on his chin.",
+      "source_of": null,
+      "status": "ok"
+    },
+    {
+      "id": "h01_ig_F",
+      "role": "scene",
+      "path": "assets/img/h01/h01_ig_F.webp",
+      "size": [
+        1200,
+        800
+      ],
+      "characters": [
+        "jupanbot"
+      ],
+      "robot": "jupanbot-v2",
+      "prompt_en": "HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art illustration, like a polished modern pixel-art game key visual. Render natively at the full output size with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks. Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level and finish of the attached quality reference image (style_quality_reference.png), but keep THIS scene's bright daytime colors. The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors. Bright daylight research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), high-key image that blends into a white web page, no dark background, no night. No text, no letters, no numbers, no logos, no watermark anywhere in the image (charts and papers show only shapes and lines).\n3:2 infographic illustration, output 1536x1024 (at least 1200x800), high-resolution detailed pixel art. Flat, clean, diagram-like composition seen from a slight top-down angle, like a cute pixel board game map. No text, no letters, no numbers on anything (signs, papers, screens and charts show only shapes, lines and colors).\nThe stations are laid out like a board-game path on the lab floor: top row three stations from left to right, then the path turns down at the right edge, bottom row three stations from left to right (reading order like a book). The path is made of square floor tiles; the stepping tiles under each station are colored in order red, orange, yellow, green, teal, blue so the order is clear without numbers. Each station has one big, simple pixel-art prop that is easy to recognize at small size. Keep empty white space between stations. Stations: (1) a red toolbox; (2) a big mail crate overflowing with letters, newspapers and small star-rating cards; (3) three sorting trays (green, gray, red) where letters are being sorted, the gray tray fullest; (4) two piles of newspapers tied with ribbons: the left pile only pink ribbons, the right pile only blue ribbons, a small pixel warning sign between them; (5) a small cinema seating chart where only a few seats glow orange and almost all seats are dark gray; (6) an easel with two small bar charts. [gentle cheerful anime girl maid intern, long ash-beige wavy hair, white frilled maid headband with a thin ribbon, big round amber-brown eyes, white shirt with a red and navy plaid bow tie, camel knit cardigan, white frilled apron, black skirt] and [cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, very small chibi silhouette wearing a hood with cat ears and an oversized lab coat, two hood drawstrings ending in small yellow (#F2C744) pompoms as the only colored part] sort letters at station 3, [cute solid dark navy-black silhouette (#1B1A2E) with a thin purple rim light, white dot eyes, pink blush pixels, chibi silhouette with a round beret and short hair, round glasses whose lenses show two small teal (#3FC8C0) reflections as the only colored part] raises a hand at station 4 pointing at the ribbon colors, [anthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings] crosses its arms next to X2, [boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, holding a wooden abacus] gives a thumbs-up at station 6.",
+      "source_of": null,
+      "status": "ok"
+    }
+  ],
+  "updated": "2026-11-27"
+}

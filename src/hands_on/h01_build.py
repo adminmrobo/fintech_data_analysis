@@ -461,7 +461,7 @@ svg.chart .ct{font-size:14px;font-weight:700;fill:#2b2f3a}svg.chart .cv{font-siz
 .tabletoy{border-collapse:collapse;font-size:14px;margin:8px 0}.tabletoy td,.tabletoy th{border:1px solid #c9ced9;padding:5px 10px;text-align:center}.tabletoy th{background:var(--panel2)}.tabletoy .na{background:rgba(204,52,52,.12);color:var(--c-fly);font-weight:700}
 .faq details{border:1px solid var(--rule);border-radius:10px;padding:12px 16px;background:#fff}.faq summary{cursor:pointer;font-weight:700}
 .faq{display:flex;flex-direction:column;gap:10px}
-.scene{margin:0}.scene img{width:100%;height:auto;border-radius:12px;border:1px solid var(--rule)}.scene img.px,.igill img.px{image-rendering:pixelated}
+.scene{margin:0}.scene img{width:100%;height:auto;border-radius:12px;border:1px solid var(--rule)}
 @media (max-width:860px){.dsum{overflow:visible}.dsum table.tb{min-width:0}.dsum tr:first-child{display:none}.dsum tr{display:block;border:1px solid var(--rule);border-radius:10px;padding:10px 12px;margin-bottom:10px;background:#fff}.dsum td{display:block;border:0;padding:3px 0;text-align:left!important}.dsum td::before{content:attr(data-l);display:block;font-size:12px;color:var(--muted)}}
 .runbox{display:flex;gap:10px;flex-wrap:wrap}.runbox a{font-size:14px}
 ''' + GT.CSS

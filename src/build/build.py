@@ -94,6 +94,8 @@ def cover(P, M, key):
             f'<div class="glow"></div><div class="line">{img("fly","point",M,"fly")}{img("doc","front",M,"")}{img("asst","smile",M,"")}{img("robo","coin",M,"")}</div>'
             f'<span class="cover-chip">{e(chip)}</span></header>')
 
+PXFIX = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'pxfix.html'), encoding='utf-8').read().strip()  # 본 스킬 18-15-3 px-fix v1
+
 def head(P, title, desc, fname):
     url = SITE + fname
     return f'''<!doctype html>
@@ -118,6 +120,7 @@ def head(P, title, desc, fname):
 <style>
 {CSS}
 </style>
+{PXFIX}
 </head>
 <body>
 <div id="prog"></div>

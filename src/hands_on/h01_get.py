@@ -285,7 +285,7 @@ def get_section(R, img, say):
 </div></section>'''
 
 CSS = '''
-svg.pix{display:inline-block;flex:none;image-rendering:pixelated;vertical-align:middle}
+svg.pix{display:inline-block;flex:none;vertical-align:middle}
 .infog{border:2px solid #d5dbea;border-radius:14px;padding:18px;background:linear-gradient(#fff,#f8f9fc);display:flex;flex-direction:column;gap:14px}
 .infog h3{margin:0;font-size:17px;display:flex;gap:8px;align-items:center}
 .ig-top{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
