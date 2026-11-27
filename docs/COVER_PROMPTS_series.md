@@ -2,13 +2,15 @@
 
 각 페이지 맨 위 `data-img="cover_{N}"` 자리에 넣을 16:9 표지 그림 지시문입니다(ai-lab-explainer 18-14). **그림체는 16비트 RPG풍 픽셀아트(도트)로 통일합니다** — 캐릭터 팩 스프라이트와 같은 그림체여야 해요. 지금 페이지에는 네 캐릭터를 나란히 세운 대체 표지가 들어 있고, 그림을 받으면 픽셀이 뭉개지지 않게 1920×1080 WebP로 넣습니다.
 
-**참고 이미지(함께 올리기):** 네 캐릭터 기본 그림 4장 — GitHub `adminmrobo/fruitfly-lab-expressions`. 첫 표지(목차)를 먼저 받아 그림체를 확인한 뒤 나머지에 참고 그림으로 함께 올리세요.
+> **2026-11-27 고해상도판으로 고침:** 처음 지시문(480×270 격자로 그린 뒤 4배 확대)은 그림이 거친 큰 블록으로 나와, 가로 1920에서 직접 그린 촘촘한 픽셀아트(본 스킬 18-15-2 v1.19)로 바꿨습니다. 세밀함 기준은 `style_quality_reference.png`(AI 텍스트 가독성 연구실 표지)입니다.
+
+**참고 이미지(함께 올리기):** 세밀함 기준 1장 + 네 캐릭터 기본 그림 4장 — GitHub `adminmrobo/fruitfly-lab-expressions`. 첫 표지(목차)를 먼저 받아 그림체를 확인한 뒤 나머지에 참고 그림으로 함께 올리세요.
 
 ## 작업 순서
 
 1. **cover_00(목차)부터** 만듭니다. 참고 이미지로 네 캐릭터 기본 그림 4장을 함께 올리세요.
 2. 마음에 드는 cover_00을 받으면, 나머지 15장을 만들 때 **cover_00도 참고 이미지로 같이 올려** 그림체를 맞춥니다.
-3. 받은 파일은 `cover_NN.png` 이름으로 저장소 루트 `incoming/` 폴더에 넣고 `cd src && python3 build/add_covers.py` → `python3 build/build.py ..` 를 실행합니다.
+3. 받은 파일은 `cover_NN.png` 이름으로 zip에 묶어 올려 주세요. 1600×900 WebP(220KB 이하)로 넣고 다시 빌드합니다.
 4. 매끈한 일러스트로 나오거나 글자·숫자·로고가 섞여 나오면 "고칠 때" 문장으로 다시 요청합니다. **픽셀아트가 아니면 쓰지 않습니다.**
 
 | 키 | 층 · 장면 | 주제 소품 (한 줄) |
@@ -34,7 +36,7 @@
 
 | 항목 | 내용 |
 |---|---|
-| 키 · 판 | cover_00 · L (16:9 픽셀아트, 480×270 → 4배 1920×1080) |
+| 키 · 판 | cover_00 · L (16:9 고해상도 픽셀아트, 1920×1080(최소 1600×900)) |
 | 페이지 | `index.html` |
 | 장소 | 핀데이터 그룹 본사 타워 로비 |
 | 주제 소품 | 15색 층 안내판과 층을 타고 오르는 데이터 물줄기 |
@@ -44,17 +46,17 @@
 **Genspark에 붙여 넣기 ↓**
 ```
 웹페이지 맨 위에 거는 표지 그림 1장을 만들어 줘.
-- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 네모 모양으로 또렷하게 보이게
-- 비율 16:9, 480×270 픽셀로 그린 뒤 4배(1920×1080)로 확대 — 확대할 때 흐리게 하지 말 것
+- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 작고 촘촘한 고해상도로 얼굴·손·소품을 세밀하게(함께 올린 style_quality_reference.png 정도)
+- 비율 16:9, 가로 1920(최소 1600) 픽셀 고해상도로. 작은 그림을 크게 확대해 큰 네모 블록이 보이는 그림은 안 됨
 - 첨부한 참고 이미지(픽셀아트 스프라이트)의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 픽셀 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
 - 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
 - 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
-16-bit RPG style PIXEL ART website cover, wide 16:9.
-Art style (mandatory): retro 16-bit pixel art like a SNES-era RPG scene. Draw on a low-resolution grid of 480x270 pixels, then upscale exactly 4x with nearest-neighbor to 1920x1080, so every pixel is a crisp square block.
-  Limited palette (about 32 colors), bold dark 1-pixel outlines, flat 2-3 tone cel shading, small pixel highlights, hard pixel edges, no anti-aliasing, no blur.
+16-bit RPG style PIXEL ART website cover, wide 16:9, output 1920x1080 (at least 1600x900), high-resolution detailed pixel art.
+Art style (mandatory): HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art, like a polished modern pixel-art game key visual. Render natively at 1920x1080 with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks.
+  Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level of the attached quality reference image (style_quality_reference.png), but keep this page's bright daytime colors.
   The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors.
 Scene: the bright glass lobby of a fintech company headquarters tower in soft daylight, styled like a friendly research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), simple flat pixel shadows, pale blue pixel monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
@@ -66,17 +68,17 @@ Visual metaphor of the topic: a bright lobby of a glass office tower with a floo
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
   keep the bottom-left corner light and simple (plain white wall); make the bottom strip a plain near-white floor so the image sits well on a white page (use flat pixel dithering, not a smooth gradient); the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
-Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, high-resolution detail, blurry or anti-aliased edges.
+Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, big blocky low-resolution pixels, blurry edges.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
 
-고칠 때: `Same four characters, same 16-bit pixel art style (480x270 grid, 4x nearest-neighbor, crisp square pixels) and composition. Change only: {고칠 점}. Still no text.`
+고칠 때: `Same four characters, same high-resolution 16-bit pixel art style (small dense pixels, detailed faces) and composition. Change only: {고칠 점}. Still no text.`
 
 ## cover_01 — 핀테크 산업의 이해와 핀테크 데이터
 
 | 항목 | 내용 |
 |---|---|
-| 키 · 판 | cover_01 · L (16:9 픽셀아트, 480×270 → 4배 1920×1080) |
+| 키 · 판 | cover_01 · L (16:9 고해상도 픽셀아트, 1920×1080(최소 1600×900)) |
 | 페이지 | `01_fintech_industry.html` |
 | 장소 | 1F 핀테크 전략기획실 |
 | 주제 소품 | 옛 은행 창구(번호표 기계) vs 큰 스마트폰, 거래 점들이 폰으로 흘러듦 |
@@ -86,17 +88,17 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 **Genspark에 붙여 넣기 ↓**
 ```
 웹페이지 맨 위에 거는 표지 그림 1장을 만들어 줘.
-- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 네모 모양으로 또렷하게 보이게
-- 비율 16:9, 480×270 픽셀로 그린 뒤 4배(1920×1080)로 확대 — 확대할 때 흐리게 하지 말 것
+- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 작고 촘촘한 고해상도로 얼굴·손·소품을 세밀하게(함께 올린 style_quality_reference.png 정도)
+- 비율 16:9, 가로 1920(최소 1600) 픽셀 고해상도로. 작은 그림을 크게 확대해 큰 네모 블록이 보이는 그림은 안 됨
 - 첨부한 참고 이미지(픽셀아트 스프라이트)의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 픽셀 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
 - 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
 - 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
-16-bit RPG style PIXEL ART website cover, wide 16:9.
-Art style (mandatory): retro 16-bit pixel art like a SNES-era RPG scene. Draw on a low-resolution grid of 480x270 pixels, then upscale exactly 4x with nearest-neighbor to 1920x1080, so every pixel is a crisp square block.
-  Limited palette (about 32 colors), bold dark 1-pixel outlines, flat 2-3 tone cel shading, small pixel highlights, hard pixel edges, no anti-aliasing, no blur.
+16-bit RPG style PIXEL ART website cover, wide 16:9, output 1920x1080 (at least 1600x900), high-resolution detailed pixel art.
+Art style (mandatory): HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art, like a polished modern pixel-art game key visual. Render natively at 1920x1080 with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks.
+  Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level of the attached quality reference image (style_quality_reference.png), but keep this page's bright daytime colors.
   The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors.
 Scene: a bright strategy office of a fintech company in soft daylight, styled like a friendly research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), simple flat pixel shadows, pale blue pixel monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
@@ -108,17 +110,17 @@ Visual metaphor of the topic: an old bank counter with a numbered ticket machine
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
   keep the bottom-left corner light and simple (plain white wall); make the bottom strip a plain near-white floor so the image sits well on a white page (use flat pixel dithering, not a smooth gradient); the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
-Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, high-resolution detail, blurry or anti-aliased edges.
+Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, big blocky low-resolution pixels, blurry edges.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
 
-고칠 때: `Same four characters, same 16-bit pixel art style (480x270 grid, 4x nearest-neighbor, crisp square pixels) and composition. Change only: {고칠 점}. Still no text.`
+고칠 때: `Same four characters, same high-resolution 16-bit pixel art style (small dense pixels, detailed faces) and composition. Change only: {고칠 점}. Still no text.`
 
 ## cover_02 — 핀테크 데이터 수집 기술
 
 | 항목 | 내용 |
 |---|---|
-| 키 · 판 | cover_02 · L (16:9 픽셀아트, 480×270 → 4배 1920×1080) |
+| 키 · 판 | cover_02 · L (16:9 고해상도 픽셀아트, 1920×1080(최소 1600×900)) |
 | 페이지 | `02_data_collection.html` |
 | 장소 | 2F 데이터 수집팀 |
 | 주제 소품 | 깔때기·파이프로 서류·API 플러그·웹 카드를 병에 모음, 빨간 경고 스티커 병 하나 |
@@ -128,17 +130,17 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 **Genspark에 붙여 넣기 ↓**
 ```
 웹페이지 맨 위에 거는 표지 그림 1장을 만들어 줘.
-- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 네모 모양으로 또렷하게 보이게
-- 비율 16:9, 480×270 픽셀로 그린 뒤 4배(1920×1080)로 확대 — 확대할 때 흐리게 하지 말 것
+- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 작고 촘촘한 고해상도로 얼굴·손·소품을 세밀하게(함께 올린 style_quality_reference.png 정도)
+- 비율 16:9, 가로 1920(최소 1600) 픽셀 고해상도로. 작은 그림을 크게 확대해 큰 네모 블록이 보이는 그림은 안 됨
 - 첨부한 참고 이미지(픽셀아트 스프라이트)의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 픽셀 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
 - 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
 - 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
-16-bit RPG style PIXEL ART website cover, wide 16:9.
-Art style (mandatory): retro 16-bit pixel art like a SNES-era RPG scene. Draw on a low-resolution grid of 480x270 pixels, then upscale exactly 4x with nearest-neighbor to 1920x1080, so every pixel is a crisp square block.
-  Limited palette (about 32 colors), bold dark 1-pixel outlines, flat 2-3 tone cel shading, small pixel highlights, hard pixel edges, no anti-aliasing, no blur.
+16-bit RPG style PIXEL ART website cover, wide 16:9, output 1920x1080 (at least 1600x900), high-resolution detailed pixel art.
+Art style (mandatory): HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art, like a polished modern pixel-art game key visual. Render natively at 1920x1080 with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks.
+  Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level of the attached quality reference image (style_quality_reference.png), but keep this page's bright daytime colors.
   The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors.
 Scene: a bright data-collection room with pipes and shelves in soft daylight, styled like a friendly research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), simple flat pixel shadows, pale blue pixel monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
@@ -150,17 +152,17 @@ Visual metaphor of the topic: pipes and funnels collecting floating paper forms,
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
   keep the bottom-left corner light and simple (plain white wall); make the bottom strip a plain near-white floor so the image sits well on a white page (use flat pixel dithering, not a smooth gradient); the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
-Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, high-resolution detail, blurry or anti-aliased edges.
+Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, big blocky low-resolution pixels, blurry edges.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
 
-고칠 때: `Same four characters, same 16-bit pixel art style (480x270 grid, 4x nearest-neighbor, crisp square pixels) and composition. Change only: {고칠 점}. Still no text.`
+고칠 때: `Same four characters, same high-resolution 16-bit pixel art style (small dense pixels, detailed faces) and composition. Change only: {고칠 점}. Still no text.`
 
 ## cover_03 — 데이터 분석을 위한 준비 — 수집 계획 세우기
 
 | 항목 | 내용 |
 |---|---|
-| 키 · 판 | cover_03 · L (16:9 픽셀아트, 480×270 → 4배 1920×1080) |
+| 키 · 판 | cover_03 · L (16:9 고해상도 픽셀아트, 1920×1080(최소 1600×900)) |
 | 페이지 | `03_collection_plan.html` |
 | 장소 | 3F 데이터 기획실 |
 | 주제 소품 | 6단계 빈 흐름도 화이트보드와 체크리스트 |
@@ -170,17 +172,17 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 **Genspark에 붙여 넣기 ↓**
 ```
 웹페이지 맨 위에 거는 표지 그림 1장을 만들어 줘.
-- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 네모 모양으로 또렷하게 보이게
-- 비율 16:9, 480×270 픽셀로 그린 뒤 4배(1920×1080)로 확대 — 확대할 때 흐리게 하지 말 것
+- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 작고 촘촘한 고해상도로 얼굴·손·소품을 세밀하게(함께 올린 style_quality_reference.png 정도)
+- 비율 16:9, 가로 1920(최소 1600) 픽셀 고해상도로. 작은 그림을 크게 확대해 큰 네모 블록이 보이는 그림은 안 됨
 - 첨부한 참고 이미지(픽셀아트 스프라이트)의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 픽셀 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
 - 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
 - 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
-16-bit RPG style PIXEL ART website cover, wide 16:9.
-Art style (mandatory): retro 16-bit pixel art like a SNES-era RPG scene. Draw on a low-resolution grid of 480x270 pixels, then upscale exactly 4x with nearest-neighbor to 1920x1080, so every pixel is a crisp square block.
-  Limited palette (about 32 colors), bold dark 1-pixel outlines, flat 2-3 tone cel shading, small pixel highlights, hard pixel edges, no anti-aliasing, no blur.
+16-bit RPG style PIXEL ART website cover, wide 16:9, output 1920x1080 (at least 1600x900), high-resolution detailed pixel art.
+Art style (mandatory): HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art, like a polished modern pixel-art game key visual. Render natively at 1920x1080 with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks.
+  Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level of the attached quality reference image (style_quality_reference.png), but keep this page's bright daytime colors.
   The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors.
 Scene: a bright planning meeting room in soft daylight, styled like a friendly research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), simple flat pixel shadows, pale blue pixel monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
@@ -192,17 +194,17 @@ Visual metaphor of the topic: a large whiteboard with a six-step blank flowchart
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
   keep the bottom-left corner light and simple (plain white wall); make the bottom strip a plain near-white floor so the image sits well on a white page (use flat pixel dithering, not a smooth gradient); the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
-Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, high-resolution detail, blurry or anti-aliased edges.
+Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, big blocky low-resolution pixels, blurry edges.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
 
-고칠 때: `Same four characters, same 16-bit pixel art style (480x270 grid, 4x nearest-neighbor, crisp square pixels) and composition. Change only: {고칠 점}. Still no text.`
+고칠 때: `Same four characters, same high-resolution 16-bit pixel art style (small dense pixels, detailed faces) and composition. Change only: {고칠 점}. Still no text.`
 
 ## cover_04 — 데이터 분석 개념의 이해 — 도구, 모델, 검증
 
 | 항목 | 내용 |
 |---|---|
-| 키 · 판 | cover_04 · L (16:9 픽셀아트, 480×270 → 4배 1920×1080) |
+| 키 · 판 | cover_04 · L (16:9 고해상도 픽셀아트, 1920×1080(최소 1600×900)) |
 | 페이지 | `04_analysis_concepts.html` |
 | 장소 | 4F 분석 도구 지원실 |
 | 주제 소품 | 계산기·스프레드시트·뱀 모양 코딩 도구·대시보드가 걸린 도구 벽, 시험지 두 장 |
@@ -212,17 +214,17 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 **Genspark에 붙여 넣기 ↓**
 ```
 웹페이지 맨 위에 거는 표지 그림 1장을 만들어 줘.
-- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 네모 모양으로 또렷하게 보이게
-- 비율 16:9, 480×270 픽셀로 그린 뒤 4배(1920×1080)로 확대 — 확대할 때 흐리게 하지 말 것
+- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 작고 촘촘한 고해상도로 얼굴·손·소품을 세밀하게(함께 올린 style_quality_reference.png 정도)
+- 비율 16:9, 가로 1920(최소 1600) 픽셀 고해상도로. 작은 그림을 크게 확대해 큰 네모 블록이 보이는 그림은 안 됨
 - 첨부한 참고 이미지(픽셀아트 스프라이트)의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 픽셀 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
 - 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
 - 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
-16-bit RPG style PIXEL ART website cover, wide 16:9.
-Art style (mandatory): retro 16-bit pixel art like a SNES-era RPG scene. Draw on a low-resolution grid of 480x270 pixels, then upscale exactly 4x with nearest-neighbor to 1920x1080, so every pixel is a crisp square block.
-  Limited palette (about 32 colors), bold dark 1-pixel outlines, flat 2-3 tone cel shading, small pixel highlights, hard pixel edges, no anti-aliasing, no blur.
+16-bit RPG style PIXEL ART website cover, wide 16:9, output 1920x1080 (at least 1600x900), high-resolution detailed pixel art.
+Art style (mandatory): HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art, like a polished modern pixel-art game key visual. Render natively at 1920x1080 with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks.
+  Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level of the attached quality reference image (style_quality_reference.png), but keep this page's bright daytime colors.
   The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors.
 Scene: a bright tool room of an analytics team in soft daylight, styled like a friendly research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), simple flat pixel shadows, pale blue pixel monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
@@ -234,17 +236,17 @@ Visual metaphor of the topic: a tool wall with a calculator, a spreadsheet grid,
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
   keep the bottom-left corner light and simple (plain white wall); make the bottom strip a plain near-white floor so the image sits well on a white page (use flat pixel dithering, not a smooth gradient); the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
-Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, high-resolution detail, blurry or anti-aliased edges.
+Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, big blocky low-resolution pixels, blurry edges.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
 
-고칠 때: `Same four characters, same 16-bit pixel art style (480x270 grid, 4x nearest-neighbor, crisp square pixels) and composition. Change only: {고칠 점}. Still no text.`
+고칠 때: `Same four characters, same high-resolution 16-bit pixel art style (small dense pixels, detailed faces) and composition. Change only: {고칠 점}. Still no text.`
 
 ## cover_05 — 분류모형(1) — Colab 환경과 데이터 입력·전처리
 
 | 항목 | 내용 |
 |---|---|
-| 키 · 판 | cover_05 · L (16:9 픽셀아트, 480×270 → 4배 1920×1080) |
+| 키 · 판 | cover_05 · L (16:9 고해상도 픽셀아트, 1920×1080(최소 1600×900)) |
 | 페이지 | `05_preprocessing.html` |
 | 장소 | 5F 데이터 전처리 센터 |
 | 주제 소품 | 데이터 카드를 씻고 그릇에 나누는 부엌, 튀어나온 큰 카드 하나 |
@@ -254,17 +256,17 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 **Genspark에 붙여 넣기 ↓**
 ```
 웹페이지 맨 위에 거는 표지 그림 1장을 만들어 줘.
-- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 네모 모양으로 또렷하게 보이게
-- 비율 16:9, 480×270 픽셀로 그린 뒤 4배(1920×1080)로 확대 — 확대할 때 흐리게 하지 말 것
+- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 작고 촘촘한 고해상도로 얼굴·손·소품을 세밀하게(함께 올린 style_quality_reference.png 정도)
+- 비율 16:9, 가로 1920(최소 1600) 픽셀 고해상도로. 작은 그림을 크게 확대해 큰 네모 블록이 보이는 그림은 안 됨
 - 첨부한 참고 이미지(픽셀아트 스프라이트)의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 픽셀 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
 - 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
 - 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
-16-bit RPG style PIXEL ART website cover, wide 16:9.
-Art style (mandatory): retro 16-bit pixel art like a SNES-era RPG scene. Draw on a low-resolution grid of 480x270 pixels, then upscale exactly 4x with nearest-neighbor to 1920x1080, so every pixel is a crisp square block.
-  Limited palette (about 32 colors), bold dark 1-pixel outlines, flat 2-3 tone cel shading, small pixel highlights, hard pixel edges, no anti-aliasing, no blur.
+16-bit RPG style PIXEL ART website cover, wide 16:9, output 1920x1080 (at least 1600x900), high-resolution detailed pixel art.
+Art style (mandatory): HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art, like a polished modern pixel-art game key visual. Render natively at 1920x1080 with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks.
+  Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level of the attached quality reference image (style_quality_reference.png), but keep this page's bright daytime colors.
   The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors.
 Scene: a bright, clean data-preparation kitchen-like workshop in soft daylight, styled like a friendly research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), simple flat pixel shadows, pale blue pixel monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
@@ -276,17 +278,17 @@ Visual metaphor of the topic: a kitchen counter where data cards are being washe
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
   keep the bottom-left corner light and simple (plain white wall); make the bottom strip a plain near-white floor so the image sits well on a white page (use flat pixel dithering, not a smooth gradient); the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
-Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, high-resolution detail, blurry or anti-aliased edges.
+Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, big blocky low-resolution pixels, blurry edges.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
 
-고칠 때: `Same four characters, same 16-bit pixel art style (480x270 grid, 4x nearest-neighbor, crisp square pixels) and composition. Change only: {고칠 점}. Still no text.`
+고칠 때: `Same four characters, same high-resolution 16-bit pixel art style (small dense pixels, detailed faces) and composition. Change only: {고칠 점}. Still no text.`
 
 ## cover_06 — 데이터 분석 실습 — KNN·SVM, 데이터 분할과 표준화
 
 | 항목 | 내용 |
 |---|---|
-| 키 · 판 | cover_06 · L (16:9 픽셀아트, 480×270 → 4배 1920×1080) |
+| 키 · 판 | cover_06 · L (16:9 고해상도 픽셀아트, 1920×1080(최소 1600×900)) |
 | 페이지 | `06_knn_svm.html` |
 | 장소 | 6F 고객 이탈 분석팀 |
 | 주제 소품 | 바닥의 파란·빨간 점, 가장 가까운 5개 점을 잇는 삼각형 표지, 두 무리를 가르는 넓은 길, 저울 |
@@ -296,17 +298,17 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 **Genspark에 붙여 넣기 ↓**
 ```
 웹페이지 맨 위에 거는 표지 그림 1장을 만들어 줘.
-- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 네모 모양으로 또렷하게 보이게
-- 비율 16:9, 480×270 픽셀로 그린 뒤 4배(1920×1080)로 확대 — 확대할 때 흐리게 하지 말 것
+- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 작고 촘촘한 고해상도로 얼굴·손·소품을 세밀하게(함께 올린 style_quality_reference.png 정도)
+- 비율 16:9, 가로 1920(최소 1600) 픽셀 고해상도로. 작은 그림을 크게 확대해 큰 네모 블록이 보이는 그림은 안 됨
 - 첨부한 참고 이미지(픽셀아트 스프라이트)의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 픽셀 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
 - 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
 - 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
-16-bit RPG style PIXEL ART website cover, wide 16:9.
-Art style (mandatory): retro 16-bit pixel art like a SNES-era RPG scene. Draw on a low-resolution grid of 480x270 pixels, then upscale exactly 4x with nearest-neighbor to 1920x1080, so every pixel is a crisp square block.
-  Limited palette (about 32 colors), bold dark 1-pixel outlines, flat 2-3 tone cel shading, small pixel highlights, hard pixel edges, no anti-aliasing, no blur.
+16-bit RPG style PIXEL ART website cover, wide 16:9, output 1920x1080 (at least 1600x900), high-resolution detailed pixel art.
+Art style (mandatory): HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art, like a polished modern pixel-art game key visual. Render natively at 1920x1080 with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks.
+  Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level of the attached quality reference image (style_quality_reference.png), but keep this page's bright daytime colors.
   The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors.
 Scene: a bright analysis lab with a large floor map of dots in soft daylight, styled like a friendly research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), simple flat pixel shadows, pale blue pixel monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
@@ -318,17 +320,17 @@ Visual metaphor of the topic: a scatter of blue and red glowing dots on the floo
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
   keep the bottom-left corner light and simple (plain white wall); make the bottom strip a plain near-white floor so the image sits well on a white page (use flat pixel dithering, not a smooth gradient); the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
-Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, high-resolution detail, blurry or anti-aliased edges.
+Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, big blocky low-resolution pixels, blurry edges.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
 
-고칠 때: `Same four characters, same 16-bit pixel art style (480x270 grid, 4x nearest-neighbor, crisp square pixels) and composition. Change only: {고칠 점}. Still no text.`
+고칠 때: `Same four characters, same high-resolution 16-bit pixel art style (small dense pixels, detailed faces) and composition. Change only: {고칠 점}. Still no text.`
 
 ## cover_07 — 데이터 분석 모델의 평가 — 혼동행렬, ROC, 최적화
 
 | 항목 | 내용 |
 |---|---|
-| 키 · 판 | cover_07 · L (16:9 픽셀아트, 480×270 → 4배 1920×1080) |
+| 키 · 판 | cover_07 · L (16:9 고해상도 픽셀아트, 1920×1080(최소 1600×900)) |
 | 페이지 | `07_model_evaluation.html` |
 | 장소 | 7F 모델 검증실 |
 | 주제 소품 | 벽의 2×2 빛나는 구역, 왼쪽 위로 휘는 곡선, 천장 화재경보기 |
@@ -338,17 +340,17 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 **Genspark에 붙여 넣기 ↓**
 ```
 웹페이지 맨 위에 거는 표지 그림 1장을 만들어 줘.
-- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 네모 모양으로 또렷하게 보이게
-- 비율 16:9, 480×270 픽셀로 그린 뒤 4배(1920×1080)로 확대 — 확대할 때 흐리게 하지 말 것
+- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 작고 촘촘한 고해상도로 얼굴·손·소품을 세밀하게(함께 올린 style_quality_reference.png 정도)
+- 비율 16:9, 가로 1920(최소 1600) 픽셀 고해상도로. 작은 그림을 크게 확대해 큰 네모 블록이 보이는 그림은 안 됨
 - 첨부한 참고 이미지(픽셀아트 스프라이트)의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 픽셀 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
 - 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
 - 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
-16-bit RPG style PIXEL ART website cover, wide 16:9.
-Art style (mandatory): retro 16-bit pixel art like a SNES-era RPG scene. Draw on a low-resolution grid of 480x270 pixels, then upscale exactly 4x with nearest-neighbor to 1920x1080, so every pixel is a crisp square block.
-  Limited palette (about 32 colors), bold dark 1-pixel outlines, flat 2-3 tone cel shading, small pixel highlights, hard pixel edges, no anti-aliasing, no blur.
+16-bit RPG style PIXEL ART website cover, wide 16:9, output 1920x1080 (at least 1600x900), high-resolution detailed pixel art.
+Art style (mandatory): HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art, like a polished modern pixel-art game key visual. Render natively at 1920x1080 with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks.
+  Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level of the attached quality reference image (style_quality_reference.png), but keep this page's bright daytime colors.
   The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors.
 Scene: a bright model-review room in soft daylight, styled like a friendly research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), simple flat pixel shadows, pale blue pixel monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
@@ -360,17 +362,17 @@ Visual metaphor of the topic: a large 2-by-2 glowing grid on the wall, a curved 
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
   keep the bottom-left corner light and simple (plain white wall); make the bottom strip a plain near-white floor so the image sits well on a white page (use flat pixel dithering, not a smooth gradient); the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
-Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, high-resolution detail, blurry or anti-aliased edges.
+Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, big blocky low-resolution pixels, blurry edges.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
 
-고칠 때: `Same four characters, same 16-bit pixel art style (480x270 grid, 4x nearest-neighbor, crisp square pixels) and composition. Change only: {고칠 점}. Still no text.`
+고칠 때: `Same four characters, same high-resolution 16-bit pixel art style (small dense pixels, detailed faces) and composition. Change only: {고칠 점}. Still no text.`
 
 ## cover_08 — 중간 요약정리 및 퀴즈 — 1~7회차
 
 | 항목 | 내용 |
 |---|---|
-| 키 · 판 | cover_08 · L (16:9 픽셀아트, 480×270 → 4배 1920×1080) |
+| 키 · 판 | cover_08 · L (16:9 고해상도 픽셀아트, 1920×1080(최소 1600×900)) |
 | 페이지 | `08_midterm_review.html` |
 | 장소 | 8F 중간 점검 라운지 |
 | 주제 소품 | 게시판의 빈 카드 7장, 계단 중간의 리본 |
@@ -380,17 +382,17 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 **Genspark에 붙여 넣기 ↓**
 ```
 웹페이지 맨 위에 거는 표지 그림 1장을 만들어 줘.
-- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 네모 모양으로 또렷하게 보이게
-- 비율 16:9, 480×270 픽셀로 그린 뒤 4배(1920×1080)로 확대 — 확대할 때 흐리게 하지 말 것
+- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 작고 촘촘한 고해상도로 얼굴·손·소품을 세밀하게(함께 올린 style_quality_reference.png 정도)
+- 비율 16:9, 가로 1920(최소 1600) 픽셀 고해상도로. 작은 그림을 크게 확대해 큰 네모 블록이 보이는 그림은 안 됨
 - 첨부한 참고 이미지(픽셀아트 스프라이트)의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 픽셀 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
 - 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
 - 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
-16-bit RPG style PIXEL ART website cover, wide 16:9.
-Art style (mandatory): retro 16-bit pixel art like a SNES-era RPG scene. Draw on a low-resolution grid of 480x270 pixels, then upscale exactly 4x with nearest-neighbor to 1920x1080, so every pixel is a crisp square block.
-  Limited palette (about 32 colors), bold dark 1-pixel outlines, flat 2-3 tone cel shading, small pixel highlights, hard pixel edges, no anti-aliasing, no blur.
+16-bit RPG style PIXEL ART website cover, wide 16:9, output 1920x1080 (at least 1600x900), high-resolution detailed pixel art.
+Art style (mandatory): HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art, like a polished modern pixel-art game key visual. Render natively at 1920x1080 with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks.
+  Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level of the attached quality reference image (style_quality_reference.png), but keep this page's bright daytime colors.
   The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors.
 Scene: a bright cozy lounge halfway up the tower in soft daylight, styled like a friendly research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), simple flat pixel shadows, pale blue pixel monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
@@ -402,17 +404,17 @@ Visual metaphor of the topic: a cozy lounge with seven blank cards pinned on a b
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
   keep the bottom-left corner light and simple (plain white wall); make the bottom strip a plain near-white floor so the image sits well on a white page (use flat pixel dithering, not a smooth gradient); the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
-Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, high-resolution detail, blurry or anti-aliased edges.
+Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, big blocky low-resolution pixels, blurry edges.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
 
-고칠 때: `Same four characters, same 16-bit pixel art style (480x270 grid, 4x nearest-neighbor, crisp square pixels) and composition. Change only: {고칠 점}. Still no text.`
+고칠 때: `Same four characters, same high-resolution 16-bit pixel art style (small dense pixels, detailed faces) and composition. Change only: {고칠 점}. Still no text.`
 
 ## cover_09 — 데이터 분석 모형: 회귀모형(1) — "얼마"를 맞히는 모델
 
 | 항목 | 내용 |
 |---|---|
-| 키 · 판 | cover_09 · L (16:9 픽셀아트, 480×270 → 4배 1920×1080) |
+| 키 · 판 | cover_09 · L (16:9 고해상도 픽셀아트, 1920×1080(최소 1600×900)) |
 | 페이지 | `09_regression.html` |
 | 장소 | 9F 보험 가격 산정팀 |
 | 주제 소품 | 세 띠로 나뉜 점 차트 위 직선과 곡선, 다트판 |
@@ -422,17 +424,17 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 **Genspark에 붙여 넣기 ↓**
 ```
 웹페이지 맨 위에 거는 표지 그림 1장을 만들어 줘.
-- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 네모 모양으로 또렷하게 보이게
-- 비율 16:9, 480×270 픽셀로 그린 뒤 4배(1920×1080)로 확대 — 확대할 때 흐리게 하지 말 것
+- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 작고 촘촘한 고해상도로 얼굴·손·소품을 세밀하게(함께 올린 style_quality_reference.png 정도)
+- 비율 16:9, 가로 1920(최소 1600) 픽셀 고해상도로. 작은 그림을 크게 확대해 큰 네모 블록이 보이는 그림은 안 됨
 - 첨부한 참고 이미지(픽셀아트 스프라이트)의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 픽셀 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
 - 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
 - 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
-16-bit RPG style PIXEL ART website cover, wide 16:9.
-Art style (mandatory): retro 16-bit pixel art like a SNES-era RPG scene. Draw on a low-resolution grid of 480x270 pixels, then upscale exactly 4x with nearest-neighbor to 1920x1080, so every pixel is a crisp square block.
-  Limited palette (about 32 colors), bold dark 1-pixel outlines, flat 2-3 tone cel shading, small pixel highlights, hard pixel edges, no anti-aliasing, no blur.
+16-bit RPG style PIXEL ART website cover, wide 16:9, output 1920x1080 (at least 1600x900), high-resolution detailed pixel art.
+Art style (mandatory): HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art, like a polished modern pixel-art game key visual. Render natively at 1920x1080 with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks.
+  Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level of the attached quality reference image (style_quality_reference.png), but keep this page's bright daytime colors.
   The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors.
 Scene: a bright insurance pricing office in soft daylight, styled like a friendly research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), simple flat pixel shadows, pale blue pixel monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
@@ -444,17 +446,17 @@ Visual metaphor of the topic: a scatter of dots on a wall chart split into three
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
   keep the bottom-left corner light and simple (plain white wall); make the bottom strip a plain near-white floor so the image sits well on a white page (use flat pixel dithering, not a smooth gradient); the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
-Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, high-resolution detail, blurry or anti-aliased edges.
+Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, big blocky low-resolution pixels, blurry edges.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
 
-고칠 때: `Same four characters, same 16-bit pixel art style (480x270 grid, 4x nearest-neighbor, crisp square pixels) and composition. Change only: {고칠 점}. Still no text.`
+고칠 때: `Same four characters, same high-resolution 16-bit pixel art style (small dense pixels, detailed faces) and composition. Change only: {고칠 점}. Still no text.`
 
 ## cover_10 — 데이터 분석 모형: 회귀모형(2) — 로지스틱 회귀, 결정나무, 특성공학
 
 | 항목 | 내용 |
 |---|---|
-| 키 · 판 | cover_10 · L (16:9 픽셀아트, 480×270 → 4배 1920×1080) |
+| 키 · 판 | cover_10 · L (16:9 고해상도 픽셀아트, 1920×1080(최소 1600×900)) |
 | 페이지 | `10_logistic_tree.html` |
 | 장소 | 10F 신용 리스크 모델링실 |
 | 주제 소품 | 예/아니오로 갈라지는 작은 나무, 떠 있는 S자 곡선, 맞물리는 퍼즐 두 조각 |
@@ -464,17 +466,17 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 **Genspark에 붙여 넣기 ↓**
 ```
 웹페이지 맨 위에 거는 표지 그림 1장을 만들어 줘.
-- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 네모 모양으로 또렷하게 보이게
-- 비율 16:9, 480×270 픽셀로 그린 뒤 4배(1920×1080)로 확대 — 확대할 때 흐리게 하지 말 것
+- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 작고 촘촘한 고해상도로 얼굴·손·소품을 세밀하게(함께 올린 style_quality_reference.png 정도)
+- 비율 16:9, 가로 1920(최소 1600) 픽셀 고해상도로. 작은 그림을 크게 확대해 큰 네모 블록이 보이는 그림은 안 됨
 - 첨부한 참고 이미지(픽셀아트 스프라이트)의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 픽셀 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
 - 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
 - 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
-16-bit RPG style PIXEL ART website cover, wide 16:9.
-Art style (mandatory): retro 16-bit pixel art like a SNES-era RPG scene. Draw on a low-resolution grid of 480x270 pixels, then upscale exactly 4x with nearest-neighbor to 1920x1080, so every pixel is a crisp square block.
-  Limited palette (about 32 colors), bold dark 1-pixel outlines, flat 2-3 tone cel shading, small pixel highlights, hard pixel edges, no anti-aliasing, no blur.
+16-bit RPG style PIXEL ART website cover, wide 16:9, output 1920x1080 (at least 1600x900), high-resolution detailed pixel art.
+Art style (mandatory): HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art, like a polished modern pixel-art game key visual. Render natively at 1920x1080 with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks.
+  Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level of the attached quality reference image (style_quality_reference.png), but keep this page's bright daytime colors.
   The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors.
 Scene: a bright indoor garden lab in soft daylight, styled like a friendly research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), simple flat pixel shadows, pale blue pixel monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
@@ -486,17 +488,17 @@ Visual metaphor of the topic: a small glowing decision tree with yes/no fork bra
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
   keep the bottom-left corner light and simple (plain white wall); make the bottom strip a plain near-white floor so the image sits well on a white page (use flat pixel dithering, not a smooth gradient); the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
-Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, high-resolution detail, blurry or anti-aliased edges.
+Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, big blocky low-resolution pixels, blurry edges.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
 
-고칠 때: `Same four characters, same 16-bit pixel art style (480x270 grid, 4x nearest-neighbor, crisp square pixels) and composition. Change only: {고칠 점}. Still no text.`
+고칠 때: `Same four characters, same high-resolution 16-bit pixel art style (small dense pixels, detailed faces) and composition. Change only: {고칠 점}. Still no text.`
 
 ## cover_11 — 딥러닝 모델과 시계열 데이터 분석
 
 | 항목 | 내용 |
 |---|---|
-| 키 · 판 | cover_11 · L (16:9 픽셀아트, 480×270 → 4배 1920×1080) |
+| 키 · 판 | cover_11 · L (16:9 고해상도 픽셀아트, 1920×1080(최소 1600×900)) |
 | 페이지 | `11_deep_learning_timeseries.html` |
 | 장소 | 11F 시장 데이터 랩 |
 | 주제 소품 | 선으로 이어진 뉴런 벽, 한 걸음 늦게 따라가는 점선 예측선 |
@@ -506,17 +508,17 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 **Genspark에 붙여 넣기 ↓**
 ```
 웹페이지 맨 위에 거는 표지 그림 1장을 만들어 줘.
-- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 네모 모양으로 또렷하게 보이게
-- 비율 16:9, 480×270 픽셀로 그린 뒤 4배(1920×1080)로 확대 — 확대할 때 흐리게 하지 말 것
+- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 작고 촘촘한 고해상도로 얼굴·손·소품을 세밀하게(함께 올린 style_quality_reference.png 정도)
+- 비율 16:9, 가로 1920(최소 1600) 픽셀 고해상도로. 작은 그림을 크게 확대해 큰 네모 블록이 보이는 그림은 안 됨
 - 첨부한 참고 이미지(픽셀아트 스프라이트)의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 픽셀 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
 - 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
 - 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
-16-bit RPG style PIXEL ART website cover, wide 16:9.
-Art style (mandatory): retro 16-bit pixel art like a SNES-era RPG scene. Draw on a low-resolution grid of 480x270 pixels, then upscale exactly 4x with nearest-neighbor to 1920x1080, so every pixel is a crisp square block.
-  Limited palette (about 32 colors), bold dark 1-pixel outlines, flat 2-3 tone cel shading, small pixel highlights, hard pixel edges, no anti-aliasing, no blur.
+16-bit RPG style PIXEL ART website cover, wide 16:9, output 1920x1080 (at least 1600x900), high-resolution detailed pixel art.
+Art style (mandatory): HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art, like a polished modern pixel-art game key visual. Render natively at 1920x1080 with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks.
+  Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level of the attached quality reference image (style_quality_reference.png), but keep this page's bright daytime colors.
   The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors.
 Scene: a bright market-data observatory room in soft daylight, styled like a friendly research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), simple flat pixel shadows, pale blue pixel monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
@@ -528,17 +530,17 @@ Visual metaphor of the topic: a wall of glowing neurons connected by lines, and 
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
   keep the bottom-left corner light and simple (plain white wall); make the bottom strip a plain near-white floor so the image sits well on a white page (use flat pixel dithering, not a smooth gradient); the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
-Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, high-resolution detail, blurry or anti-aliased edges.
+Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, big blocky low-resolution pixels, blurry edges.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
 
-고칠 때: `Same four characters, same 16-bit pixel art style (480x270 grid, 4x nearest-neighbor, crisp square pixels) and composition. Change only: {고칠 점}. Still no text.`
+고칠 때: `Same four characters, same high-resolution 16-bit pixel art style (small dense pixels, detailed faces) and composition. Change only: {고칠 점}. Still no text.`
 
 ## cover_12 — 핀테크 데이터 시각화 — 대표값, 상관, 차트 고르기
 
 | 항목 | 내용 |
 |---|---|
-| 키 · 판 | cover_12 · L (16:9 픽셀아트, 480×270 → 4배 1920×1080) |
+| 키 · 판 | cover_12 · L (16:9 고해상도 픽셀아트, 1920×1080(최소 1600×900)) |
 | 페이지 | `12_visualization.html` |
 | 장소 | 12F 데이터 시각화 스튜디오 |
 | 주제 소품 | 선·막대·원·상자·산점도 이젤과 바닥의 꼬리 긴 히스토그램 |
@@ -548,17 +550,17 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 **Genspark에 붙여 넣기 ↓**
 ```
 웹페이지 맨 위에 거는 표지 그림 1장을 만들어 줘.
-- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 네모 모양으로 또렷하게 보이게
-- 비율 16:9, 480×270 픽셀로 그린 뒤 4배(1920×1080)로 확대 — 확대할 때 흐리게 하지 말 것
+- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 작고 촘촘한 고해상도로 얼굴·손·소품을 세밀하게(함께 올린 style_quality_reference.png 정도)
+- 비율 16:9, 가로 1920(최소 1600) 픽셀 고해상도로. 작은 그림을 크게 확대해 큰 네모 블록이 보이는 그림은 안 됨
 - 첨부한 참고 이미지(픽셀아트 스프라이트)의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 픽셀 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
 - 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
 - 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
-16-bit RPG style PIXEL ART website cover, wide 16:9.
-Art style (mandatory): retro 16-bit pixel art like a SNES-era RPG scene. Draw on a low-resolution grid of 480x270 pixels, then upscale exactly 4x with nearest-neighbor to 1920x1080, so every pixel is a crisp square block.
-  Limited palette (about 32 colors), bold dark 1-pixel outlines, flat 2-3 tone cel shading, small pixel highlights, hard pixel edges, no anti-aliasing, no blur.
+16-bit RPG style PIXEL ART website cover, wide 16:9, output 1920x1080 (at least 1600x900), high-resolution detailed pixel art.
+Art style (mandatory): HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art, like a polished modern pixel-art game key visual. Render natively at 1920x1080 with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks.
+  Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level of the attached quality reference image (style_quality_reference.png), but keep this page's bright daytime colors.
   The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors.
 Scene: a bright painting studio for charts in soft daylight, styled like a friendly research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), simple flat pixel shadows, pale blue pixel monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
@@ -570,17 +572,17 @@ Visual metaphor of the topic: easels with a line chart, bar chart, pie chart, bo
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
   keep the bottom-left corner light and simple (plain white wall); make the bottom strip a plain near-white floor so the image sits well on a white page (use flat pixel dithering, not a smooth gradient); the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
-Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, high-resolution detail, blurry or anti-aliased edges.
+Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, big blocky low-resolution pixels, blurry edges.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
 
-고칠 때: `Same four characters, same 16-bit pixel art style (480x270 grid, 4x nearest-neighbor, crisp square pixels) and composition. Change only: {고칠 점}. Still no text.`
+고칠 때: `Same four characters, same high-resolution 16-bit pixel art style (small dense pixels, detailed faces) and composition. Change only: {고칠 점}. Still no text.`
 
 ## cover_13 — 데이터 기반의 핀테크 서비스 기획 — 로보어드바이저
 
 | 항목 | 내용 |
 |---|---|
-| 키 · 판 | cover_13 · L (16:9 픽셀아트, 480×270 → 4배 1920×1080) |
+| 키 · 판 | cover_13 · L (16:9 고해상도 픽셀아트, 1920×1080(최소 1600×900)) |
 | 페이지 | `13_robo_advisor.html` |
 | 장소 | 13F 로보어드바이저 사업부 |
 | 주제 소품 | 빈 설문지, 자산 원그래프, 교차하는 이동평균선 두 개, 로보어드바이저 키오스크 |
@@ -590,17 +592,17 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 **Genspark에 붙여 넣기 ↓**
 ```
 웹페이지 맨 위에 거는 표지 그림 1장을 만들어 줘.
-- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 네모 모양으로 또렷하게 보이게
-- 비율 16:9, 480×270 픽셀로 그린 뒤 4배(1920×1080)로 확대 — 확대할 때 흐리게 하지 말 것
+- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 작고 촘촘한 고해상도로 얼굴·손·소품을 세밀하게(함께 올린 style_quality_reference.png 정도)
+- 비율 16:9, 가로 1920(최소 1600) 픽셀 고해상도로. 작은 그림을 크게 확대해 큰 네모 블록이 보이는 그림은 안 됨
 - 첨부한 참고 이미지(픽셀아트 스프라이트)의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 픽셀 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
 - 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
 - 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
-16-bit RPG style PIXEL ART website cover, wide 16:9.
-Art style (mandatory): retro 16-bit pixel art like a SNES-era RPG scene. Draw on a low-resolution grid of 480x270 pixels, then upscale exactly 4x with nearest-neighbor to 1920x1080, so every pixel is a crisp square block.
-  Limited palette (about 32 colors), bold dark 1-pixel outlines, flat 2-3 tone cel shading, small pixel highlights, hard pixel edges, no anti-aliasing, no blur.
+16-bit RPG style PIXEL ART website cover, wide 16:9, output 1920x1080 (at least 1600x900), high-resolution detailed pixel art.
+Art style (mandatory): HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art, like a polished modern pixel-art game key visual. Render natively at 1920x1080 with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks.
+  Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level of the attached quality reference image (style_quality_reference.png), but keep this page's bright daytime colors.
   The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors.
 Scene: a bright wealth-advice consulting room in soft daylight, styled like a friendly research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), simple flat pixel shadows, pale blue pixel monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
@@ -612,17 +614,17 @@ Visual metaphor of the topic: a desk with a blank questionnaire, a pie of assets
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
   keep the bottom-left corner light and simple (plain white wall); make the bottom strip a plain near-white floor so the image sits well on a white page (use flat pixel dithering, not a smooth gradient); the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
-Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, high-resolution detail, blurry or anti-aliased edges.
+Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, big blocky low-resolution pixels, blurry edges.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
 
-고칠 때: `Same four characters, same 16-bit pixel art style (480x270 grid, 4x nearest-neighbor, crisp square pixels) and composition. Change only: {고칠 점}. Still no text.`
+고칠 때: `Same four characters, same high-resolution 16-bit pixel art style (small dense pixels, detailed faces) and composition. Change only: {고칠 점}. Still no text.`
 
 ## cover_14 — 데이터 보안 및 품질 관리
 
 | 항목 | 내용 |
 |---|---|
-| 키 · 판 | cover_14 · L (16:9 픽셀아트, 480×270 → 4배 1920×1080) |
+| 키 · 판 | cover_14 · L (16:9 고해상도 픽셀아트, 1920×1080(최소 1600×900)) |
 | 페이지 | `14_security_quality.html` |
 | 장소 | 14F 정보보호·데이터 거버넌스 센터 |
 | 주제 소품 | 금고 문, 세 조각 방패, 흐릿하게 묶인 사람 실루엣들, 데이터 건강검진 클립보드 |
@@ -632,17 +634,17 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 **Genspark에 붙여 넣기 ↓**
 ```
 웹페이지 맨 위에 거는 표지 그림 1장을 만들어 줘.
-- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 네모 모양으로 또렷하게 보이게
-- 비율 16:9, 480×270 픽셀로 그린 뒤 4배(1920×1080)로 확대 — 확대할 때 흐리게 하지 말 것
+- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 작고 촘촘한 고해상도로 얼굴·손·소품을 세밀하게(함께 올린 style_quality_reference.png 정도)
+- 비율 16:9, 가로 1920(최소 1600) 픽셀 고해상도로. 작은 그림을 크게 확대해 큰 네모 블록이 보이는 그림은 안 됨
 - 첨부한 참고 이미지(픽셀아트 스프라이트)의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 픽셀 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
 - 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
 - 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
-16-bit RPG style PIXEL ART website cover, wide 16:9.
-Art style (mandatory): retro 16-bit pixel art like a SNES-era RPG scene. Draw on a low-resolution grid of 480x270 pixels, then upscale exactly 4x with nearest-neighbor to 1920x1080, so every pixel is a crisp square block.
-  Limited palette (about 32 colors), bold dark 1-pixel outlines, flat 2-3 tone cel shading, small pixel highlights, hard pixel edges, no anti-aliasing, no blur.
+16-bit RPG style PIXEL ART website cover, wide 16:9, output 1920x1080 (at least 1600x900), high-resolution detailed pixel art.
+Art style (mandatory): HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art, like a polished modern pixel-art game key visual. Render natively at 1920x1080 with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks.
+  Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level of the attached quality reference image (style_quality_reference.png), but keep this page's bright daytime colors.
   The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors.
 Scene: a bright security center in soft daylight, styled like a friendly research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), simple flat pixel shadows, pale blue pixel monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
@@ -654,17 +656,17 @@ Visual metaphor of the topic: a vault door, a shield with three segments, a crow
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
   keep the bottom-left corner light and simple (plain white wall); make the bottom strip a plain near-white floor so the image sits well on a white page (use flat pixel dithering, not a smooth gradient); the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
-Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, high-resolution detail, blurry or anti-aliased edges.
+Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, big blocky low-resolution pixels, blurry edges.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
 
-고칠 때: `Same four characters, same 16-bit pixel art style (480x270 grid, 4x nearest-neighbor, crisp square pixels) and composition. Change only: {고칠 점}. Still no text.`
+고칠 때: `Same four characters, same high-resolution 16-bit pixel art style (small dense pixels, detailed faces) and composition. Change only: {고칠 점}. Still no text.`
 
 ## cover_15 — 기말 요약정리 및 퀴즈 — 9~14회차
 
 | 항목 | 내용 |
 |---|---|
-| 키 · 판 | cover_15 · L (16:9 픽셀아트, 480×270 → 4배 1920×1080) |
+| 키 · 판 | cover_15 · L (16:9 고해상도 픽셀아트, 1920×1080(최소 1600×900)) |
 | 페이지 | `15_final_review.html` |
 | 장소 | 15F 전망대 |
 | 주제 소품 | 타워 층을 내려다보는 망원경, 벤치 위 닫힌 책 여섯 권, 노을 |
@@ -674,17 +676,17 @@ No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol
 **Genspark에 붙여 넣기 ↓**
 ```
 웹페이지 맨 위에 거는 표지 그림 1장을 만들어 줘.
-- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 네모 모양으로 또렷하게 보이게
-- 비율 16:9, 480×270 픽셀로 그린 뒤 4배(1920×1080)로 확대 — 확대할 때 흐리게 하지 말 것
+- **그림체는 반드시 16비트 RPG풍 픽셀아트(도트 그림)**: 매끈한 일러스트·3D·수채화·애니메이션풍 금지, 픽셀이 작고 촘촘한 고해상도로 얼굴·손·소품을 세밀하게(함께 올린 style_quality_reference.png 정도)
+- 비율 16:9, 가로 1920(최소 1600) 픽셀 고해상도로. 작은 그림을 크게 확대해 큰 네모 블록이 보이는 그림은 안 됨
 - 첨부한 참고 이미지(픽셀아트 스프라이트)의 네 캐릭터(박사, 조수, 초파리 연구원, 주판봇)를 같은 픽셀 그림체·같은 외형으로, 넷 모두 등장
 - 그림 안에 글자·숫자·로고를 넣지 말 것
 - 얼굴과 손은 가장자리에서 떨어진 가운데 영역에, 왼쪽 아래 구석은 밝고 단순하게(흰 벽), 아래 가장자리는 흰 페이지로 자연스럽게 이어지게
 - 밤 장면·어두운 배경 금지, 전체적으로 밝은 낮 장면
 아래 영어 프롬프트를 그대로 써 줘.
 
-16-bit RPG style PIXEL ART website cover, wide 16:9.
-Art style (mandatory): retro 16-bit pixel art like a SNES-era RPG scene. Draw on a low-resolution grid of 480x270 pixels, then upscale exactly 4x with nearest-neighbor to 1920x1080, so every pixel is a crisp square block.
-  Limited palette (about 32 colors), bold dark 1-pixel outlines, flat 2-3 tone cel shading, small pixel highlights, hard pixel edges, no anti-aliasing, no blur.
+16-bit RPG style PIXEL ART website cover, wide 16:9, output 1920x1080 (at least 1600x900), high-resolution detailed pixel art.
+Art style (mandatory): HIGH-RESOLUTION, highly detailed 16-bit RPG style pixel art, like a polished modern pixel-art game key visual. Render natively at 1920x1080 with SMALL, dense pixels (each art pixel only about 2 screen pixels wide) — NOT a tiny low-resolution image blown up into big square blocks.
+  Rich detail in faces, eyes, hair strands, hands, clothes folds and props; bold dark outlines, 2–3 tone shading, small highlights, subtle dithering, crisp edges, no blur. Match the detail level of the attached quality reference image (style_quality_reference.png), but keep this page's bright daytime colors.
   The characters must look like the attached pixel-art sprite reference images: same pixel style, same proportions, same colors.
 Scene: a bright rooftop observatory in late afternoon light in soft daylight, styled like a friendly research lab, clean white walls and pale gray-blue furniture (#ffffff to #f6f7fb), simple flat pixel shadows, pale blue pixel monitor glow, small accents of magenta (#a8329f), green (#138a52) and blue (#2563c9). High-key image that blends into a white web page; no dark background, no night sky.
 All four characters together:
@@ -696,8 +698,8 @@ Visual metaphor of the topic: a rooftop observatory with a telescope looking dow
 Composition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom);
   keep the bottom-left corner light and simple (plain white wall); make the bottom strip a plain near-white floor so the image sits well on a white page (use flat pixel dithering, not a smooth gradient); the topic prop is the most saturated spot.
 Mood: curious, friendly rivalry, the moment before the result.
-Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, high-resolution detail, blurry or anti-aliased edges.
+Avoid: smooth digital painting, vector illustration, 3D render, anime cel illustration, watercolor, soft gradients, photorealism, big blocky low-resolution pixels, blurry edges.
 No text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands.
 ```
 
-고칠 때: `Same four characters, same 16-bit pixel art style (480x270 grid, 4x nearest-neighbor, crisp square pixels) and composition. Change only: {고칠 점}. Still no text.`
+고칠 때: `Same four characters, same high-resolution 16-bit pixel art style (small dense pixels, detailed faces) and composition. Change only: {고칠 점}. Still no text.`
